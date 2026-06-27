@@ -2,110 +2,97 @@
 import Layout from '../layouts/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
 
-const seoTitle = "Contact B2B Sales & Quote Requests | Aquadura";
-const seoDescription = "Inquire about bulk orders, custom branding, and contract pricing. Reach out to our B2B sales division or submit a technical specification inquiry.";
+const seoTitle = "Contact & Wholesale Inquiries | Aquadura";
+const seoDescription = "Partner with Aquadura. Submit bulk order inquiries, request pre-production product samples, or discuss custom OEM printing templates with our sales division.";
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
-  <!-- Page Header -->
-  <section class="bg-white py-12 border-b border-light-darker">
-    <div class="mx-auto max-w-7xl px-6 md:px-8">
-      <div class="space-y-4">
-        <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
-          <a href="/" class="hover:text-primary font-sans">Home</a>
-          <span>/</span>
-          <span class="text-primary font-sans">Contact</span>
-        </nav>
-        <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
-          Procurement & Sales
-        </h1>
-        <div class="h-1 w-20 bg-primary rounded-full mt-2"></div>
-        <p class="text-base text-dark-muted font-sans mt-4 max-w-2xl leading-relaxed">
-          Get in touch directly with our commercial divisions. Submit your engineering blueprints or bulk volume requirements below.
-        </p>
-      </div>
+  <!-- Header -->
+  <section class="bg-white py-16 border-b border-light-darker">
+    <div class="mx-auto max-w-4xl px-6 md:px-8 space-y-4">
+      <span class="text-[11px] font-bold tracking-[0.25em] text-primary uppercase block">Direct Channels</span>
+      <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
+        Procurement & Accounts
+      </h1>
+      <p class="text-sm text-dark-muted font-sans max-w-xl leading-relaxed">
+        Submit technical blueprints, discuss custom logo die-lines, or coordinate freight logistics. A B2B account representative will follow up within 24 business hours.
+      </p>
     </div>
   </section>
 
-  <!-- Content Split -->
+  <!-- Split Layout -->
   <section class="py-16 bg-light">
     <div class="mx-auto max-w-7xl px-6 md:px-8 lg:flex lg:gap-16">
       
-      <!-- Left Column: Department Info & Coordinates -->
-      <div class="w-full lg:w-1/3 shrink-0 space-y-10 mb-12 lg:mb-0">
+      <!-- Left: Contact info -->
+      <div class="w-full lg:w-1/3 shrink-0 space-y-12 mb-12 lg:mb-0 font-sans">
         
-        <!-- Department Routing Info -->
+        <!-- Channels -->
         <div class="space-y-4">
-          <h2 class="text-xs font-bold uppercase tracking-widest text-primary font-heading">Department Routing</h2>
-          <h3 class="text-lg font-bold text-dark font-heading">Specialized Support</h3>
-          <ul class="space-y-4 text-sm text-dark-muted font-sans">
+          <span class="block text-[10px] font-bold text-primary uppercase tracking-widest">Department Routing</span>
+          <ul class="space-y-4 text-xs">
             <li>
-              <strong class="text-dark block">B2B Wholesale & Sales Contract</strong>
-              <a href="mailto:supply@aquadura.com" class="text-primary hover:underline">supply@aquadura.com</a>
+              <span class="block font-bold text-dark mb-0.5">Wholesale & Bulk Contracts</span>
+              <a href="mailto:supply@aquadura.com" class="text-primary font-semibold hover:underline">supply@aquadura.com</a>
             </li>
             <li>
-              <strong class="text-dark block">OEM / Custom Tooling Division</strong>
-              <a href="mailto:oem@aquadura.com" class="text-primary hover:underline">oem@aquadura.com</a>
+              <span class="block font-bold text-dark mb-0.5">OEM & Custom Mold Services</span>
+              <a href="mailto:oem@aquadura.com" class="text-primary font-semibold hover:underline">oem@aquadura.com</a>
             </li>
             <li>
-              <strong class="text-dark block">Logistics & Shipping Status</strong>
-              <a href="mailto:shipping@aquadura.com" class="text-primary hover:underline">shipping@aquadura.com</a>
+              <span class="block font-bold text-dark mb-0.5">Freight & Shippingmanifests</span>
+              <a href="mailto:shipping@aquadura.com" class="text-primary font-semibold hover:underline">shipping@aquadura.com</a>
             </li>
           </ul>
         </div>
 
-        <!-- Headquarters Coordinates -->
+        <!-- Coordinates -->
         <div class="space-y-4">
-          <h2 class="text-xs font-bold uppercase tracking-widest text-primary font-heading">Global Headquarters</h2>
-          <h3 class="text-lg font-bold text-dark font-heading">Head Office</h3>
-          <ul class="space-y-4 text-sm text-dark-muted font-sans">
+          <span class="block text-[10px] font-bold text-primary uppercase tracking-widest">Headquarters Office</span>
+          <ul class="space-y-4 text-xs text-dark-muted">
             <li class="flex items-start">
-              <svg class="h-5 w-5 text-primary shrink-0 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-4 w-4 text-primary shrink-0 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               <span>Industrial Sector-4, Plot 89-B, Manufacturing Hub, TX 75001</span>
             </li>
             <li class="flex items-center">
-              <svg class="h-5 w-5 text-primary shrink-0 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-4 w-4 text-primary shrink-0 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <a href="tel:+18005550199" class="hover:text-primary transition-colors duration-150">
-                +1 (800) 555-0199
-              </a>
+              <a href="tel:+18005550199" class="hover:text-primary transition-colors">+1 (800) 555-0199</a>
             </li>
             <li class="flex items-center">
-              <svg class="h-5 w-5 text-primary shrink-0 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-4 w-4 text-primary shrink-0 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>Mon - Fri: 8:00 AM - 6:00 PM EST</span>
+              <span>Mon - Fri / 8:00 AM - 6:00 PM EST</span>
             </li>
           </ul>
         </div>
 
         <!-- Logistics Hubs -->
         <div class="space-y-4">
-          <h2 class="text-xs font-bold uppercase tracking-widest text-primary font-heading">Logistics Network</h2>
-          <h3 class="text-lg font-bold text-dark font-heading">Distribution Hubs</h3>
-          <ul class="space-y-2 text-xs text-dark-muted font-sans font-medium">
+          <span class="block text-[10px] font-bold text-primary uppercase tracking-widest">Global Freight Hubs</span>
+          <ul class="space-y-2 text-[11px] text-dark-muted font-medium">
             <li class="flex items-center">
-              <span class="h-1.5 w-1.5 rounded-full bg-primary mr-2"></span>
-              North America: Dallas, USA (Primary Hub)
+              <span class="h-1 w-1 bg-primary rounded-full mr-2"></span>
+              Dallas, USA (Primary warehouse operations)
             </li>
             <li class="flex items-center">
-              <span class="h-1.5 w-1.5 rounded-full bg-primary mr-2"></span>
-              Europe: Rotterdam, Netherlands
+              <span class="h-1 w-1 bg-primary rounded-full mr-2"></span>
+              Rotterdam, Netherlands (EU Customs routing)
             </li>
             <li class="flex items-center">
-              <span class="h-1.5 w-1.5 rounded-full bg-primary mr-2"></span>
-              Asia-Pacific: Singapore Hub
+              <span class="h-1 w-1 bg-primary rounded-full mr-2"></span>
+              Singapore Hub (APAC shipping lane dispatch)
             </li>
           </ul>
         </div>
 
       </div>
 
-      <!-- Right Column: Interactive Quote Request Form -->
+      <!-- Right: Form -->
       <div class="flex-grow">
         <ContactForm />
       </div>

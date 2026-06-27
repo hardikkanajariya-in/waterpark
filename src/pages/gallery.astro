@@ -2,94 +2,93 @@
 import Layout from '../layouts/Layout.astro';
 import gallery from '../data/gallery.json';
 
-const seoTitle = "Manufacturing & Installation Gallery | Aquadura";
-const seoDescription = "View our state-of-the-art injection molding facilities, pressure testing laboratories, and real-world commercial installations at water parks and Olympic pools.";
+const seoTitle = "Operations & Installation Gallery | Aquadura";
+const seoDescription = "Take a visual tour of Aquadura's precision injection molding facilities, pressure testing labs, and real-world commercial installations at water parks and public pools.";
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
   <!-- Page Header -->
-  <section class="bg-white py-12 border-b border-light-darker">
-    <div class="mx-auto max-w-7xl px-6 md:px-8">
-      <div class="space-y-4">
-        <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
-          <a href="/" class="hover:text-primary font-sans">Home</a>
-          <span>/</span>
-          <span class="text-primary font-sans">Gallery</span>
-        </nav>
-        <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
-          Corporate Gallery
-        </h1>
-        <div class="h-1 w-20 bg-primary rounded-full mt-2"></div>
-        <p class="text-base text-dark-muted font-sans mt-4 max-w-2xl leading-relaxed">
-          Take a visual tour of our production facility, our automated testing laboratory, and real-world client installations in partner resorts and academies.
-        </p>
-      </div>
+  <section class="bg-white py-16 border-b border-light-darker">
+    <div class="mx-auto max-w-4xl px-6 md:px-8 space-y-4">
+      <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
+        <a href="/" class="hover:text-primary font-sans">Home</a>
+        <span>/</span>
+        <span class="text-primary font-sans">Gallery</span>
+      </nav>
+      <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
+        Gallery & Case Photos
+      </h1>
+      <p class="text-sm text-dark-muted font-sans max-w-xl leading-relaxed">
+        Browse our catalog installations, production floor layouts, and testing environments. Select categories below to filter operations.
+      </p>
     </div>
   </section>
 
   <!-- Filterable Gallery Section -->
   <section class="py-12 bg-light">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-10">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
       
       <!-- Filter Tabs -->
-      <div class="flex flex-wrap gap-2 justify-center border-b border-light-darker pb-6 font-sans text-sm">
+      <div class="flex flex-wrap gap-2 justify-center border-b border-light-darker pb-6 font-sans text-xs">
         <button
           data-gallery-filter="all"
-          class="gallery-filter-btn px-5 py-2 font-semibold rounded-full bg-primary text-white transition-all duration-200"
+          class="gallery-filter-btn px-5 py-2.5 font-bold rounded-full bg-primary text-white transition-all duration-200"
         >
-          All Images ({gallery.length})
+          All Items ({gallery.length})
         </button>
         <button
           data-gallery-filter="Facility"
-          class="gallery-filter-btn px-5 py-2 font-semibold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
+          class="gallery-filter-btn px-5 py-2.5 font-bold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
         >
-          Manufacturing Facility
+          Factory Facilities
         </button>
         <button
           data-gallery-filter="Installation"
-          class="gallery-filter-btn px-5 py-2 font-semibold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
+          class="gallery-filter-btn px-5 py-2.5 font-bold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
         >
-          Installations
+          Client Installations
         </button>
         <button
           data-gallery-filter="Product"
-          class="gallery-filter-btn px-5 py-2 font-semibold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
+          class="gallery-filter-btn px-5 py-2.5 font-bold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
         >
-          Product Showcase
+          Studio Catalog shots
         </button>
       </div>
 
-      <!-- Gallery Grid -->
-      <div id="gallery-grid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {gallery.map((item) => (
-          <div
-            data-gallery-cat={item.category}
-            class="gallery-item group flex flex-col justify-between overflow-hidden rounded-2xl bg-white border border-light-darker shadow-soft hover:shadow-soft-lg transition-all duration-300"
-          >
-            <!-- Image Area -->
-            <div class="relative overflow-hidden aspect-video bg-light border-b border-light-darker">
-              <img
-                src={item.image}
-                alt={item.title}
-                class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-                loading="lazy"
-              />
-              <span class="absolute top-4 left-4 rounded-full bg-white px-3.5 py-1 text-[10px] font-bold text-dark border border-light-darker shadow-soft uppercase tracking-wider font-sans">
-                {item.category}
-              </span>
+      <!-- Asymmetrical Gallery Grid (Fine line layout, no rounded boxes) -->
+      <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {gallery.map((item, index) => {
+          // Creating alternate aspect ratios for masonry feel
+          const aspectClass = index % 3 === 0 ? "aspect-square" : "aspect-video";
+          return (
+            <div
+              data-gallery-cat={item.category}
+              class="gallery-item group space-y-3"
+            >
+              <div class={`relative overflow-hidden rounded-2xl bg-white border border-light-darker w-full ${aspectClass}`}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <span class="absolute top-4 left-4 rounded-full bg-white px-3.5 py-1 text-[9px] font-bold text-dark border border-light-darker shadow-soft uppercase tracking-wider font-sans">
+                  {item.category}
+                </span>
+              </div>
+              
+              <div class="px-1 font-sans space-y-1">
+                <h3 class="text-sm font-bold text-dark group-hover:text-primary transition-colors font-heading leading-tight">
+                  {item.title}
+                </h3>
+                <p class="text-[11px] text-dark-muted leading-relaxed line-clamp-2">
+                  {item.description}
+                </p>
+              </div>
             </div>
-            
-            <!-- Description -->
-            <div class="p-6 space-y-2">
-              <h3 class="text-base font-bold text-dark group-hover:text-primary transition-colors duration-150 font-heading">
-                {item.title}
-              </h3>
-              <p class="text-xs text-dark-muted leading-relaxed font-sans line-clamp-2">
-                {item.description}
-              </p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
     </div>
@@ -97,14 +96,14 @@ const seoDescription = "View our state-of-the-art injection molding facilities, 
 </Layout>
 
 <script>
-  // Pure JavaScript Client-side Gallery Filtering
+  // Dynamic JavaScript Client-side Gallery Filtering
   document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.gallery-filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     const applyFilter = (category: string) => {
       galleryItems.forEach((item) => {
-        const galItem = item as HTMLElement;
+        const galItem = item;
         const itemCategory = galItem.getAttribute('data-gallery-cat');
         
         if (category === 'all' || itemCategory === category) {
@@ -116,7 +115,7 @@ const seoDescription = "View our state-of-the-art injection molding facilities, 
 
       // Update button styling states
       filterButtons.forEach((btn) => {
-        const button = btn as HTMLButtonElement;
+        const button = btn;
         const btnFilter = button.getAttribute('data-gallery-filter');
         
         if (btnFilter === category) {

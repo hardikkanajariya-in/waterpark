@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "swimming-academies",
+    "name": "Swimming Academies & Training Centers",
+    "tagline": "Built for institutional training rigs",
+    "description": "High-density training aids, lane equipment, and durable team gear engineered to withstand double-shift training daily in chlorine pools.",
+    "focus_products": ["apex-racing-goggles", "pro-silicone-racing-cap", "anti-wave-racing-lane-rope", "hydrodynamic-swim-fins"],
+    "image": "/images/gallery_pool.png"
+  },
+  {
+    "slug": "water-parks",
+    "name": "Commercial Water Parks & Wave Pools",
+    "tagline": "Engineered for high-throughput safety",
+    "description": "Heavy-gauge slide tubes, rafts, RFID locker wristbands, and USCG-compliant safety vests designed to optimize park logistics and guest throughput.",
+    "focus_products": ["single-rider-commercial-water-tube", "double-rider-commercial-water-tube", "commercial-raft-slide-boat", "rfid-locker-key-wristband"],
+    "image": "/images/gallery_park.png"
+  },
+  {
+    "slug": "hotels-resorts",
+    "name": "Luxury Hotels & Recreation Resorts",
+    "tagline": "Elevating guest leisure and safety",
+    "description": "Premium poolside lounge tubes, aesthetic stainless steel ladders, and retail-ready waterproof phone cases for guest convenience.",
+    "focus_products": ["lazy-river-luxury-lounger", "stainless-steel-pool-ladder", "floating-dry-bag-phone-pouch", "commercial-pool-vacuum-cleaner"],
+    "image": "/images/hero.png"
+  },
+  {
+    "slug": "distributors-retailers",
+    "name": "Dealers, Distributors & Retail Outlets",
+    "tagline": "Scalable logistics and OEM support",
+    "description": "Custom colorways, package design services, low MOQs, and globally compliant certifications to streamline your importing pipeline.",
+    "focus_products": ["floating-dry-bag-phone-pouch", "quick-dry-microfiber-towel", "roll-top-waterproof-dry-bag", "silicone-ear-plugs-nose-clip-set"],
+    "image": "/images/gallery_factory.png"
+  }
+]

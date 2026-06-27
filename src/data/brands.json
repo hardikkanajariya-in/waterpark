@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "aquadura-pro",
+    "name": "Aquadura Pro",
+    "tagline": "Elite Competitive Gear",
+    "description": "Engineered strictly for FINA competitive standards. Features premium hydrodynamic designs, low-profile structures, and advanced materials for training and racing.",
+    "categories": ["swimming-goggles", "swimming-caps", "pool-equipment", "swimming-training-equipment"]
+  },
+  {
+    "slug": "wavegrip",
+    "name": "WaveGrip Commercial",
+    "tagline": "Heavy-Duty Inflatables & Safety",
+    "description": "Constructed using heavy-gauge PVC and high-frequency welded seams. Optimized to withstand daily resort rental handling and sun exposure.",
+    "categories": ["water-park-tubes", "water-park-accessories"]
+  },
+  {
+    "slug": "hydroshield",
+    "name": "HydroShield Protectors",
+    "tagline": "Certified IPX8 Watertight Cases",
+    "description": "Submersible protective cases made from marine-grade TPU. High touch-responsiveness and clarity, optimized for retail markets.",
+    "categories": ["waterproof-mobile-covers", "sports-accessories"]
+  }
+]

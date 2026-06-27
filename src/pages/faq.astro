@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import faqs from '../data/faq.json';
+
+const seoTitle = "B2B Help & Wholesale FAQs | Aquadura";
+const seoDescription = "Find answers regarding Minimum Order Quantities (MOQ), custom screen-printing options, global shipping logistics, and compliance standards.";
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <!-- Header -->
+  <section class="bg-white py-16 border-b border-light-darker">
+    <div class="mx-auto max-w-4xl px-6 md:px-8 space-y-4">
+      <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
+        <a href="/" class="hover:text-primary font-sans">Home</a>
+        <span>/</span>
+        <span class="text-primary font-sans">FAQ</span>
+      </nav>
+      <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
+        Wholesale Help & FAQ
+      </h1>
+      <p class="text-sm text-dark-muted font-sans max-w-xl leading-relaxed">
+        Have questions regarding custom logo sizing, pre-production evaluation samples, or logistics hubs? Search our B2B help archive below.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Accordions -->
+  <section class="py-20 bg-light">
+    <div class="mx-auto max-w-3xl px-6 md:px-8 space-y-8 font-sans">
+      
+      <!-- FAQ Search -->
+      <div class="relative max-w-md mx-auto mb-12">
+        <input
+          type="text"
+          id="faq-search-input"
+          placeholder="Search FAQs (e.g. MOQ, branding)..."
+          class="w-full rounded-full border border-light-darker bg-white px-5 py-3 text-sm text-dark placeholder:text-dark-muted/50 focus:border-primary focus:outline-none transition-all shadow-soft"
+        />
+        <svg class="absolute right-4 top-3.5 h-4.5 w-4.5 text-dark-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+
+      <!-- FAQ Accordions List -->
+      <div id="faq-accordions-list" class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="faq-item bg-white border border-light-darker rounded-2xl shadow-soft transition-all duration-300">
+            <details class="group/details">
+              <summary class="flex justify-between items-center p-6 font-bold text-sm text-dark cursor-pointer list-none select-none font-heading focus:outline-none">
+                <span class="faq-question-text">{faq.question}</span>
+                <span class="ml-4 shrink-0 transition-transform duration-200 group-open/details:rotate-45 text-primary">
+                  <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6 pt-0 text-xs text-dark-muted leading-relaxed font-sans border-t border-light-darker/60 pt-4">
+                {faq.answer}
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+
+      <!-- Search feedback message -->
+      <div id="faq-no-results" class="hidden text-center py-12 bg-white border border-light-darker rounded-2xl p-6 shadow-soft">
+        <h3 class="text-sm font-bold text-dark font-heading">No matching questions found</h3>
+        <p class="text-xs text-dark-muted mt-1">Try searching another keyword or reach out directly at supply@aquadura.com.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-white py-16 border-t border-light-darker text-center space-y-6">
+    <div class="mx-auto max-w-2xl px-6">
+      <h2 class="text-xl font-bold tracking-tight text-dark font-heading">Have an Unlisted Inquiry?</h2>
+      <p class="text-xs text-dark-muted font-sans max-w-md mx-auto leading-relaxed mt-2">
+        If you need specific chemical compliance data sheets (SDS) or customized legal contract terms, our corporate office can assist.
+      </p>
+      <div class="pt-4">
+        <a href="/contact" class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-all">
+          Submit Corporate Inquiry
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('faq-search-input');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const noResultsMsg = document.getElementById('faq-no-results');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        let matchCount = 0;
+
+        faqItems.forEach((item) => {
+          const faqEl = item;
+          const questionText = faqEl.querySelector('.faq-question-text')?.textContent?.toLowerCase() || '';
+          const answerText = faqEl.querySelector('div')?.textContent?.toLowerCase() || '';
+
+          if (questionText.includes(query) || answerText.includes(query)) {
+            faqEl.style.display = 'block';
+            matchCount++;
+          } else {
+            faqEl.style.display = 'none';
+            // Close details if opened while filtering
+            const details = faqEl.querySelector('details');
+            if (details) {
+              details.removeAttribute('open');
+            }
+          }
+        });
+
+        // Toggle no results display
+        if (noResultsMsg) {
+          if (matchCount === 0) {
+            noResultsMsg.classList.remove('hidden');
+          } else {
+            noResultsMsg.classList.add('hidden');
+          }
+        }
+      });
+    }
+  });
+</script>
