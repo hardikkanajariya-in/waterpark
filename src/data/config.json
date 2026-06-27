@@ -1,37 +1,37 @@
 {
   "brandName": "AQUADURA",
-  "brandTagline": "Professional Aquatic Catalogue & B2B Commerce",
+  "brandTagline": "Premium Aquatic Equipment Store",
   "heroTitle": "Professional Swimming Equipment",
-  "heroSubtitle": "Built for Water Parks, Swimming Academies, Schools & Retail Supply.",
-  "searchPlaceholder": "Search goggles, caps, training gear, pool hardware...",
+  "heroSubtitle": "Engineered for Water Parks, Swimming Academies, Schools & Retail Supply.",
+  "searchPlaceholder": "Search goggles, caps, tubes, pool accessories...",
   "b2bReassurances": [
     {
-      "title": "Quality Assurance",
-      "desc": "All materials undergo rigorous institutional wear testing."
+      "title": "Premium Quality",
+      "desc": "All materials undergo rigorous wear and chemical durability testing."
     },
     {
-      "title": "Industry Standard Materials",
-      "desc": "High-density LSR silicone, shatterproof polycarbonate, and K80 PVC."
+      "title": "Industrial Standard Materials",
+      "desc": "High-density LSR silicone, shatterproof polycarbonate, and reinforced K80 PVC."
     },
     {
-      "title": "Bulk Supply",
-      "desc": "Optimized MOQ limits for academies, water parks, and wholesale dealers."
+      "title": "Direct Dispatch",
+      "desc": "Standard single-unit shipping or volume retail logistics ready."
     },
     {
       "title": "Nationwide Delivery",
-      "desc": "Integrated logistics partners for fast freight dispatch."
+      "desc": "Fast courier integrations for dispatch within 24-48 hours."
     },
     {
-      "title": "Custom Branding Available",
-      "desc": "High-definition custom team print options direct from factory."
+      "title": "Custom Colors Available",
+      "desc": "Personalized team colorways and custom prints available on demand."
     }
   ],
   "contact": {
     "phone": "+1 (800) 555-0199",
     "phoneRaw": "+18005550199",
     "whatsapp": "+18005550199",
-    "whatsappMsg": "Hi Aquadura, I would like to inquire about bulk supply pricing.",
-    "email": "procurement@aquadura.com",
+    "whatsappMsg": "Hi Aquadura, I would like to ask a question about your products.",
+    "email": "support@aquadura.com",
     "address": "Rotterdam Logistics Park, Port Area 4A, Netherlands"
   }
 }

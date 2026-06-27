@@ -18,9 +18,15 @@
       "Available Colors": "Graphite/Silver, Aqua/Blue, Crimson/Gold",
       "Anti-Fog Tech": "Hydrophobic Nano-coating"
     },
-    "target_customers": ["Swimming Academies", "Schools", "Dealers", "Distributors"],
-    "moq": "200 units",
-    "customization": "Custom logo printing on strap and custom branded hard-case packaging."
+    "target_customers": [
+      "Swimming Academies",
+      "Schools",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom logo printing on strap and custom branded hard-case packaging.",
+    "price": 19.99
   },
   {
     "slug": "comfort-fit-leisure-goggles",
@@ -41,9 +47,15 @@
       "Sizes Available": "Standard Adult, Junior Fit",
       "Packaging": "Standard Eco-friendly polybag or blister pack"
     },
-    "target_customers": ["Hotels", "Schools", "Dealers", "Distributors"],
-    "moq": "500 units",
-    "customization": "OEM color matching (Pantone) and pad-printed brand logo on frame."
+    "target_customers": [
+      "Hotels",
+      "Schools",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "OEM color matching (Pantone) and pad-printed brand logo on frame.",
+    "price": 27.99
   },
   {
     "slug": "optical-corrective-goggles",
@@ -64,9 +76,14 @@
       "Material Safety": "Phthalate and Latex-free",
       "Storage": "Hard protective plastic case"
     },
-    "target_customers": ["Dealers", "Distributors", "Swimming Academies"],
-    "moq": "150 units (mixed diopters accepted)",
-    "customization": "Wholesale prescription kits with counter-top acrylic display stands."
+    "target_customers": [
+      "Dealers",
+      "Distributors",
+      "Swimming Academies"
+    ],
+    "moq": "1 unit",
+    "customization": "Wholesale prescription kits with counter-top acrylic display stands.",
+    "price": 22.99
   },
   {
     "slug": "junior-safe-swim-goggles",
@@ -87,9 +104,15 @@
       "Lens Profile": "Flat, distortion-free optical lenses",
       "Weight": "42 grams"
     },
-    "target_customers": ["Water Parks", "Schools", "Hotels", "Distributors"],
-    "moq": "500 units",
-    "customization": "Custom cartoon character prints on strap and custom colorway options."
+    "target_customers": [
+      "Water Parks",
+      "Schools",
+      "Hotels",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom cartoon character prints on strap and custom colorway options.",
+    "price": 22.99
   },
   {
     "slug": "pro-silicone-racing-cap",
@@ -110,9 +133,15 @@
       "FINA Compliance": "Yes",
       "Tear Strength": "24 kN/m"
     },
-    "target_customers": ["Swimming Academies", "Schools", "Dealers", "Distributors"],
-    "moq": "300 units",
-    "customization": "High-definition multi-color screen printing with custom team logos."
+    "target_customers": [
+      "Swimming Academies",
+      "Schools",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "High-definition multi-color screen printing with custom team logos.",
+    "price": 14.99
   },
   {
     "slug": "durable-latex-swim-cap",
@@ -133,9 +162,15 @@
       "Elasticity Limit": "800% elongation",
       "Eco-compliance": "Biodegradable natural rubber"
     },
-    "target_customers": ["Schools", "Swimming Academies", "Government Organizations", "Distributors"],
-    "moq": "1000 units",
-    "customization": "Single-color silk screen logo printing."
+    "target_customers": [
+      "Schools",
+      "Swimming Academies",
+      "Government Organizations",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Single-color silk screen logo printing.",
+    "price": 10.99
   },
   {
     "slug": "custom-branded-team-cap",
@@ -156,9 +191,15 @@
       "Chlorine Resistance": "ASTM D471 tested (Excellent)",
       "Packaging": "Individual zip-lock pouch with insert card"
     },
-    "target_customers": ["Schools", "Swimming Academies", "Hotels", "Dealers"],
-    "moq": "250 units",
-    "customization": "Dual-sided customized graphics, full-bleed color options, individual name printing."
+    "target_customers": [
+      "Schools",
+      "Swimming Academies",
+      "Hotels",
+      "Dealers"
+    ],
+    "moq": "1 unit",
+    "customization": "Dual-sided customized graphics, full-bleed color options, individual name printing.",
+    "price": 5.99
   },
   {
     "slug": "thermal-neoprene-swim-cap",
@@ -179,9 +220,14 @@
       "Sizing": "S, M, L, XL",
       "Thermal Rating": "Excellent (Grade A)"
     },
-    "target_customers": ["Dealers", "Distributors", "Sports Academies"],
-    "moq": "100 units",
-    "customization": "Strap branding and customized high-vis color combinations."
+    "target_customers": [
+      "Dealers",
+      "Distributors",
+      "Sports Academies"
+    ],
+    "moq": "1 unit",
+    "customization": "Strap branding and customized high-vis color combinations.",
+    "price": 12.99
   },
   {
     "slug": "floating-dry-bag-phone-pouch",
@@ -202,9 +248,15 @@
       "Lanyard Strength": "Tensile strength up to 15 kg",
       "Floatation Limit": "Floats devices weighing up to 280 grams"
     },
-    "target_customers": ["Water Parks", "Hotels", "Dealers", "Distributors"],
-    "moq": "500 units",
-    "customization": "Brand logo printed on the lock bar and custom colored lanyards."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Brand logo printed on the lock bar and custom colored lanyards.",
+    "price": 8.99
   },
   {
     "slug": "heavy-duty-armband-phone-case",
@@ -225,9 +277,14 @@
       "Closure Type": "Fold-over triple zip-seal + Velcro flap",
       "Warranty": "2-year manufacturing defect warranty"
     },
-    "target_customers": ["Swimming Academies", "Sports Accessories Dealers", "Distributors"],
-    "moq": "300 units",
-    "customization": "Custom branding on velcro strap and custom strap sizing options."
+    "target_customers": [
+      "Swimming Academies",
+      "Sports Accessories Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom branding on velcro strap and custom strap sizing options.",
+    "price": 7.99
   },
   {
     "slug": "multi-purpose-tablet-waterproof-case",
@@ -248,9 +305,15 @@
       "Seal Mechanism": "Triple seal-strip + snap button flap",
       "Strap": "Includes detachable nylon shoulder strap"
     },
-    "target_customers": ["Water Parks", "Hotels", "Government Organizations", "Distributors"],
-    "moq": "200 units",
-    "customization": "Corporate color matching, logo hot-stamping, and custom strap designs."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Government Organizations",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Corporate color matching, logo hot-stamping, and custom strap designs.",
+    "price": 9.99
   },
   {
     "slug": "rfid-locker-key-wristband",
@@ -271,9 +334,15 @@
       "Waterproof Rating": "IP68 (Permanent submersion)",
       "Sizing": "160mm (Kids), 180mm (Junior), 200mm (Adult)"
     },
-    "target_customers": ["Water Parks", "Hotels", "Dealers", "Government Organizations"],
-    "moq": "1000 units",
-    "customization": "Logo embossing, debossing, color-filling, laser printing, and chip programming."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Dealers",
+      "Government Organizations"
+    ],
+    "moq": "1 unit",
+    "customization": "Logo embossing, debossing, color-filling, laser printing, and chip programming.",
+    "price": 36.99
   },
   {
     "slug": "heavy-duty-tube-repair-kit",
@@ -294,9 +363,14 @@
       "Adhesive Strength": "50 N/cm shear strength",
       "Kit Dimensions": "250mm x 120mm (plastic cylinder storage)"
     },
-    "target_customers": ["Water Parks", "Dealers", "Distributors"],
-    "moq": "100 kits",
-    "customization": "Private labeling on adhesive tubes and custom branded instruction manuals."
+    "target_customers": [
+      "Water Parks",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Private labeling on adhesive tubes and custom branded instruction manuals.",
+    "price": 40.99
   },
   {
     "slug": "commercial-life-vest-adult",
@@ -317,9 +391,15 @@
       "Strap Material": "40mm reinforced polyester webbing",
       "Certifications": "EN ISO 12402-5 (Level 50), CE Approved"
     },
-    "target_customers": ["Water Parks", "Hotels", "Government Organizations", "Distributors"],
-    "moq": "100 units",
-    "customization": "Bold screen-printed facility logo on back and custom property tracking serial numbers."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Government Organizations",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Bold screen-printed facility logo on back and custom property tracking serial numbers.",
+    "price": 38.99
   },
   {
     "slug": "junior-safety-life-vest",
@@ -340,9 +420,15 @@
       "Recommended Weight": "15 kg to 30 kg",
       "Certifications": "CE ISO 12402-5, USCG Type III Equivalent"
     },
-    "target_customers": ["Water Parks", "Hotels", "Schools", "Distributors"],
-    "moq": "100 units",
-    "customization": "Facility name screen printing on chest panel, custom safety warning tag prints."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Schools",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Facility name screen printing on chest panel, custom safety warning tag prints.",
+    "price": 33.99
   },
   {
     "slug": "stainless-steel-pool-ladder",
@@ -363,9 +449,16 @@
       "Step Count": "Available in 2, 3, 4, or 5-step configurations",
       "Weight Capacity": "Tested up to 180 kg static load"
     },
-    "target_customers": ["Hotels", "Water Parks", "Dealers", "Distributors", "Government Organizations"],
-    "moq": "10 units",
-    "customization": "Custom height and step-width configurations to match pre-existing anchor points."
+    "target_customers": [
+      "Hotels",
+      "Water Parks",
+      "Dealers",
+      "Distributors",
+      "Government Organizations"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom height and step-width configurations to match pre-existing anchor points.",
+    "price": 187.99
   },
   {
     "slug": "anti-wave-racing-lane-rope",
@@ -386,9 +479,15 @@
       "Disc Material": "High-Density Polyethylene (HDPE) with UV stabilizer",
       "Tensioning System": "Super-tensioner ratchet or turnbuckle hook"
     },
-    "target_customers": ["Schools", "Swimming Academies", "Dealers", "Government Organizations"],
-    "moq": "4 lines",
-    "customization": "Custom color sequence selection (red, blue, white, yellow, green) for lane sections."
+    "target_customers": [
+      "Schools",
+      "Swimming Academies",
+      "Dealers",
+      "Government Organizations"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom color sequence selection (red, blue, white, yellow, green) for lane sections.",
+    "price": 187.99
   },
   {
     "slug": "competition-starting-block",
@@ -409,9 +508,15 @@
       "Height Range": "500mm to 750mm from water level",
       "Compliance": "FINA FR 2.7 compliant"
     },
-    "target_customers": ["Schools", "Swimming Academies", "Government Organizations", "Dealers"],
-    "moq": "6 units",
-    "customization": "Custom base powder coating colors and platform numbering stencil (1 to 10)."
+    "target_customers": [
+      "Schools",
+      "Swimming Academies",
+      "Government Organizations",
+      "Dealers"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom base powder coating colors and platform numbering stencil (1 to 10).",
+    "price": 196.99
   },
   {
     "slug": "commercial-pool-vacuum-cleaner",
@@ -432,9 +537,15 @@
       "Cycle Times": "3, 5, or 8-hour automatic cycles",
       "Voltage": "Safe 24V DC secondary voltage (IP68 motor)"
     },
-    "target_customers": ["Water Parks", "Hotels", "Government Organizations", "Dealers"],
-    "moq": "2 units",
-    "customization": "Extended warranty packages and bulk filter cartridge supply contracts."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Government Organizations",
+      "Dealers"
+    ],
+    "moq": "1 unit",
+    "customization": "Extended warranty packages and bulk filter cartridge supply contracts.",
+    "price": 183.99
   },
   {
     "slug": "ergonomic-eva-kickboard",
@@ -455,9 +566,15 @@
       "Hardness": "45 Shore C",
       "Safety Standards": "EN 13138-2 Class B compliant"
     },
-    "target_customers": ["Schools", "Swimming Academies", "Hotels", "Distributors"],
-    "moq": "100 units",
-    "customization": "Laser engraved or screen printed logos, custom multi-layered color panels."
+    "target_customers": [
+      "Schools",
+      "Swimming Academies",
+      "Hotels",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Laser engraved or screen printed logos, custom multi-layered color panels.",
+    "price": 34.99
   },
   {
     "slug": "contour-pull-buoy",
@@ -478,9 +595,15 @@
       "Hardness": "40 Shore C",
       "Buoyancy": "32 Newtons"
     },
-    "target_customers": ["Schools", "Swimming Academies", "Dealers", "Distributors"],
-    "moq": "150 units",
-    "customization": "Debossed logo branding on foam surface, custom thickness levels."
+    "target_customers": [
+      "Schools",
+      "Swimming Academies",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Debossed logo branding on foam surface, custom thickness levels.",
+    "price": 27.99
   },
   {
     "slug": "hydrodynamic-swim-fins",
@@ -501,9 +624,15 @@
       "Weight": "approx. 620g per pair (size M)",
       "Elasticity": "Excellent flex memory"
     },
-    "target_customers": ["Swimming Academies", "Schools", "Dealers", "Distributors"],
-    "moq": "100 pairs (assorted sizes)",
-    "customization": "Custom size-chart printing inside foot pocket, brand logo molded on top blade."
+    "target_customers": [
+      "Swimming Academies",
+      "Schools",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom size-chart printing inside foot pocket, brand logo molded on top blade.",
+    "price": 33.99
   },
   {
     "slug": "swim-resistance-training-belt",
@@ -524,9 +653,15 @@
       "Belt Width": "80mm padded area for hip comfort",
       "Tensile Rating": "Tested to withstand up to 120 kg pull force"
     },
-    "target_customers": ["Swimming Academies", "Hotels", "Dealers", "Distributors"],
-    "moq": "100 units",
-    "customization": "Custom length bungees and branded carrying bags (microfiber mesh)."
+    "target_customers": [
+      "Swimming Academies",
+      "Hotels",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom length bungees and branded carrying bags (microfiber mesh).",
+    "price": 36.99
   },
   {
     "slug": "roll-top-waterproof-dry-bag",
@@ -547,9 +682,15 @@
       "Flat Dimensions": "590mm x 370mm",
       "Weight": "510 grams (empty)"
     },
-    "target_customers": ["Dealers", "Distributors", "Hotels", "Government Organizations"],
-    "moq": "300 units",
-    "customization": "All-over custom screen printing, color-matching, custom pocket additions."
+    "target_customers": [
+      "Dealers",
+      "Distributors",
+      "Hotels",
+      "Government Organizations"
+    ],
+    "moq": "1 unit",
+    "customization": "All-over custom screen printing, color-matching, custom pocket additions.",
+    "price": 17.99
   },
   {
     "slug": "quick-dry-microfiber-towel",
@@ -570,9 +711,15 @@
       "Weight": "190 grams",
       "Edge Stitch": "Reinforced overlock stitch"
     },
-    "target_customers": ["Hotels", "Swimming Academies", "Schools", "Distributors"],
-    "moq": "500 units",
-    "customization": "Embossed/debossed brand logo in corner, custom dye colors, and branded storage mesh pouch."
+    "target_customers": [
+      "Hotels",
+      "Swimming Academies",
+      "Schools",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Embossed/debossed brand logo in corner, custom dye colors, and branded storage mesh pouch.",
+    "price": 26.99
   },
   {
     "slug": "silicone-ear-plugs-nose-clip-set",
@@ -593,9 +740,15 @@
       "Safety Compliance": "REACH & RoHS certified non-toxic",
       "Average Weight": "12 grams (complete set with case)"
     },
-    "target_customers": ["Schools", "Swimming Academies", "Dealers", "Distributors"],
-    "moq": "1000 sets",
-    "customization": "Custom pad-print logo on the lid of the storage case, color-matching components."
+    "target_customers": [
+      "Schools",
+      "Swimming Academies",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom pad-print logo on the lid of the storage case, color-matching components.",
+    "price": 16.99
   },
   {
     "slug": "single-rider-commercial-water-tube",
@@ -616,9 +769,15 @@
       "Valve Type": "Quick-release Boston Valve",
       "Max Load Capacity": "115 kg"
     },
-    "target_customers": ["Water Parks", "Hotels", "Dealers", "Distributors"],
-    "moq": "50 units",
-    "customization": "Full color custom branding, safety warning print translations, custom tube sizing."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Full color custom branding, safety warning print translations, custom tube sizing.",
+    "price": 74.99
   },
   {
     "slug": "double-rider-commercial-water-tube",
@@ -639,9 +798,15 @@
       "Handles": "4 heavy-duty box-welded handles",
       "Max Load Capacity": "210 kg"
     },
-    "target_customers": ["Water Parks", "Hotels", "Dealers", "Distributors"],
-    "moq": "30 units",
-    "customization": "Color blocking matching park theme, custom warning graphics, logo branding."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Color blocking matching park theme, custom warning graphics, logo branding.",
+    "price": 67.99
   },
   {
     "slug": "commercial-raft-slide-boat",
@@ -662,9 +827,14 @@
       "Inflation Valves": "4 Halkey-Roberts valves",
       "Max Load Capacity": "360 kg (4 Adults)"
     },
-    "target_customers": ["Water Parks", "Government Organizations", "Distributors"],
-    "moq": "5 units",
-    "customization": "Park logo on side panels, custom color schemes, customized rope lines."
+    "target_customers": [
+      "Water Parks",
+      "Government Organizations",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Park logo on side panels, custom color schemes, customized rope lines.",
+    "price": 64.99
   },
   {
     "slug": "lazy-river-luxury-lounger",
@@ -685,8 +855,14 @@
       "Accessories": "1 molded cup holder, 1 pillow chamber",
       "Max Capacity": "130 kg"
     },
-    "target_customers": ["Water Parks", "Hotels", "Dealers", "Distributors"],
-    "moq": "50 units",
-    "customization": "Custom resort logo printing, cup holder sizing, custom mesh colors."
+    "target_customers": [
+      "Water Parks",
+      "Hotels",
+      "Dealers",
+      "Distributors"
+    ],
+    "moq": "1 unit",
+    "customization": "Custom resort logo printing, cup holder sizing, custom mesh colors.",
+    "price": 63.99
   }
 ]

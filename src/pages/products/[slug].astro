@@ -18,11 +18,10 @@ const { product } = Astro.props;
 const category = categories.find(c => c.slug === product.category);
 const categoryName = category ? category.name : "Aquatic Equipment";
 
-const seoTitle = `${product.name} | B2B Wholesale Specifications | ${config.brandName}`;
-const seoDescription = `Procure ${product.name} in bulk. Review custom branding options, certifications, and request direct wholesale pricing lists.`;
+const seoTitle = `${product.name} | Shop Online | ${config.brandName}`;
+const seoDescription = `Buy ${product.name} online. Review specifications, materials, sizing, and order direct from ${config.brandName}.`;
 
 const productSKU = `AQ-${product.slug.slice(0, 6).toUpperCase()}`;
-const numericMoq = parseInt(product.moq.replace(/[^0-9]/g, '')) || 100;
 
 // Mock related products
 const relatedProducts = products
@@ -52,15 +51,15 @@ const frequentlyBought = products
     </div>
   </section>
 
-  <!-- Product Immersive Details -->
-  <section class="py-12 lg:py-20 bg-white">
+  <!-- Product Details -->
+  <section class="py-12 lg:py-16 bg-white">
     <div class="mx-auto max-w-7xl px-6 md:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
         <!-- Left: Product Photo & Multi-Angle Swap -->
         <div class="lg:col-span-7 space-y-6">
           <!-- Main Photo with Zoom hover -->
-          <div class="relative overflow-hidden rounded-3xl bg-light border border-light-darker aspect-[4/3] w-full group">
+          <div class="relative overflow-hidden rounded-2xl bg-light border border-light-darker aspect-[4/3] w-full group">
             <img
               id="main-product-gallery-image"
               src={product.image}
@@ -88,84 +87,73 @@ const frequentlyBought = products
           </div>
         </div>
 
-        <!-- Right: B2B Quote configurator -->
-        <div class="lg:col-span-5 space-y-8 font-sans">
-          <div class="space-y-3">
+        <!-- Right: Purchase configurator -->
+        <div class="lg:col-span-5 space-y-6 font-sans">
+          <div class="space-y-2">
             <div class="flex items-center justify-between text-xs text-dark-muted font-medium">
               <span>SKU: {productSKU}</span>
-              <span class="inline-flex items-center text-emerald-600 font-bold">
+              <span class="inline-flex items-center text-emerald-600 font-semibold">
                 <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>
-                Orderable Stock
+                In Stock & Ready to Ship
               </span>
             </div>
             
-            <h1 class="text-3xl font-black tracking-tight text-dark font-heading leading-tight">
+            <h1 class="text-2xl font-bold tracking-tight text-dark font-heading leading-tight">
               {product.name}
             </h1>
-            <span class="text-xs font-extrabold text-primary uppercase tracking-widest block">{categoryName}</span>
+            <span class="text-xs font-bold text-primary uppercase tracking-widest block">{categoryName}</span>
           </div>
 
-          <p class="text-xs sm:text-sm text-dark-muted leading-relaxed">
+          <p class="text-xs sm:text-sm text-dark-muted leading-relaxed font-medium">
             {product.description}
           </p>
 
-          <!-- B2B Wholesale configurator card -->
-          <div class="rounded-3xl border border-light-darker bg-light p-6 sm:p-8 space-y-6 shadow-soft">
+          <!-- Price & Cart config card -->
+          <div class="rounded-2xl border border-light-darker bg-light p-6 space-y-6 shadow-soft">
             <div class="flex justify-between items-center pb-3 border-b border-light-darker/60 text-xs">
-              <span class="font-bold text-dark-muted uppercase tracking-wider">Wholesale MOQ</span>
-              <span class="font-extrabold text-dark bg-white border border-light-darker rounded px-2.5 py-0.5">{product.moq}</span>
+              <span class="font-bold text-dark-muted uppercase tracking-wider">Retail Price</span>
+              <span class="text-lg font-bold text-primary">₹{product.price.toFixed(2)}</span>
             </div>
 
             <!-- Configuration Inputs -->
             <div class="space-y-4">
               <!-- Qty Input -->
               <div class="space-y-1.5">
-                <label for="detail-qty-input" class="block text-[10px] font-bold text-dark uppercase tracking-wider">Estimated Order Quantity</label>
+                <label for="detail-qty-input" class="block text-[9px] font-bold text-dark uppercase tracking-wider">Quantity</label>
                 <input
                   type="number"
                   id="detail-qty-input"
-                  min={numericMoq}
-                  value={numericMoq}
+                  min="1"
+                  value="1"
                   class="qty-input-field w-full rounded-xl border border-light-darker bg-white px-4 py-3 font-bold text-dark text-xs focus:outline-none"
                 />
-                <span class="text-[9px] text-dark-muted block">Adjust quantity (must be higher than wholesale MOQ of {numericMoq} units)</span>
               </div>
 
-              <!-- Custom Logo check -->
-              <div class="space-y-2 pt-2">
-                <span class="block text-[10px] font-bold text-dark uppercase tracking-wider">OEM Printing Spec</span>
-                <label class="flex items-center gap-2 text-xs text-dark font-medium cursor-pointer select-none">
-                  <input type="checkbox" id="detail-print-checkbox" class="print-checkbox-field rounded border-light-darker text-primary focus:ring-primary h-4.5 w-4.5" />
-                  Request Customized Team Logo Print
-                </label>
-              </div>
-
-              <!-- Packaging Select -->
-              <div class="space-y-1.5 pt-2">
-                <label for="detail-pkg-select" class="block text-[10px] font-bold text-dark uppercase tracking-wider">Packaging Style</label>
+              <!-- Options -->
+              <div class="space-y-1.5 pt-1">
+                <label for="detail-color-select" class="block text-[9px] font-bold text-dark uppercase tracking-wider">Select Colorway</label>
                 <select
-                  id="detail-pkg-select"
-                  class="packaging-select-field w-full rounded-xl border border-light-darker bg-white px-3 py-3 text-xs text-dark font-semibold focus:outline-none"
+                  id="detail-color-select"
+                  class="w-full rounded-xl border border-light-darker bg-white px-3 py-3 text-xs text-dark font-semibold focus:outline-none"
                 >
-                  <option value="standard">Standard Bulk (Industrial Polybags)</option>
-                  <option value="custom">OEM Branded Insert Card</option>
-                  <option value="retail">Retail Cardboard Boxes</option>
+                  <option value="standard">Standard Navy / Blue</option>
+                  <option value="alternate">Special Slate / Graphite</option>
+                  <option value="highlight">Bright Crimson / Yellow</option>
                 </select>
               </div>
             </div>
 
-            <!-- Main Direct Add Quote Sheet Action -->
+            <!-- Main Add to Cart Action -->
             <button
               type="button"
-              id="detail-add-to-quote-btn"
+              id="detail-add-to-cart-btn"
               data-slug={product.slug}
               data-name={product.name}
               data-image={product.image}
-              data-moq={product.moq}
-              data-numeric-moq={numericMoq.toString()}
+              data-price={product.price.toString()}
               class="w-full inline-flex items-center justify-center rounded-xl bg-primary py-3.5 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-all focus:outline-none"
             >
-              Add to Quote Sheet
+              Add to Cart
             </button>
           </div>
         </div>
@@ -173,7 +161,7 @@ const frequentlyBought = products
       </div>
 
       <!-- Tabbed Specifications & Technical Details -->
-      <div class="mt-20 border-t border-light-darker pt-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div class="mt-16 border-t border-light-darker pt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         
         <!-- Left: Tabs & Tables -->
         <div class="lg:col-span-8 space-y-6">
@@ -184,16 +172,16 @@ const frequentlyBought = products
               Specifications
             </button>
             <button class="spec-tab-btn pb-4 border-b-2 border-transparent px-4 hover:text-dark focus:outline-none" data-tab="logistics">
-              Logistics & Packaging
+              Delivery & Returns
             </button>
             <button class="spec-tab-btn pb-4 border-b-2 border-transparent px-4 hover:text-dark focus:outline-none" data-tab="visual">
-              360° / Video Mockup
+              Materials Guide
             </button>
           </div>
 
           <!-- Specs Tab Panel -->
           <div id="panel-specs" class="spec-tab-panel space-y-6">
-            <div class="overflow-hidden rounded-2xl border border-light-darker bg-white shadow-soft">
+            <div class="overflow-hidden rounded-xl border border-light-darker bg-white shadow-soft">
               <table class="min-w-full divide-y divide-light-darker text-xs text-dark font-sans">
                 <tbody class="divide-y divide-light-darker">
                   {Object.entries(product.specifications).map(([k, v]) => (
@@ -209,40 +197,40 @@ const frequentlyBought = products
 
           <!-- Logistics Tab Panel -->
           <div id="panel-logistics" class="spec-tab-panel space-y-6 hidden">
-            <div class="overflow-hidden rounded-2xl border border-light-darker bg-white p-6 shadow-soft space-y-4 font-sans text-xs">
-              <div class="grid grid-cols-2 gap-6">
+            <div class="overflow-hidden rounded-xl border border-light-darker bg-white p-6 shadow-soft space-y-4 font-sans text-xs font-medium text-dark-muted">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <span class="block font-bold text-dark-muted mb-1 uppercase tracking-wider text-[10px]">Estimated Carton Volume</span>
-                  <span class="font-bold text-dark">0.12 CBM per 100 units</span>
+                  <span class="block font-bold text-dark mb-1 uppercase tracking-wider text-[9px]">Standard Dispatch</span>
+                  <span>Orders are packaged and dispatched from our logistics center within 24-48 hours.</span>
                 </div>
                 <div>
-                  <span class="block font-bold text-dark-muted mb-1 uppercase tracking-wider text-[10px]">Estimated Carton Weight</span>
-                  <span class="font-bold text-dark">8.5 kg gross per box</span>
+                  <span class="block font-bold text-dark mb-1 uppercase tracking-wider text-[9px]">Transit Timing</span>
+                  <span>Standard domestic shipping takes 3-5 business days. Express shipping takes 1-2 days.</span>
                 </div>
                 <div>
-                  <span class="block font-bold text-dark-muted mb-1 uppercase tracking-wider text-[10px]">Shipping Terms</span>
-                  <span class="font-bold text-dark">FOB Shanghai / Rotterdam Dispatch</span>
+                  <span class="block font-bold text-dark mb-1 uppercase tracking-wider text-[9px]">Return Policy</span>
+                  <span>We offer a simple 14-day return policy on all unused products in their original packaging.</span>
                 </div>
                 <div>
-                  <span class="block font-bold text-dark-muted mb-1 uppercase tracking-wider text-[10px]">Lead Time</span>
-                  <span class="font-bold text-dark">15 - 20 Business Days (Depending on customization)</span>
+                  <span class="block font-bold text-dark mb-1 uppercase tracking-wider text-[9px]">Customer Support</span>
+                  <span>Contact our support desk for shipping status or product warranty evaluations.</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Visual Tab Panel -->
+          <!-- Materials Tab Panel -->
           <div id="panel-visual" class="spec-tab-panel space-y-6 hidden">
-            <div class="rounded-2xl border border-light-darker bg-light p-12 text-center shadow-soft flex flex-col items-center justify-center space-y-4 min-h-[300px]">
-              <div class="h-14 w-14 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center text-primary">
-                <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div class="rounded-xl border border-light-darker bg-light p-8 text-center shadow-soft flex flex-col items-center justify-center space-y-3 min-h-[220px]">
+              <!-- Lucide-like Star SVG instead of Emoji -->
+              <div class="h-10 w-10 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center text-primary">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
               </div>
-              <h4 class="text-sm font-bold text-dark font-heading">Interactive Video Showcase</h4>
-              <p class="text-xs text-dark-muted max-w-sm leading-relaxed font-sans">
-                A visual representation showing material elasticity, anti-leak tests, and custom logo printing processes direct from the facility floor.
+              <h4 class="text-xs font-bold text-dark font-heading">Premium Materials Standard</h4>
+              <p class="text-xs text-dark-muted max-w-sm leading-relaxed font-sans font-medium">
+                Our swim caps leverage medical-grade LSR silicone. Eyewear models feature impact-proof polycarbonate lenses with integrated anti-fog nano coatings.
               </p>
             </div>
           </div>
@@ -250,21 +238,21 @@ const frequentlyBought = products
         </div>
 
         <!-- Right: Frequently Bought Together & Related Categories -->
-        <div class="lg:col-span-4 space-y-8">
+        <div class="lg:col-span-4 space-y-6">
           
           <!-- Frequently Bought together -->
-          <div class="bg-light rounded-3xl border border-light-darker p-6 shadow-soft space-y-4">
-            <h3 class="text-xs font-black text-dark uppercase tracking-wider font-heading border-b border-light-darker pb-2">Frequently Bought Together</h3>
+          <div class="bg-light rounded-2xl border border-light-darker p-5 shadow-soft space-y-4">
+            <h3 class="text-xs font-bold text-dark uppercase tracking-wider font-heading border-b border-light-darker/60 pb-2">Frequently Bought Together</h3>
             
-            <div class="space-y-4">
+            <div class="space-y-3">
               {frequentlyBought.map(p => (
-                <a href={`/products/${p.slug}`} class="flex items-center gap-3 p-2 bg-white border border-light-darker rounded-xl hover:border-slate-300 transition-colors group">
-                  <div class="h-12 w-14 rounded-lg overflow-hidden border border-light-darker shrink-0 bg-light">
+                <a href={`/products/${p.slug}`} class="flex items-center gap-3 p-2 bg-white border border-light-darker rounded-lg hover:border-slate-300 transition-colors group">
+                  <div class="h-10 w-12 rounded-lg overflow-hidden border border-light-darker shrink-0 bg-light">
                     <img src={p.image} alt={p.name} class="h-full w-full object-cover" />
                   </div>
                   <div class="space-y-0.5">
                     <span class="block text-[10px] font-bold text-dark font-heading leading-tight group-hover:text-primary transition-colors line-clamp-1">{p.name}</span>
-                    <span class="text-[9px] text-dark-muted uppercase font-sans font-medium">MOQ: {p.moq}</span>
+                    <span class="text-[9px] text-primary font-sans font-bold">₹{p.price.toFixed(2)}</span>
                   </div>
                 </a>
               ))}
@@ -272,11 +260,11 @@ const frequentlyBought = products
           </div>
 
           <!-- Related Divisions -->
-          <div class="bg-white rounded-3xl border border-light-darker p-6 shadow-soft space-y-4">
-            <h3 class="text-xs font-black text-dark uppercase tracking-wider font-heading border-b border-light-darker pb-2">Related Divisions</h3>
+          <div class="bg-white rounded-2xl border border-light-darker p-5 shadow-soft space-y-4">
+            <h3 class="text-xs font-bold text-dark uppercase tracking-wider font-heading border-b border-light-darker/60 pb-2">Related Categories</h3>
             <div class="flex flex-wrap gap-2 text-xs font-sans">
               {categories.slice(0, 4).map(c => (
-                <a href={`/products?category=${c.slug}`} class="px-3 py-1.5 rounded-full border border-light-darker bg-light hover:bg-white hover:border-slate-300 font-semibold text-dark-muted hover:text-primary transition-all">
+                <a href={`/products?category=${c.slug}`} class="px-2.5 py-1.5 rounded-lg border border-light-darker bg-light hover:bg-white hover:border-slate-300 font-semibold text-dark-muted hover:text-primary transition-all">
                   {c.name}
                 </a>
               ))}
@@ -288,8 +276,8 @@ const frequentlyBought = products
       </div>
 
       <!-- Recently Viewed Block -->
-      <div id="recently-viewed-section" class="mt-20 border-t border-light-darker pt-16 space-y-6 hidden">
-        <h3 class="text-xs font-black text-dark uppercase tracking-wider font-heading">Recently Viewed Products</h3>
+      <div id="recently-viewed-section" class="mt-16 border-t border-light-darker pt-12 space-y-5 hidden">
+        <h3 class="text-xs font-bold text-dark uppercase tracking-wider font-heading">Recently Viewed Products</h3>
         <div id="recently-viewed-list" class="grid grid-cols-2 sm:grid-cols-4 gap-6 font-sans">
           <!-- Injected dynamically -->
         </div>
@@ -298,27 +286,27 @@ const frequentlyBought = products
     </div>
   </section>
 
-  <!-- MOBILE STICKY BOTTOM QUICK QUOTE BAR -->
-  <div class="fixed bottom-0 inset-x-0 bg-white border-t border-light-darker z-30 py-3.5 px-6 shadow-2xl flex md:hidden items-center justify-between gap-4 font-sans">
+  <!-- MOBILE STICKY BOTTOM QUICK CART BAR -->
+  <div class="fixed bottom-0 inset-x-0 bg-white border-t border-light-darker z-30 py-3 px-6 shadow-2xl flex md:hidden items-center justify-between gap-4 font-sans">
     <div class="flex flex-col gap-0.5 leading-none">
       <span class="text-[10px] font-bold text-dark truncate max-w-[150px]">{product.name}</span>
-      <span class="text-[9px] font-extrabold text-primary uppercase">Min MOQ: {product.moq}</span>
+      <span class="text-xs font-bold text-primary">₹{product.price.toFixed(2)}</span>
     </div>
     
     <div class="flex items-center gap-2">
       <input
         type="number"
         id="mobile-qty-input"
-        min={numericMoq}
-        value={numericMoq}
-        class="w-16 rounded-lg border border-light-darker bg-light px-2 py-1.5 font-bold text-dark text-xs focus:outline-none"
+        min="1"
+        value="1"
+        class="w-14 rounded-lg border border-light-darker bg-light px-2 py-1.5 font-bold text-dark text-xs focus:outline-none"
       />
       <button
         type="button"
         id="mobile-sticky-add-btn"
-        class="bg-primary text-white text-[10px] font-black rounded-lg px-4 py-2.5 hover:bg-primary-dark transition-all focus:outline-none"
+        class="bg-primary text-white text-[10px] font-bold rounded-lg px-4 py-2.5 hover:bg-primary-dark transition-all focus:outline-none"
       >
-        Add Quote
+        Add to Cart
       </button>
     </div>
   </div>
@@ -341,7 +329,6 @@ const frequentlyBought = products
         const url = target.getAttribute('data-image-url');
         mainImg.src = url;
 
-        // Styling active border
         document.querySelectorAll('.gallery-thumb-btn').forEach(b => {
           b.classList.remove('border-primary', 'border-2');
           b.classList.add('border-light-darker', 'border');
@@ -372,10 +359,9 @@ const frequentlyBought = products
     // ----------------------------------------------------
     document.querySelectorAll('.spec-tab-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const target = e.target;
+        const target = e.target as HTMLElement;
         const tabId = target.getAttribute('data-tab');
 
-        // Headers Toggle
         document.querySelectorAll('.spec-tab-btn').forEach(b => {
           b.classList.remove('border-primary', 'text-primary');
           b.classList.add('border-transparent', 'text-dark-muted');
@@ -383,7 +369,6 @@ const frequentlyBought = products
         target.classList.remove('border-transparent', 'text-dark-muted');
         target.classList.add('border-primary', 'text-primary');
 
-        // Panels Toggle
         document.querySelectorAll('.spec-tab-panel').forEach(panel => {
           panel.classList.add('hidden');
         });
@@ -403,17 +388,14 @@ const frequentlyBought = products
       rv = [];
     }
 
-    // Filter out current and push to top
     rv = rv.filter(slug => slug !== product.slug);
     rv.unshift(product.slug);
-    // Limit to 5
     rv = rv.slice(0, 5);
 
     try {
       localStorage.setItem(RV_KEY, JSON.stringify(rv));
     } catch (e) {}
 
-    // Render recently viewed (skipping current viewed)
     const listContainer = document.getElementById('recently-viewed-list');
     const sectionContainer = document.getElementById('recently-viewed-section');
 
@@ -424,13 +406,13 @@ const frequentlyBought = products
         const item = products.find(p => p.slug === slug);
         if (!item) return '';
         return `
-          <a href="/products/${item.slug}" class="group block space-y-3 bg-light border border-light-darker p-4 rounded-2xl hover:border-slate-300 transition-colors">
-            <div class="aspect-[4/3] rounded-xl overflow-hidden bg-white border border-light-darker">
+          <a href="/products/${item.slug}" class="group block space-y-3 bg-light border border-light-darker p-4 rounded-xl hover:border-slate-300 transition-colors">
+            <div class="aspect-[4/3] rounded-lg overflow-hidden bg-white border border-light-darker">
               <img src="${item.image}" alt="${item.name}" class="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500" />
             </div>
-            <div class="space-y-1">
-              <span class="block text-[10px] font-black text-dark font-heading leading-tight group-hover:text-primary transition-colors line-clamp-1">${item.name}</span>
-              <span class="block text-[8px] text-dark-muted font-bold uppercase">MOQ: ${item.moq}</span>
+            <div class="space-y-1 font-sans">
+              <span class="block text-[10px] font-bold text-dark leading-tight group-hover:text-primary transition-colors line-clamp-1">${item.name}</span>
+              <span class="block text-xs text-primary font-bold">₹${item.price.toFixed(2)}</span>
             </div>
           </a>
         `;
@@ -438,11 +420,11 @@ const frequentlyBought = products
     }
 
     // ----------------------------------------------------
-    // SYNC SIDEBAR & BOTTOM MOBILE QUANTITY & ADD TO QUOTE
+    // SYNC SIDEBAR & BOTTOM MOBILE QUANTITY & ADD TO CART
     // ----------------------------------------------------
-    const desktopQtyInput = document.getElementById('detail-qty-input');
-    const mobileQtyInput = document.getElementById('mobile-qty-input');
-    const desktopAddBtn = document.getElementById('detail-add-to-quote-btn');
+    const desktopQtyInput = document.getElementById('detail-qty-input') as HTMLInputElement;
+    const mobileQtyInput = document.getElementById('mobile-qty-input') as HTMLInputElement;
+    const desktopAddBtn = document.getElementById('detail-add-to-cart-btn');
     const mobileAddBtn = document.getElementById('mobile-sticky-add-btn');
 
     const syncQty = (src, dest) => {
@@ -455,26 +437,15 @@ const frequentlyBought = products
     mobileQtyInput?.addEventListener('input', () => syncQty(mobileQtyInput, desktopQtyInput));
 
     const triggerAdd = () => {
-      const qty = parseInt(desktopQtyInput?.value || mobileQtyInput?.value || '100') || 100;
-      
-      const printCheckbox = document.getElementById('detail-print-checkbox');
-      const printing = printCheckbox ? printCheckbox.checked : false;
+      const qty = parseInt(desktopQtyInput?.value || mobileQtyInput?.value || '1') || 1;
 
-      const pkgSelect = document.getElementById('detail-pkg-select');
-      const packaging = pkgSelect ? pkgSelect.value : 'standard';
-
-      const numericMoq = parseInt(product.moq.replace(/[^0-9]/g, '')) || 100;
-
-      if ((window).QuoteCart) {
-        (window).QuoteCart.addItem({
+      if ((window as any).ShoppingCart) {
+        (window as any).ShoppingCart.addItem({
           slug: product.slug,
           name: product.name,
           image: product.image,
-          moq: product.moq,
-          numericMoq: numericMoq,
-          qty: qty,
-          printing: printing,
-          packaging: packaging
+          price: product.price,
+          qty: qty
         });
       }
     };
