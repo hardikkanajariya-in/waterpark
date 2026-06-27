@@ -1,0 +1,187 @@
+---
+import categories from '../data/categories.json';
+
+interface Props {
+  preselectedCategory?: string;
+  preselectedProduct?: string;
+}
+
+const { preselectedCategory = "", preselectedProduct = "" } = Astro.props;
+---
+
+<div class="rounded-2xl border border-light-darker bg-white p-8 shadow-soft-lg">
+  <!-- Success Notification -->
+  <div id="form-success-banner" class="hidden rounded-xl bg-emerald-50 border border-emerald-200 p-6 mb-6 text-emerald-800">
+    <div class="flex items-start">
+      <svg class="h-6 w-6 text-emerald-600 shrink-0 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <div>
+        <h3 class="font-bold text-sm font-heading">Quote Inquiry Received</h3>
+        <p class="text-xs mt-1 font-sans text-emerald-700">Thank you for contacting Aquadura. A B2B procurement representative will review your specifications and email a preliminary quote within 1 business day.</p>
+      </div>
+    </div>
+  </div>
+
+  <form id="b2b-inquiry-form" class="space-y-6">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <!-- First Name -->
+      <div>
+        <label for="first-name" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">First Name <span class="text-red-500">*</span></label>
+        <input
+          type="text"
+          name="first-name"
+          id="first-name"
+          required
+          class="block w-full rounded-lg border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/60 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+          placeholder="John"
+        />
+      </div>
+      <!-- Last Name -->
+      <div>
+        <label for="last-name" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">Last Name <span class="text-red-500">*</span></label>
+        <input
+          type="text"
+          name="last-name"
+          id="last-name"
+          required
+          class="block w-full rounded-lg border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/60 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+          placeholder="Doe"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <!-- Corporate Email -->
+      <div>
+        <label for="email" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">Corporate Email <span class="text-red-500">*</span></label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          class="block w-full rounded-lg border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/60 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+          placeholder="j.doe@company.com"
+        />
+      </div>
+      <!-- Phone Number -->
+      <div>
+        <label for="phone" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">Phone Number <span class="text-red-500">*</span></label>
+        <input
+          type="tel"
+          name="phone"
+          id="phone"
+          required
+          class="block w-full rounded-lg border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/60 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+          placeholder="+1 (555) 019-9234"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <!-- Company Name -->
+      <div>
+        <label for="company" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">Company Name <span class="text-red-500">*</span></label>
+        <input
+          type="text"
+          name="company"
+          id="company"
+          required
+          class="block w-full rounded-lg border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/60 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+          placeholder="Enterprise Aquatic Inc."
+        />
+      </div>
+      <!-- Estimated Order Volume -->
+      <div>
+        <label for="volume" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">Estimated Order Volume <span class="text-red-500">*</span></label>
+        <select
+          name="volume"
+          id="volume"
+          required
+          class="block w-full rounded-lg border border-light-darker bg-light px-4 py-3 text-sm text-dark focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+        >
+          <option value="">Select volume range</option>
+          <option value="moq-500">Minimum Order Qty (MOQ)</option>
+          <option value="500-2000">500 to 2,000 units</option>
+          <option value="2000-5000">2,000 to 5,000 units</option>
+          <option value="5000-plus">5,000+ units (Bulk Enterprise)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Product Category Interest -->
+    <div>
+      <label for="interest" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">Product Division Interest <span class="text-red-500">*</span></label>
+      <select
+        name="interest"
+        id="interest"
+        required
+        class="block w-full rounded-lg border border-light-darker bg-light px-4 py-3 text-sm text-dark focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+      >
+        <option value="">Select Division</option>
+        {categories.map((cat) => (
+          <option value={cat.slug} selected={cat.slug === preselectedCategory}>
+            {cat.name}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    {preselectedProduct && (
+      <div>
+        <label for="product-spec" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">Specific Product of Interest</label>
+        <input
+          type="text"
+          id="product-spec"
+          name="product-spec"
+          value={preselectedProduct}
+          readonly
+          class="block w-full rounded-lg border border-light-darker bg-light-darker/40 px-4 py-3 text-sm text-dark font-semibold font-sans cursor-not-allowed"
+        />
+      </div>
+    )}
+
+    <!-- Requirements details -->
+    <div>
+      <label for="requirements" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2 font-sans">Custom Specifications & Packaging Requirements</label>
+      <textarea
+        name="requirements"
+        id="requirements"
+        rows="4"
+        class="block w-full rounded-lg border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/60 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+        placeholder="Describe logo branding, size distribution, certification compliance, or shipping schedule requirements..."
+      ></textarea>
+    </div>
+
+    <!-- Submit button -->
+    <div>
+      <button
+        type="submit"
+        class="w-full inline-flex items-center justify-center rounded-full bg-primary py-4 px-6 text-sm font-semibold text-white shadow-soft hover:bg-primary-dark hover:shadow-soft-lg transition-all duration-150"
+      >
+        Submit Quote Inquiry
+        <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('b2b-inquiry-form') as HTMLFormElement;
+  const successBanner = document.getElementById('form-success-banner');
+
+  if (form && successBanner) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Simulate API submission
+      setTimeout(() => {
+        form.reset();
+        successBanner.classList.remove('hidden');
+        successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 300);
+    });
+  }
+</script>

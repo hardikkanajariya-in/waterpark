@@ -1,0 +1,63 @@
+---
+import categories from '../data/categories.json';
+---
+
+<section class="bg-light py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6 md:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center space-y-4 mb-16">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-primary">
+        Manufacturing Divisions
+      </h2>
+      <p class="text-3xl font-extrabold tracking-tight text-dark sm:text-4xl font-heading">
+        Product Categories We Supply
+      </p>
+      <div class="h-1 w-16 bg-primary mx-auto rounded-full mt-4"></div>
+      <p class="text-lg text-dark-muted font-sans mt-2 max-w-2xl mx-auto">
+        Explore our complete catalog of certified commercial aquatic goods, tailored for distributors and operators.
+      </p>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {categories.map((cat) => (
+        <a
+          href={`/products?category=${cat.slug}`}
+          class="group flex flex-col overflow-hidden rounded-2xl bg-white border border-light-darker shadow-soft hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300"
+        >
+          <!-- Category Image -->
+          <div class="relative h-48 w-full overflow-hidden bg-light border-b border-light-darker">
+            <img
+              src={cat.image}
+              alt={cat.name}
+              class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-dark/5 group-hover:bg-transparent transition-colors duration-300"></div>
+          </div>
+          
+          <!-- Card Info -->
+          <div class="flex-grow p-6 flex flex-col justify-between">
+            <div class="space-y-2">
+              <h3 class="text-lg font-bold text-dark group-hover:text-primary transition-colors duration-150 font-heading">
+                {cat.name}
+              </h3>
+              <p class="text-xs text-dark-muted leading-relaxed font-sans line-clamp-3">
+                {cat.description}
+              </p>
+            </div>
+            
+            <div class="mt-6 flex items-center text-xs font-bold text-primary group-hover:text-primary-dark tracking-wide font-sans">
+              Explore Division
+              <svg class="ml-1.5 h-3.5 w-3.5 transform group-hover:translate-x-1 transition-transform duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

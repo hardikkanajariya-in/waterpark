@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import gallery from '../data/gallery.json';
+
+const seoTitle = "Manufacturing & Installation Gallery | Aquadura";
+const seoDescription = "View our state-of-the-art injection molding facilities, pressure testing laboratories, and real-world commercial installations at water parks and Olympic pools.";
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <!-- Page Header -->
+  <section class="bg-white py-12 border-b border-light-darker">
+    <div class="mx-auto max-w-7xl px-6 md:px-8">
+      <div class="space-y-4">
+        <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
+          <a href="/" class="hover:text-primary font-sans">Home</a>
+          <span>/</span>
+          <span class="text-primary font-sans">Gallery</span>
+        </nav>
+        <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
+          Corporate Gallery
+        </h1>
+        <div class="h-1 w-20 bg-primary rounded-full mt-2"></div>
+        <p class="text-base text-dark-muted font-sans mt-4 max-w-2xl leading-relaxed">
+          Take a visual tour of our production facility, our automated testing laboratory, and real-world client installations in partner resorts and academies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filterable Gallery Section -->
+  <section class="py-12 bg-light">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-10">
+      
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap gap-2 justify-center border-b border-light-darker pb-6 font-sans text-sm">
+        <button
+          data-gallery-filter="all"
+          class="gallery-filter-btn px-5 py-2 font-semibold rounded-full bg-primary text-white transition-all duration-200"
+        >
+          All Images ({gallery.length})
+        </button>
+        <button
+          data-gallery-filter="Facility"
+          class="gallery-filter-btn px-5 py-2 font-semibold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
+        >
+          Manufacturing Facility
+        </button>
+        <button
+          data-gallery-filter="Installation"
+          class="gallery-filter-btn px-5 py-2 font-semibold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
+        >
+          Installations
+        </button>
+        <button
+          data-gallery-filter="Product"
+          class="gallery-filter-btn px-5 py-2 font-semibold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
+        >
+          Product Showcase
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div id="gallery-grid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {gallery.map((item) => (
+          <div
+            data-gallery-cat={item.category}
+            class="gallery-item group flex flex-col justify-between overflow-hidden rounded-2xl bg-white border border-light-darker shadow-soft hover:shadow-soft-lg transition-all duration-300"
+          >
+            <!-- Image Area -->
+            <div class="relative overflow-hidden aspect-video bg-light border-b border-light-darker">
+              <img
+                src={item.image}
+                alt={item.title}
+                class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                loading="lazy"
+              />
+              <span class="absolute top-4 left-4 rounded-full bg-white px-3.5 py-1 text-[10px] font-bold text-dark border border-light-darker shadow-soft uppercase tracking-wider font-sans">
+                {item.category}
+              </span>
+            </div>
+            
+            <!-- Description -->
+            <div class="p-6 space-y-2">
+              <h3 class="text-base font-bold text-dark group-hover:text-primary transition-colors duration-150 font-heading">
+                {item.title}
+              </h3>
+              <p class="text-xs text-dark-muted leading-relaxed font-sans line-clamp-2">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Pure JavaScript Client-side Gallery Filtering
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.gallery-filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    const applyFilter = (category: string) => {
+      galleryItems.forEach((item) => {
+        const galItem = item as HTMLElement;
+        const itemCategory = galItem.getAttribute('data-gallery-cat');
+        
+        if (category === 'all' || itemCategory === category) {
+          galItem.style.display = 'block';
+        } else {
+          galItem.style.display = 'none';
+        }
+      });
+
+      // Update button styling states
+      filterButtons.forEach((btn) => {
+        const button = btn as HTMLButtonElement;
+        const btnFilter = button.getAttribute('data-gallery-filter');
+        
+        if (btnFilter === category) {
+          button.classList.add('bg-primary', 'text-white');
+          button.classList.remove('text-dark-muted', 'hover:bg-white', 'hover:text-primary');
+        } else {
+          button.classList.remove('bg-primary', 'text-white');
+          button.classList.add('text-dark-muted', 'hover:bg-white', 'hover:text-primary');
+        }
+      });
+    };
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-gallery-filter') || 'all';
+        applyFilter(filter);
+      });
+    });
+  });
+</script>

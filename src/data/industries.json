@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "water-parks",
+    "name": "Water Parks & Resorts",
+    "description": "High-wear rental tubes, life vests, locker wristbands, and repair materials designed to withstand chlorine, UV, and high-frequency guest throughput.",
+    "icon": "water-park"
+  },
+  {
+    "slug": "swimming-academies",
+    "name": "Swimming Academies & Clubs",
+    "description": "Professional training kickboards, pull buoys, short-blade fins, and customized swim caps designed for intense training regimens.",
+    "icon": "academy"
+  },
+  {
+    "slug": "schools-universities",
+    "name": "Schools & Universities",
+    "description": "Cost-effective, durable bulk swim gear, training aids, and pool lane ropes meeting competitive educational safety and sport regulations.",
+    "icon": "school"
+  },
+  {
+    "slug": "hotels-hospitality",
+    "name": "Hotels & Hospitality",
+    "description": "Elegant pool ladders, lounge tubes, gift-shop retail phone cases, and guest safety vests that elevate the resort experience.",
+    "icon": "hotel"
+  },
+  {
+    "slug": "distributors-dealers",
+    "name": "Dealers & Distributors",
+    "description": "Scalable factory-direct supplies with customizable branding, protective packaging, compliance certificates, and reliable logistics support.",
+    "icon": "distributor"
+  },
+  {
+    "slug": "government-organizations",
+    "name": "Government & Public Pools",
+    "description": "High-durability public pool equipment, lane separators, safety buoys, and heavy-duty robotic vacuums meeting civil contract requirements.",
+    "icon": "government"
+  }
+]

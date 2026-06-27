@@ -1,0 +1,253 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import products from '../../data/products.json';
+import categories from '../../data/categories.json';
+
+const seoTitle = "B2B Manufacturing Catalogue | Aquadura Commercial Aquatics";
+const seoDescription = "Explore Aquadura's wholesale catalog of swimming goggles, silicone caps, waterproof phone cases, pool lanes, starting blocks, and slides. Download specs and request quotes.";
+
+const getCategoryName = (catSlug: string) => {
+  return categories.find(c => c.slug === catSlug)?.name || "Aquatic Equipment";
+};
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <!-- Page Header -->
+  <section class="bg-white py-12 border-b border-light-darker">
+    <div class="mx-auto max-w-7xl px-6 md:px-8">
+      <div class="space-y-4">
+        <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
+          <a href="/" class="hover:text-primary font-sans">Home</a>
+          <span>/</span>
+          <span class="text-primary font-sans">Products</span>
+        </nav>
+        <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
+          B2B Product Catalogue
+        </h1>
+        <div class="h-1 w-20 bg-primary rounded-full mt-2"></div>
+        <p class="text-base text-dark-muted font-sans mt-4 max-w-2xl leading-relaxed">
+          Filter through our 30 enterprise-grade aquatic products. All items support custom screen printing, color-matching, and scalable wholesale supply.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <section class="py-12 bg-light">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 lg:flex lg:gap-10">
+      
+      <!-- Filter Sidebar (Desktop) / Filter Bar (Mobile) -->
+      <aside class="w-full lg:w-64 shrink-0 mb-8 lg:mb-0">
+        <div class="sticky top-28 bg-white border border-light-darker rounded-2xl p-6 shadow-soft space-y-6">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-dark border-b border-light-darker pb-3 font-heading">
+            Filter by Division
+          </h2>
+          
+          <!-- Category list filter buttons -->
+          <nav class="flex flex-row overflow-x-auto pb-4 gap-2 lg:flex-col lg:overflow-x-visible lg:pb-0 scrollbar-none font-sans text-sm">
+            <button
+              data-filter="all"
+              class="cat-filter-btn shrink-0 text-left rounded-full lg:rounded-lg px-4 py-2 font-semibold bg-primary text-white transition-all duration-200"
+            >
+              All Products ({products.length})
+            </button>
+            
+            {categories.map((cat) => {
+              const count = products.filter(p => p.category === cat.slug).length;
+              return (
+                <button
+                  data-filter={cat.slug}
+                  class="cat-filter-btn shrink-0 text-left rounded-full lg:rounded-lg px-4 py-2 font-semibold text-dark-muted hover:bg-light hover:text-primary transition-all duration-150"
+                >
+                  {cat.name} ({count})
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Products Grid -->
+      <div class="flex-grow">
+        <!-- Grid list -->
+        <div id="products-catalog-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((product) => (
+            <div
+              data-prod-category={product.category}
+              class="product-card flex flex-col justify-between overflow-hidden rounded-2xl bg-white border border-light-darker shadow-soft hover:shadow-soft-lg transition-all duration-300"
+            >
+              <div>
+                <!-- Image -->
+                <div class="relative h-56 w-full overflow-hidden bg-light border-b border-light-darker">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    class="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <span class="absolute top-4 left-4 rounded-full bg-white px-3 py-0.5 text-[10px] font-bold text-dark border border-light-darker shadow-soft uppercase tracking-wider font-sans">
+                    {getCategoryName(product.category)}
+                  </span>
+                </div>
+
+                <!-- Product Info -->
+                <div class="p-5 space-y-3.5">
+                  <h3 class="text-lg font-bold text-dark hover:text-primary font-heading line-clamp-1">
+                    {product.name}
+                  </h3>
+                  <p class="text-xs text-dark-muted leading-relaxed font-sans line-clamp-3">
+                    {product.description}
+                  </p>
+                  
+                  <!-- Features -->
+                  <ul class="space-y-1.5 pt-2.5 border-t border-light-darker/60">
+                    {product.features.slice(0, 2).map((feat) => (
+                      <li class="flex items-center text-[11px] text-dark-muted font-sans font-medium">
+                        <svg class="h-3.5 w-3.5 text-primary shrink-0 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {feat}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Product Footer -->
+              <div class="p-5 pt-0 flex items-center justify-between border-t border-light-darker/60 mt-2 bg-light/20">
+                <div class="font-sans">
+                  <span class="block text-[9px] font-bold text-dark-muted uppercase tracking-wider">Min. Order</span>
+                  <span class="text-xs font-extrabold text-dark">{product.moq}</span>
+                </div>
+                <div class="flex gap-1.5">
+                  <a
+                    href={`/products/${product.slug}`}
+                    class="inline-flex items-center justify-center rounded-full bg-white border border-light-darker px-3.5 py-2 text-xs font-semibold text-dark hover:bg-light hover:text-primary transition-all duration-150"
+                  >
+                    Specs
+                  </a>
+                  <a
+                    href={`/products/${product.slug}#quote`}
+                    class="inline-flex items-center justify-center rounded-full bg-primary px-3.5 py-2 text-xs font-semibold text-white shadow-soft hover:bg-primary-dark transition-all duration-150"
+                  >
+                    Quote
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+        <!-- No Products Found Message -->
+        <div id="no-products-message" class="hidden text-center py-16 bg-white border border-light-darker rounded-2xl p-8 shadow-soft">
+          <svg class="mx-auto h-12 w-12 text-dark-muted/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <h3 class="mt-4 text-base font-bold text-dark font-heading">No Products Found</h3>
+          <p class="mt-2 text-sm text-dark-muted font-sans">We do not currently list any standard products under this category. Please contact us for custom manufacturing requirements.</p>
+          <div class="mt-6">
+            <button
+              id="reset-filter-btn"
+              class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-xs font-semibold text-white shadow-soft hover:bg-primary-dark transition-all"
+            >
+              Reset Filters
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Pure JavaScript Client-side Catalog Filtering
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.cat-filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    const noProductsMsg = document.getElementById('no-products-message');
+    const resetBtn = document.getElementById('reset-filter-btn');
+
+    // Function to apply the category filter
+    const applyFilter = (categorySlug: string) => {
+      let matchCount = 0;
+      
+      productCards.forEach((card) => {
+        const prodCard = card as HTMLElement;
+        const cardCategory = prodCard.getAttribute('data-prod-category');
+        
+        if (categorySlug === 'all' || cardCategory === categorySlug) {
+          prodCard.style.display = 'flex';
+          matchCount++;
+        } else {
+          prodCard.style.display = 'none';
+        }
+      });
+
+      // Update button styling states
+      filterButtons.forEach((btn) => {
+        const button = btn as HTMLButtonElement;
+        const btnFilter = button.getAttribute('data-filter');
+        
+        if (btnFilter === categorySlug) {
+          button.classList.add('bg-primary', 'text-white');
+          button.classList.remove('text-dark-muted', 'hover:bg-light', 'hover:text-primary');
+        } else {
+          button.classList.remove('bg-primary', 'text-white');
+          button.classList.add('text-dark-muted', 'hover:bg-light', 'hover:text-primary');
+        }
+      });
+
+      // Show or hide "No products found" message
+      if (noProductsMsg) {
+        if (matchCount === 0) {
+          noProductsMsg.classList.remove('hidden');
+        } else {
+          noProductsMsg.classList.add('hidden');
+        }
+      }
+    };
+
+    // Attach click listeners to filter buttons
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter') || 'all';
+        applyFilter(filter);
+        
+        // Push state/parameter to URL silently
+        const url = new URL(window.location.href);
+        if (filter === 'all') {
+          url.searchParams.delete('category');
+        } else {
+          url.searchParams.set('category', filter);
+        }
+        window.history.pushState({}, '', url.toString());
+      });
+    });
+
+    // Reset button listener
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        applyFilter('all');
+        const url = new URL(window.location.href);
+        url.searchParams.delete('category');
+        window.history.pushState({}, '', url.toString());
+      });
+    }
+
+    // Read initial category filter from URL search parameters on page load
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category') || 'all';
+    
+    // Verify the category exists
+    const isValidCategory = Array.from(filterButtons).some(btn => btn.getAttribute('data-filter') === initialCategory);
+    
+    if (isValidCategory) {
+      applyFilter(initialCategory);
+    } else {
+      applyFilter('all');
+    }
+  });
+</script>

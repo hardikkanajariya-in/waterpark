@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "swimming-goggles",
+    "name": "Swimming Goggles",
+    "description": "Commercial-grade racing, training, and leisure eyewear engineered for durability, anti-fog performance, and UV protection.",
+    "image": "/images/cat_goggles.png",
+    "icon": "goggles"
+  },
+  {
+    "slug": "swimming-caps",
+    "name": "Swimming Caps",
+    "description": "High-elasticity silicone, latex, and neoprene caps designed for institutional durability and custom branding options.",
+    "image": "/images/cat_caps.png",
+    "icon": "cap"
+  },
+  {
+    "slug": "waterproof-mobile-covers",
+    "name": "Waterproof Mobile Covers",
+    "description": "IPX8 certified water-tight floating protective pouches featuring touch-responsive polymers for active aquatic environments.",
+    "image": "/images/cat_covers.png",
+    "icon": "phone-cover"
+  },
+  {
+    "slug": "water-park-accessories",
+    "name": "Water Park Accessories",
+    "description": "High-durability accessories including RFID key wristbands, tube patch kits, and USCG-compliant commercial safety life vests.",
+    "image": "/images/cat_accessories.png",
+    "icon": "shield"
+  },
+  {
+    "slug": "pool-equipment",
+    "name": "Pool Equipment",
+    "description": "Competition-grade stainless steel pool ladders, starting blocks, anti-wave lanes, and automated cleaning machinery.",
+    "image": "/images/cat_equipment.png",
+    "icon": "ladder"
+  },
+  {
+    "slug": "swimming-training-equipment",
+    "name": "Swimming Training Equipment",
+    "description": "Ergonomic high-density EVA kickboards, pull buoys, swim fins, and drag resistance belts for professional athletic training.",
+    "image": "/images/cat_training.png",
+    "icon": "award"
+  },
+  {
+    "slug": "sports-accessories",
+    "name": "Sports Accessories",
+    "description": "Wholesale outdoor accessories, including heavy-duty 500D PVC dry bags, quick-dry microfiber towels, and ergonomic nose clip sets.",
+    "image": "/images/cat_sports.png",
+    "icon": "bag"
+  },
+  {
+    "slug": "water-park-tubes",
+    "name": "Water Park Tubes & Floats",
+    "description": "Heavy-duty commercial river tubes, double slides, and multi-person rafts built with reinforced PVC and heavy-duty handles.",
+    "image": "/images/cat_tubes.png",
+    "icon": "circle"
+  }
+]

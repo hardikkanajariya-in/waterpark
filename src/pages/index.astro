@@ -1,17 +1,40 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CategoryGrid from '../components/CategoryGrid.astro';
+import FeaturedProducts from '../components/FeaturedProducts.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import IndustriesServed from '../components/IndustriesServed.astro';
+import Statistics from '../components/Statistics.astro';
+import TestimonialsSlider from '../components/TestimonialsSlider.astro';
+import CTABanner from '../components/CTABanner.astro';
 
+const seoTitle = "AQUADURA | Premium Commercial Aquatics & Swimming Equipment Manufacturer";
+const seoDescription = "Partner with Aquadura, a leading global B2B manufacturer and wholesale supplier of high-durability swimming goggles, silicone caps, waterproof phone pouches, RFID wristbands, pool lanes, and slides.";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={seoTitle} description={seoDescription}>
+  <!-- Hero Section -->
+  <Hero />
+
+  <!-- Statistics Banner -->
+  <Statistics />
+
+  <!-- Product Categories Grid -->
+  <CategoryGrid />
+
+  <!-- Why Choose Us / Manufacturing Standards -->
+  <WhyChooseUs />
+
+  <!-- Featured B2B Products -->
+  <FeaturedProducts />
+
+  <!-- Industries Served -->
+  <IndustriesServed />
+
+  <!-- Client Testimonials -->
+  <TestimonialsSlider />
+
+  <!-- Final CTA Banner -->
+  <CTABanner />
+</Layout>

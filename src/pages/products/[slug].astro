@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import products from '../../data/products.json';
+import categories from '../../data/categories.json';
+
+// Dynamic route generation
+export async function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product }
+  }));
+}
+
+const { product } = Astro.props;
+
+// Look up category name
+const category = categories.find(c => c.slug === product.category);
+const categoryName = category ? category.name : "Aquatic Equipment";
+
+const seoTitle = `${product.name} | B2B Commercial Supply | Aquadura`;
+const seoDescription = `Procure ${product.name} in bulk. Features: ${product.features.slice(0, 2).join(', ')}. Spec details, custom branding options, minimum order quantities, and wholesale quotes.`;
+---
+
+<Layout title={seoTitle} description={seoDescription} image={product.image}>
+  <!-- Navigation Breadcrumbs -->
+  <section class="bg-white py-6 border-b border-light-darker">
+    <div class="mx-auto max-w-7xl px-6 md:px-8">
+      <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
+        <a href="/" class="hover:text-primary font-sans">Home</a>
+        <span>/</span>
+        <a href="/products" class="hover:text-primary font-sans">Products</a>
+        <span>/</span>
+        <a href={`/products?category=${product.category}`} class="hover:text-primary font-sans">{categoryName}</a>
+        <span>/</span>
+        <span class="text-primary font-sans line-clamp-1">{product.name}</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Product Details Section -->
+  <section class="py-12 bg-white">
+    <div class="mx-auto max-w-7xl px-6 md:px-8">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-16">
+        
+        <!-- Left Column: Large Product Image -->
+        <div class="lg:col-span-6">
+          <div class="sticky top-28 space-y-6">
+            <div class="overflow-hidden rounded-2xl bg-light border border-light-darker shadow-soft-lg">
+              <img
+                src={product.image}
+                alt={product.name}
+                class="w-full h-auto object-cover max-h-[500px]"
+                loading="eager"
+              />
+            </div>
+            
+            <!-- Quick highlight box -->
+            <div class="rounded-xl border border-light-darker bg-light/50 p-5 space-y-4 font-sans text-xs">
+              <div class="flex justify-between items-center pb-3 border-b border-light-darker">
+                <span class="font-bold text-dark-muted uppercase tracking-wider">Minimum Order (MOQ)</span>
+                <span class="font-extrabold text-sm text-dark bg-white border border-light-darker rounded px-2.5 py-0.5">{product.moq}</span>
+              </div>
+              <div class="flex justify-between items-start gap-4">
+                <span class="font-bold text-dark-muted uppercase tracking-wider shrink-0 mt-0.5">OEM Customization</span>
+                <span class="font-semibold text-right text-dark">{product.customization}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Product Info & Technical Specs -->
+        <div class="lg:col-span-6 space-y-8">
+          <div class="space-y-4">
+            <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary font-sans">
+              {categoryName}
+            </span>
+            <h1 class="text-3xl font-extrabold tracking-tight text-dark sm:text-4xl font-heading leading-tight">
+              {product.name}
+            </h1>
+            <div class="h-1.5 w-16 bg-primary rounded-full mt-2"></div>
+          </div>
+
+          <p class="text-base text-dark-muted leading-relaxed font-sans">
+            {product.description}
+          </p>
+
+          <!-- Core Benefits / Features list -->
+          <div class="space-y-4 pt-6 border-t border-light-darker">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-dark font-heading">Key Features & Highlights</h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {product.features.map((feat) => (
+                <li class="flex items-start text-xs text-dark-muted font-sans font-medium">
+                  <svg class="h-4.5 w-4.5 text-primary shrink-0 mr-2.5 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Technical Specifications Table -->
+          <div class="space-y-4 pt-6 border-t border-light-darker">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-dark font-heading">Technical Specifications</h3>
+            <div class="overflow-hidden rounded-xl border border-light-darker shadow-soft">
+              <table class="min-w-full divide-y divide-light-darker bg-white font-sans text-sm">
+                <tbody class="divide-y divide-light-darker">
+                  {Object.entries(product.specifications).map(([key, value]) => (
+                    <tr class="even:bg-light/30">
+                      <td class="px-5 py-3 font-semibold text-dark-muted w-1/3 border-r border-light-darker">{key}</td>
+                      <td class="px-5 py-3 text-dark font-medium">{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Target Industries Tagging -->
+          <div class="pt-6 border-t border-light-darker space-y-3 font-sans">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-dark-muted">Ideal Deployment Settings</h4>
+            <div class="flex flex-wrap gap-2">
+              {product.target_customers.map((client) => (
+                <span class="inline-flex items-center rounded-full bg-light-darker/60 px-3.5 py-1 text-xs font-bold text-dark border border-light-darker">
+                  {client}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Quick Scroll CTA button -->
+          <div class="pt-4">
+            <a
+              href="#quote"
+              class="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-primary py-4 px-8 text-sm font-bold text-white shadow-soft hover:bg-primary-dark transition-all duration-200"
+            >
+              Request Corporate Quote
+              <svg class="ml-2 h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-6l-7 7-7-7" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Section -->
+  <section class="py-20 lg:py-24 bg-light border-t border-light-darker" id="quote">
+    <div class="mx-auto max-w-4xl px-6 md:px-8">
+      <div class="text-center space-y-4 mb-12">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-primary font-heading">
+          Procurement Inquiry
+        </h2>
+        <p class="text-3xl font-extrabold tracking-tight text-dark font-heading">
+          Request Wholesale Pricing
+        </p>
+        <p class="text-sm text-dark-muted font-sans max-w-md mx-auto leading-relaxed">
+          Specify your quantity, target timeline, and custom logo details for <span class="font-bold text-dark">{product.name}</span>.
+        </p>
+      </div>
+
+      <!-- Reuse the pre-filled contact form -->
+      <ContactForm preselectedCategory={product.category} preselectedProduct={product.name} />
+    </div>
+  </section>
+</Layout>

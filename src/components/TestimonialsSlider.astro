@@ -1,0 +1,52 @@
+---
+import testimonials from '../data/testimonials.json';
+---
+
+<section class="bg-light py-20 lg:py-28 border-t border-light-darker">
+  <div class="mx-auto max-w-7xl px-6 md:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center space-y-4 mb-16">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-primary">
+        Client Partnerships
+      </h2>
+      <p class="text-3xl font-extrabold tracking-tight text-dark sm:text-4xl font-heading">
+        Trusted by Procurement Leaders
+      </p>
+      <div class="h-1 w-16 bg-primary mx-auto rounded-full mt-4"></div>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {testimonials.map((item, index) => (
+        <div 
+          class={`flex flex-col justify-between rounded-2xl bg-white border border-light-darker p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 ${
+            index === 3 || index === 4 ? 'lg:col-span-1 md:col-span-2 lg:md:col-span-1' : ''
+          }`}
+        >
+          <div class="space-y-6">
+            <!-- Quotes Icon -->
+            <svg class="h-8 w-8 text-primary/20" fill="currentColor" viewBox="0 0 32 32">
+              <path d="M9.333 19h3V12h-3v1.333H7.667v-3.333a4 4 0 014-4h1v-3h-1a7 7 0 00-7 7V26h8v-7zm12 0h3V12h-3v1.333h-1.666v-3.333a4 4 0 014-4h1v-3h-1a7 7 0 00-7 7V26h8v-7z" />
+            </svg>
+            <p class="text-sm font-medium text-dark leading-relaxed font-sans italic">
+              "{item.quote}"
+            </p>
+          </div>
+          
+          <!-- Client Profile -->
+          <div class="mt-8 flex items-center gap-4 pt-6 border-t border-light-darker/60">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white text-xs font-bold tracking-wide font-heading">
+              {item.avatar}
+            </div>
+            <div class="font-sans">
+              <span class="block text-sm font-bold text-dark">{item.name}</span>
+              <span class="block text-[11px] font-semibold text-dark-muted mt-0.5">{item.role}, <span class="text-primary">{item.company}</span></span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

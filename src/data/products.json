@@ -1,0 +1,692 @@
+[
+  {
+    "slug": "apex-racing-goggles",
+    "name": "Apex Pro Racing Goggles",
+    "category": "swimming-goggles",
+    "description": "Engineered for competitive swimmers. Features ultra-low profile lenses to minimize drag, anti-shatter polycarbonate design, and a double silicone strap system for a secure fit during high-speed dives.",
+    "image": "/images/cat_goggles.png",
+    "features": [
+      "FINA approved hydrodynamic design",
+      "Advanced anti-fog coating (lasting up to 100+ hours of use)",
+      "UV 400 protective mirrored lenses",
+      "Interchangeable nose bridges (4 sizes included)"
+    ],
+    "specifications": {
+      "Lens Material": "Optical Grade Polycarbonate",
+      "Strap & Gasket": "Liquid Silicone Rubber (LSR)",
+      "Certifications": "FINA Approved, BS EN ISO 18527-3:2020",
+      "Available Colors": "Graphite/Silver, Aqua/Blue, Crimson/Gold",
+      "Anti-Fog Tech": "Hydrophobic Nano-coating"
+    },
+    "target_customers": ["Swimming Academies", "Schools", "Dealers", "Distributors"],
+    "moq": "200 units",
+    "customization": "Custom logo printing on strap and custom branded hard-case packaging."
+  },
+  {
+    "slug": "comfort-fit-leisure-goggles",
+    "name": "Comfort-Fit Club Goggles",
+    "category": "swimming-goggles",
+    "description": "Designed for hotel pools and training centers. Offers a wide 180-degree panoramic field of vision and an extra-soft liquid silicone gasket that eliminates eye fatigue and pressure rings.",
+    "image": "/images/cat_goggles.png",
+    "features": [
+      "180-degree wide panoramic lenses",
+      "Ultra-soft hypoallergenic silicone seal",
+      "Quick-adjust side buckle system",
+      "Scratch-resistant outer lens coating"
+    ],
+    "specifications": {
+      "Lens Material": "High-Impact Polycarbonate",
+      "Gasket Width": "32mm (Optimized pressure distribution)",
+      "UV Protection": "99% UVA/UVB blockage",
+      "Sizes Available": "Standard Adult, Junior Fit",
+      "Packaging": "Standard Eco-friendly polybag or blister pack"
+    },
+    "target_customers": ["Hotels", "Schools", "Dealers", "Distributors"],
+    "moq": "500 units",
+    "customization": "OEM color matching (Pantone) and pad-printed brand logo on frame."
+  },
+  {
+    "slug": "optical-corrective-goggles",
+    "name": "Optical Corrective Swim Goggles",
+    "category": "swimming-goggles",
+    "description": "Customized prescription swim goggles for commercial clubs and distribution. Features individually selected diopter lenses to provide near-perfect underwater vision for nearsighted swimmers.",
+    "image": "/images/cat_goggles.png",
+    "features": [
+      "Available in diopters from -1.5 to -8.0",
+      "Symmetrical lens design for easy lens replacement",
+      "Leak-proof double-layered silicone skirt",
+      "Split headstrap for balanced tension"
+    ],
+    "specifications": {
+      "Diopter Steps": "0.5 steps (from -1.5 to -6.0) and 1.0 steps (-7.0 to -8.0)",
+      "Lens Coating": "Dual-sided anti-fog and hard-coat scratch resistant",
+      "Nose Bridge": "Adjustable step-bridge (3 sizes)",
+      "Material Safety": "Phthalate and Latex-free",
+      "Storage": "Hard protective plastic case"
+    },
+    "target_customers": ["Dealers", "Distributors", "Swimming Academies"],
+    "moq": "150 units (mixed diopters accepted)",
+    "customization": "Wholesale prescription kits with counter-top acrylic display stands."
+  },
+  {
+    "slug": "junior-safe-swim-goggles",
+    "name": "Junior Safe-Swim Goggles",
+    "category": "swimming-goggles",
+    "description": "A highly durable, kid-friendly goggle designed specifically for schools and water park retail shops. Features a single-piece flexible frame that withstands heavy bending and rough handling.",
+    "image": "/images/cat_goggles.png",
+    "features": [
+      "Flex-frame technology for impact resistance",
+      "Easy-adjust rear push button buckle for kids",
+      "Safe, non-toxic food-grade silicone components",
+      "Bright, high-visibility dual-tone frames"
+    ],
+    "specifications": {
+      "Recommended Age": "4 to 12 years",
+      "Gasket Material": "Food-grade Medical Silicone",
+      "Safety Certifications": "EN71-1/2/3, ASTM F963 Compliant",
+      "Lens Profile": "Flat, distortion-free optical lenses",
+      "Weight": "42 grams"
+    },
+    "target_customers": ["Water Parks", "Schools", "Hotels", "Distributors"],
+    "moq": "500 units",
+    "customization": "Custom cartoon character prints on strap and custom colorway options."
+  },
+  {
+    "slug": "pro-silicone-racing-cap",
+    "name": "Pro-Silicone 3D Racing Cap",
+    "category": "swimming-caps",
+    "description": "An aerodynamic, wrinkle-free 3D molded swim cap engineered for elite swimmers. Its variable thickness design reduces drag and maintains its shape throughout high-impact races.",
+    "image": "/images/cat_caps.png",
+    "features": [
+      "Wrinkle-free 3D molded shape for reduced hydrodynamic drag",
+      "Thicker central band to maintain dome structure",
+      "Non-slip interior grip texture",
+      "100% hypoallergenic premium silicone"
+    ],
+    "specifications": {
+      "Material": "100% High-Density Silicone",
+      "Weight": "65 grams (Heavy duty)",
+      "Standard Diameter": "220mm",
+      "FINA Compliance": "Yes",
+      "Tear Strength": "24 kN/m"
+    },
+    "target_customers": ["Swimming Academies", "Schools", "Dealers", "Distributors"],
+    "moq": "300 units",
+    "customization": "High-definition multi-color screen printing with custom team logos."
+  },
+  {
+    "slug": "durable-latex-swim-cap",
+    "name": "Classic Latex Swim Cap",
+    "category": "swimming-caps",
+    "description": "The budget-friendly choice for swimming schools and bulk camp orders. Lightweight, breathable, and highly elastic, featuring a ribbed edge that prevents the cap from sliding up.",
+    "image": "/images/cat_caps.png",
+    "features": [
+      "Cost-effective bulk solution for swimming academies",
+      "Highly elastic latex material for easy fit",
+      "Ribbed edge band prevents roll-up",
+      "Talcom-coated interior for easy wear"
+    ],
+    "specifications": {
+      "Material": "Natural Latex Rubber",
+      "Weight": "30 grams",
+      "Material Thickness": "0.4mm",
+      "Elasticity Limit": "800% elongation",
+      "Eco-compliance": "Biodegradable natural rubber"
+    },
+    "target_customers": ["Schools", "Swimming Academies", "Government Organizations", "Distributors"],
+    "moq": "1000 units",
+    "customization": "Single-color silk screen logo printing."
+  },
+  {
+    "slug": "custom-branded-team-cap",
+    "name": "Custom Team Silicone Cap",
+    "category": "swimming-caps",
+    "description": "Standard institutional swim cap designed for long-lasting pool use. Ideal for swim teams, schools, and promotional items. Excellent resistance to chlorine degradation and color fading.",
+    "image": "/images/cat_caps.png",
+    "features": [
+      "Highly resistant to chlorine and UV exposure",
+      "Thick, durable silicone structure (55g)",
+      "Highly stretchable, fits most head sizes comfortably",
+      "Smooth outer surface optimized for clean branding"
+    ],
+    "specifications": {
+      "Material": "100% Medical-Grade Silicone",
+      "Weight": "55 grams",
+      "Dimensions": "225mm x 192mm",
+      "Chlorine Resistance": "ASTM D471 tested (Excellent)",
+      "Packaging": "Individual zip-lock pouch with insert card"
+    },
+    "target_customers": ["Schools", "Swimming Academies", "Hotels", "Dealers"],
+    "moq": "250 units",
+    "customization": "Dual-sided customized graphics, full-bleed color options, individual name printing."
+  },
+  {
+    "slug": "thermal-neoprene-swim-cap",
+    "name": "Thermal Neoprene Swim Cap",
+    "category": "swimming-caps",
+    "description": "Designed for open water swimming and winter training. Features a 3mm high-grade neoprene lining that traps heat and a chin-strap system to keep the cap fully secured in rough ocean waters.",
+    "image": "/images/cat_caps.png",
+    "features": [
+      "3mm Yamamoto neoprene for superior insulation",
+      "Glued and blind-stitched (GBS) seams prevent water flushing",
+      "Adjustable velcro hook-and-loop chin strap",
+      "High-visibility panels for safety in open water"
+    ],
+    "specifications": {
+      "Material": "3mm SCS Neoprene + Nylon lining",
+      "Water Temp Guide": "10°C to 18°C (50°F to 64°F)",
+      "Stitch Type": "Glued & Blind Stitched (GBS)",
+      "Sizing": "S, M, L, XL",
+      "Thermal Rating": "Excellent (Grade A)"
+    },
+    "target_customers": ["Dealers", "Distributors", "Sports Academies"],
+    "moq": "100 units",
+    "customization": "Strap branding and customized high-vis color combinations."
+  },
+  {
+    "slug": "floating-dry-bag-phone-pouch",
+    "name": "IPX8 Floating Phone Pouch",
+    "category": "waterproof-mobile-covers",
+    "description": "Premium waterproof mobile pouch for water parks and hotels. Built-in air padding allows the phone to float safely on water, preventing lost devices in deep pools and lazy rivers.",
+    "image": "/images/cat_covers.png",
+    "features": [
+      "IPX8 certified up to 30 meters depth",
+      "Air-cushion border for reliable floating capacity",
+      "Highly transparent touch-sensitive TPU window",
+      "Secure dual-latch snap-and-lock mechanism"
+    ],
+    "specifications": {
+      "Waterproof Rating": "IPX8 (Submersible up to 30m / 2 hours)",
+      "Material": "Eco-friendly TPU (Thermo-plastic Polyurethane)",
+      "Maximum Device Size": "Supports screens up to 7.0 inches",
+      "Lanyard Strength": "Tensile strength up to 15 kg",
+      "Floatation Limit": "Floats devices weighing up to 280 grams"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Dealers", "Distributors"],
+    "moq": "500 units",
+    "customization": "Brand logo printed on the lock bar and custom colored lanyards."
+  },
+  {
+    "slug": "heavy-duty-armband-phone-case",
+    "name": "Active Swimmer Armband Case",
+    "category": "waterproof-mobile-covers",
+    "description": "Ergonomic waterproof armband cover engineered for swimming training, paddleboarding, and water sports. Features a secure, comfortable neoprene armband that stays locked on the upper arm.",
+    "image": "/images/cat_covers.png",
+    "features": [
+      "IPX8 certified waterproof housing",
+      "Breathable, adjustable neoprene armband with velcro closure",
+      "Audio-jack pass-through option (optional config)",
+      "Scratch-proof and clear camera window on the back"
+    ],
+    "specifications": {
+      "Waterproof Rating": "IPX8 (Submersible up to 10m)",
+      "Armband Range": "Fits arms 20cm to 40cm in circumference",
+      "Material": "TPU pouch + Lycra/Neoprene strap",
+      "Closure Type": "Fold-over triple zip-seal + Velcro flap",
+      "Warranty": "2-year manufacturing defect warranty"
+    },
+    "target_customers": ["Swimming Academies", "Sports Accessories Dealers", "Distributors"],
+    "moq": "300 units",
+    "customization": "Custom branding on velcro strap and custom strap sizing options."
+  },
+  {
+    "slug": "multi-purpose-tablet-waterproof-case",
+    "name": "Heavy-Duty Tablet Dry Cover",
+    "category": "waterproof-mobile-covers",
+    "description": "Large format IPX8 waterproof sleeve designed for tablets and commercial handheld scanners. Widely used by water park staff, lifeguards, and luxury hotel poolside reception desks.",
+    "image": "/images/cat_covers.png",
+    "features": [
+      "Extra-large sizing to fit tablets up to 11.5 inches",
+      "Reinforced corners for drop protection",
+      "Rear hand strap for secure single-hand operations",
+      "High-clarity optical lens window for rear cameras"
+    ],
+    "specifications": {
+      "Waterproof Rating": "IPX8 (Submersible up to 10m)",
+      "Internal Dimensions": "285mm x 210mm",
+      "Material": "0.35mm heavy-duty TPU",
+      "Seal Mechanism": "Triple seal-strip + snap button flap",
+      "Strap": "Includes detachable nylon shoulder strap"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Government Organizations", "Distributors"],
+    "moq": "200 units",
+    "customization": "Corporate color matching, logo hot-stamping, and custom strap designs."
+  },
+  {
+    "slug": "rfid-locker-key-wristband",
+    "name": "RFID Waterproof Silicone Wristband",
+    "category": "water-park-accessories",
+    "description": "Durable, waterproof RFID wristbands for modern keyless lockers and cashless payment systems in water parks and resorts. Molded from premium silicone for long-term skin comfort.",
+    "image": "/images/cat_accessories.png",
+    "features": [
+      "100% waterproof and dustproof (IP68)",
+      "Available with HF, LF, and UHF RFID chips",
+      "Custom laser-etched serial numbers and barcodes",
+      "Flexible, stretchable design fits all wrist sizes"
+    ],
+    "specifications": {
+      "Material": "Food-grade Elastic Silicone",
+      "RFID Chips Available": "Mifare 1k, NTAG213, EM4200, T5577",
+      "Operating Temp": "-30°C to 75°C",
+      "Waterproof Rating": "IP68 (Permanent submersion)",
+      "Sizing": "160mm (Kids), 180mm (Junior), 200mm (Adult)"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Dealers", "Government Organizations"],
+    "moq": "1000 units",
+    "customization": "Logo embossing, debossing, color-filling, laser printing, and chip programming."
+  },
+  {
+    "slug": "heavy-duty-tube-repair-kit",
+    "name": "Commercial Slide Tube Repair Kit",
+    "category": "water-park-accessories",
+    "description": "Professional-grade repair kits containing heavy-duty PVC patches and high-strength polyurethane adhesive. Specifically formulated to repair water slides, rafts, and inflatables under constant water exposure.",
+    "image": "/images/cat_accessories.png",
+    "features": [
+      "Marine-grade polyurethane adhesive with rapid curing",
+      "Thick 1000D reinforced PVC patches (matching slide tube fabrics)",
+      "Complete kit with rollers, sandpaper, and solvents",
+      "Highly resistant to heat, chlorine, and UV"
+    ],
+    "specifications": {
+      "Glue Type": "High-viscosity Polyurethane Contact Adhesive",
+      "Patch Material": "1000D Polyester Mesh reinforced PVC (0.9mm thickness)",
+      "Curing Time": "Tack-free in 10 mins, full cure in 24 hours",
+      "Adhesive Strength": "50 N/cm shear strength",
+      "Kit Dimensions": "250mm x 120mm (plastic cylinder storage)"
+    },
+    "target_customers": ["Water Parks", "Dealers", "Distributors"],
+    "moq": "100 kits",
+    "customization": "Private labeling on adhesive tubes and custom branded instruction manuals."
+  },
+  {
+    "slug": "commercial-life-vest-adult",
+    "name": "Commercial Adult Safety Vest",
+    "category": "water-park-accessories",
+    "description": "High-buoyancy commercial safety vest designed for rental in water parks, lakes, and resorts. Built with heavy-duty 200D nylon and closed-cell EPE foam to withstand multi-season daily use.",
+    "image": "/images/cat_accessories.png",
+    "features": [
+      "Heavy-duty triple-buckle front adjustment closure",
+      "Reinforced shoulder seams and box-stitched straps",
+      "Open-side design for comfortable multi-size fit",
+      "FINA style high-visibility safety orange"
+    ],
+    "specifications": {
+      "Outer Shell": "200 Denier PU-coated Ripstop Nylon",
+      "Buoyancy Foam": "High-density EPE Closed-cell Foam",
+      "Buoyancy Rating": "Minimum 75 Newtons (Adult Standard)",
+      "Strap Material": "40mm reinforced polyester webbing",
+      "Certifications": "EN ISO 12402-5 (Level 50), CE Approved"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Government Organizations", "Distributors"],
+    "moq": "100 units",
+    "customization": "Bold screen-printed facility logo on back and custom property tracking serial numbers."
+  },
+  {
+    "slug": "junior-safety-life-vest",
+    "name": "Commercial Junior Safety Vest",
+    "category": "water-park-accessories",
+    "description": "Safety-first flotation vest designed for children in water parks and hotel pools. Features a critical under-crotch safety strap to prevent the vest from riding up or slipping off in water.",
+    "image": "/images/cat_accessories.png",
+    "features": [
+      "Double front chest buckles + adjustable crotch strap",
+      "Over-shoulder reflective SOLAS tape for night visibility",
+      "Integrated emergency whistle attachment",
+      "Bright neon-yellow panels for instant lifeguard spotting"
+    ],
+    "specifications": {
+      "Outer Shell": "300 Denier Oxford Polyester",
+      "Buoyancy Foam": "EPE Closed-cell Foam (molded)",
+      "Buoyancy Rating": "45 Newtons (Child standard)",
+      "Recommended Weight": "15 kg to 30 kg",
+      "Certifications": "CE ISO 12402-5, USCG Type III Equivalent"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Schools", "Distributors"],
+    "moq": "100 units",
+    "customization": "Facility name screen printing on chest panel, custom safety warning tag prints."
+  },
+  {
+    "slug": "stainless-steel-pool-ladder",
+    "name": "Stainless Steel Pool Ladder (Premium)",
+    "category": "pool-equipment",
+    "description": "Structural Grade 316 stainless steel ladder engineered for heavy commercial pools and marine environments. Features anti-slip textured steps and dual-anchor base plates.",
+    "image": "/images/cat_equipment.png",
+    "features": [
+      "Grade 316 stainless steel for maximum corrosion resistance",
+      "Textured safety tread steps prevent slipping",
+      "Includes rubber bumpers and floor escutcheons",
+      "Heavy-wall tubing (1.5mm thickness) prevents flexing"
+    ],
+    "specifications": {
+      "Tubing Diameter": "42mm (O.D.)",
+      "Wall Thickness": "1.5mm",
+      "Material": "AISI 316 Stainless Steel (Mirror polished)",
+      "Step Count": "Available in 2, 3, 4, or 5-step configurations",
+      "Weight Capacity": "Tested up to 180 kg static load"
+    },
+    "target_customers": ["Hotels", "Water Parks", "Dealers", "Distributors", "Government Organizations"],
+    "moq": "10 units",
+    "customization": "Custom height and step-width configurations to match pre-existing anchor points."
+  },
+  {
+    "slug": "anti-wave-racing-lane-rope",
+    "name": "Anti-Wave Racing Lane Rope",
+    "category": "pool-equipment",
+    "description": "World-class hydrodynamic lane ropes designed to dissipate wave energy and keep water calm in competitive racing environments. Engineered according to FINA standards.",
+    "image": "/images/cat_equipment.png",
+    "features": [
+      "Wave-damping rotating disc design (150mm diameter)",
+      "Heavy-duty marine grade stainless steel tension reel",
+      "Super-strong vinyl-coated stainless steel cable core",
+      "Color configurations compliant with FINA lanes regulations"
+    ],
+    "specifications": {
+      "Disc Diameter": "110mm or 150mm options",
+      "Cable Core": "4mm Grade 316 Stainless Steel Wire Rope",
+      "Standard Lengths": "25 meters, 50 meters, or custom cuts",
+      "Disc Material": "High-Density Polyethylene (HDPE) with UV stabilizer",
+      "Tensioning System": "Super-tensioner ratchet or turnbuckle hook"
+    },
+    "target_customers": ["Schools", "Swimming Academies", "Dealers", "Government Organizations"],
+    "moq": "4 lines",
+    "customization": "Custom color sequence selection (red, blue, white, yellow, green) for lane sections."
+  },
+  {
+    "slug": "competition-starting-block",
+    "name": "Elite Competition Starting Block",
+    "category": "pool-equipment",
+    "description": "FINA compliant professional starting platform featuring a heavy-duty fiberglass top with an adjustable kick-start plate, non-slip sand grit texture, and internal cabling slots for timing sensors.",
+    "image": "/images/cat_equipment.png",
+    "features": [
+      "Adjustable 5-position track-start footrest",
+      "Aggressive non-slip platform coating",
+      "Corrosion-proof heavy duty 316 stainless steel frame",
+      "Compatible with major timing plate brands (Omega/Colorado)"
+    ],
+    "specifications": {
+      "Platform Size": "500mm x 700mm",
+      "Base Structure": "Heavy-gauge AISI 316 Stainless Steel",
+      "Top Material": "Reinforced FRP (Fiberglass Reinforced Plastic)",
+      "Height Range": "500mm to 750mm from water level",
+      "Compliance": "FINA FR 2.7 compliant"
+    },
+    "target_customers": ["Schools", "Swimming Academies", "Government Organizations", "Dealers"],
+    "moq": "6 units",
+    "customization": "Custom base powder coating colors and platform numbering stencil (1 to 10)."
+  },
+  {
+    "slug": "commercial-pool-vacuum-cleaner",
+    "name": "Industrial Pool Robot Vacuum",
+    "category": "pool-equipment",
+    "description": "Heavy-duty commercial robotic pool cleaner designed for large public pools up to 50 meters. Features dual-active brushing, smart gyroscope navigation, and a high-capacity fine filtration system.",
+    "image": "/images/cat_equipment.png",
+    "features": [
+      "Intelligent spatial mapping and gyroscope pathing",
+      "Dual drive motors and triple-active scrubbing brushes",
+      "Top-access, high-capacity dual-stage filter canister",
+      "Includes remote control and robust caddy cart"
+    ],
+    "specifications": {
+      "Pool Length Limit": "Up to 50 meters pool length",
+      "Cable Length": "40 meters with patented anti-tangle swivel",
+      "Suction Rate": "40 m³ per hour",
+      "Cycle Times": "3, 5, or 8-hour automatic cycles",
+      "Voltage": "Safe 24V DC secondary voltage (IP68 motor)"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Government Organizations", "Dealers"],
+    "moq": "2 units",
+    "customization": "Extended warranty packages and bulk filter cartridge supply contracts."
+  },
+  {
+    "slug": "ergonomic-eva-kickboard",
+    "name": "Institutional EVA Kickboard",
+    "category": "swimming-training-equipment",
+    "description": "Heavy-duty, high-density EVA foam kickboard designed for swimming lessons. The ergonomic curved grip handles encourage proper alignment, while the rigid foam ensures zero flexing.",
+    "image": "/images/cat_training.png",
+    "features": [
+      "Closed-cell EVA foam prevents water logging and mold",
+      "Integrated dual grip cutouts for training versatility",
+      "High rigidity to maintain horizontal body profile",
+      "Skin-friendly smooth finish prevents chafing"
+    ],
+    "specifications": {
+      "Material": "High-Density Closed-cell EVA Foam (Chlorine resistant)",
+      "Dimensions": "480mm x 300mm x 38mm",
+      "Buoyancy Force": "40 Newtons",
+      "Hardness": "45 Shore C",
+      "Safety Standards": "EN 13138-2 Class B compliant"
+    },
+    "target_customers": ["Schools", "Swimming Academies", "Hotels", "Distributors"],
+    "moq": "100 units",
+    "customization": "Laser engraved or screen printed logos, custom multi-layered color panels."
+  },
+  {
+    "slug": "contour-pull-buoy",
+    "name": "Pro-Contour Foam Pull Buoy",
+    "category": "swimming-training-equipment",
+    "description": "Designed for target arm training. The contoured shape fits comfortably between the thighs to immobilize leg kicking, elevating the hips and lower body to optimize stroke training.",
+    "image": "/images/cat_training.png",
+    "features": [
+      "Contoured design provides secure grip and comfortable fit",
+      "Premium EVA foam resists flaking and peeling",
+      "High buoyancy elevates hips to correct body position",
+      "Abrasive-free skin friendly surface"
+    ],
+    "specifications": {
+      "Material": "Chlorine-resistant Closed-cell EVA",
+      "Dimensions": "230mm x 150mm x 100mm (tapered)",
+      "Weight": "70 grams",
+      "Hardness": "40 Shore C",
+      "Buoyancy": "32 Newtons"
+    },
+    "target_customers": ["Schools", "Swimming Academies", "Dealers", "Distributors"],
+    "moq": "150 units",
+    "customization": "Debossed logo branding on foam surface, custom thickness levels."
+  },
+  {
+    "slug": "hydrodynamic-swim-fins",
+    "name": "Short-Blade Training Fins",
+    "category": "swimming-training-equipment",
+    "description": "Short blade training fins built with 100% natural soft rubber. Engineered to increase leg kick tempo and resistance without overloading calf muscles. Ideal for training academies.",
+    "image": "/images/cat_training.png",
+    "features": [
+      "Short blade design promotes faster, tighter flutter kicks",
+      "Super-soft foot pocket prevents ankle blisters and cramping",
+      "Textured sole provides grip on pool walls and wet deck",
+      "Reinforced side rails for structural blade stiffness"
+    ],
+    "specifications": {
+      "Material": "100% Natural Rubber (High-durability compound)",
+      "Sizing": "Full range from EU 30 to 48 (color-coded by size)",
+      "Blade Angle": "15-degree hydrodynamic offset",
+      "Weight": "approx. 620g per pair (size M)",
+      "Elasticity": "Excellent flex memory"
+    },
+    "target_customers": ["Swimming Academies", "Schools", "Dealers", "Distributors"],
+    "moq": "100 pairs (assorted sizes)",
+    "customization": "Custom size-chart printing inside foot pocket, brand logo molded on top blade."
+  },
+  {
+    "slug": "swim-resistance-training-belt",
+    "name": "Stationary Swim Resistance Belt",
+    "category": "swimming-training-equipment",
+    "description": "Stationary swimming resistance harness designed for backyard hotel pools or elite lane training. Features a heavy-duty latex bungee cord and a padded, adjustable waist belt.",
+    "image": "/images/cat_training.png",
+    "features": [
+      "High-stretch natural latex tubing with safety sleeve protection",
+      "Padded neoprene waist belt with secure buckle (fits up to 110cm)",
+      "Heavy duty stainless steel carabiners and mounting strap",
+      "Provides steady drag without snapping back violently"
+    ],
+    "specifications": {
+      "Latex Tube Length": "4.0 meters (stretches up to 10.0 meters)",
+      "Latex Tube O.D.": "12mm with 6mm thick core wall",
+      "Webbing Material": "Heavy duty military-grade Nylon webbing",
+      "Belt Width": "80mm padded area for hip comfort",
+      "Tensile Rating": "Tested to withstand up to 120 kg pull force"
+    },
+    "target_customers": ["Swimming Academies", "Hotels", "Dealers", "Distributors"],
+    "moq": "100 units",
+    "customization": "Custom length bungees and branded carrying bags (microfiber mesh)."
+  },
+  {
+    "slug": "roll-top-waterproof-dry-bag",
+    "name": "500D PVC Dry Bag (20L)",
+    "category": "sports-accessories",
+    "description": "Rugged, heavy-duty roll-top waterproof bag built for marine environments and outdoor sports. Made from thick 500D PVC tarpaulin with high-frequency welded seams.",
+    "image": "/images/cat_sports.png",
+    "features": [
+      "500D PVC Tarpaulin with high-frequency welded seams",
+      "IPX6 rated roll-top closure system (3 folds to seal)",
+      "Adjustable, detachable double shoulder straps (backpack style)",
+      "Reinforced heavy-duty D-rings and buckle locks"
+    ],
+    "specifications": {
+      "Material": "500D Polyester Mesh reinforced PVC (0.5mm thickness)",
+      "Waterproof Rating": "IPX6 (Resists heavy spray/brief splash)",
+      "Capacity": "20 Liters (also available in 10L, 30L, 40L)",
+      "Flat Dimensions": "590mm x 370mm",
+      "Weight": "510 grams (empty)"
+    },
+    "target_customers": ["Dealers", "Distributors", "Hotels", "Government Organizations"],
+    "moq": "300 units",
+    "customization": "All-over custom screen printing, color-matching, custom pocket additions."
+  },
+  {
+    "slug": "quick-dry-microfiber-towel",
+    "name": "Quick-Dry Microfiber Sports Towel",
+    "category": "sports-accessories",
+    "description": "Ultra-absorbent, ultra-compact microfiber towel designed for institutional swim squads and hotel gift shops. Absorbs up to 4x its weight in water and dries 3x faster than cotton.",
+    "image": "/images/cat_sports.png",
+    "features": [
+      "High-density weave absorbs water instantly",
+      "Anti-bacterial silver-ion treatment prevents mold odor",
+      "Compact roll-up design with snap-button hanging loop",
+      "Lint-free and durable through 200+ washing cycles"
+    ],
+    "specifications": {
+      "Material Composition": "80% Polyester, 20% Polyamide (200 GSM)",
+      "Standard Size": "140cm x 70cm (Large)",
+      "Drying Speed": "Under 45 mins in ambient draft",
+      "Weight": "190 grams",
+      "Edge Stitch": "Reinforced overlock stitch"
+    },
+    "target_customers": ["Hotels", "Swimming Academies", "Schools", "Distributors"],
+    "moq": "500 units",
+    "customization": "Embossed/debossed brand logo in corner, custom dye colors, and branded storage mesh pouch."
+  },
+  {
+    "slug": "silicone-ear-plugs-nose-clip-set",
+    "name": "Elite Ear Plugs & Nose Clip Set",
+    "category": "sports-accessories",
+    "description": "Ergonomically designed swim safety kit. Features highly flexible silicone earplugs that block water entry and a secure-grip nose clip with soft pads to prevent water inhalation.",
+    "image": "/images/cat_sports.png",
+    "features": [
+      "Three-tier tree structure earplugs fit canal safely",
+      "High-flexibility plastic nose bridge holds shape",
+      "Hypoallergenic soft silicone pads prevent nose irritation",
+      "Includes premium compact PP storage case"
+    ],
+    "specifications": {
+      "Earplug Material": "Hypoallergenic Liquid Silicone",
+      "Nose Clip Frame": "High-tensile Polycarbonate (PC)",
+      "Case Dimensions": "60mm x 55mm x 20mm (Transparent PP)",
+      "Safety Compliance": "REACH & RoHS certified non-toxic",
+      "Average Weight": "12 grams (complete set with case)"
+    },
+    "target_customers": ["Schools", "Swimming Academies", "Dealers", "Distributors"],
+    "moq": "1000 sets",
+    "customization": "Custom pad-print logo on the lid of the storage case, color-matching components."
+  },
+  {
+    "slug": "single-rider-commercial-water-tube",
+    "name": "Single Commercial Slide Tube",
+    "category": "water-park-tubes",
+    "description": "Heavy-duty single rider water slide tube designed for intensive use in major theme parks. Constructed from premium heavy-gauge PVC with reinforced radio-frequency welded gussets.",
+    "image": "/images/cat_tubes.png",
+    "features": [
+      "0.75mm heavy-gauge cold-crack resistant PVC",
+      "Two heavy-duty solid molded handles for secure passenger grip",
+      "High-flow Boston valve for rapid inflation/deflation",
+      "Reinforced overlap welded seams for extreme durability"
+    ],
+    "specifications": {
+      "Material": "0.75mm heavy-duty K80 PVC (Cold and UV resistant)",
+      "Deflated Diameter": "42 inches (107cm) standard",
+      "Handle Quantity": "2 reinforced molded handles",
+      "Valve Type": "Quick-release Boston Valve",
+      "Max Load Capacity": "115 kg"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Dealers", "Distributors"],
+    "moq": "50 units",
+    "customization": "Full color custom branding, safety warning print translations, custom tube sizing."
+  },
+  {
+    "slug": "double-rider-commercial-water-tube",
+    "name": "Double Commercial Slide Tube",
+    "category": "water-park-tubes",
+    "description": "Premium dual-rider commercial water tube designed for high-throughput double slide attractions. Engineered with heavy-duty handles and center gussets to support two riders safely.",
+    "image": "/images/cat_tubes.png",
+    "features": [
+      "Heavy-duty 0.90mm PVC construction for high-wear areas",
+      "Four ergonomic heavy-duty solid handles",
+      "Dual chamber configuration for secondary float safety",
+      "Reinforced wear-strips on the bottom sides"
+    ],
+    "specifications": {
+      "Material": "0.90mm commercial-grade PVC tarpaulin",
+      "Deflated Dimensions": "72 inches x 42 inches (183cm x 107cm)",
+      "Chamber Count": "2 independent air chambers",
+      "Handles": "4 heavy-duty box-welded handles",
+      "Max Load Capacity": "210 kg"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Dealers", "Distributors"],
+    "moq": "30 units",
+    "customization": "Color blocking matching park theme, custom warning graphics, logo branding."
+  },
+  {
+    "slug": "commercial-raft-slide-boat",
+    "name": "4-Person Commercial Slide Raft",
+    "category": "water-park-tubes",
+    "description": "High-capacity commercial slide raft designed for major family water park rides. Handcrafted with heavy-duty 1100D polyester reinforced PVC and robust rubbing strakes.",
+    "image": "/images/cat_tubes.png",
+    "features": [
+      "1000 Denier polyester mesh core sandwiched in double PVC layers",
+      "Heavy-duty wrap-around rubbing strake for impact protection",
+      "8 solid-core molded grab handles + perimeter safety rope",
+      "Inflatable self-bailing floor for stability and rapid draining"
+    ],
+    "specifications": {
+      "Material": "1000D/1100D reinforced PVC (1.2mm thickness)",
+      "Inflated Diameter": "78 inches (198cm)",
+      "Handles": "8 heavy-duty industrial handles",
+      "Inflation Valves": "4 Halkey-Roberts valves",
+      "Max Load Capacity": "360 kg (4 Adults)"
+    },
+    "target_customers": ["Water Parks", "Government Organizations", "Distributors"],
+    "moq": "5 units",
+    "customization": "Park logo on side panels, custom color schemes, customized rope lines."
+  },
+  {
+    "slug": "lazy-river-luxury-lounger",
+    "name": "Lazy River Commercial Lounger",
+    "category": "water-park-tubes",
+    "description": "Premium luxury lounger designed specifically for hotel and resort lazy rivers. Includes a comfortable integrated mesh bottom, high backrest, and molded cup holder.",
+    "image": "/images/cat_tubes.png",
+    "features": [
+      "Durable PVC construction with comfortable vinyl mesh floor",
+      "Integrated cup holder and high-profile backrest cushion",
+      "Heavy-duty handle set for stable lounging in water currents",
+      "Chlorine and salt-water resistant materials"
+    ],
+    "specifications": {
+      "Material": "0.70mm heavy-duty K80 PVC",
+      "Deflated Diameter": "48 inches (122cm)",
+      "Mesh Material": "Coated polyester mesh (high drainage)",
+      "Accessories": "1 molded cup holder, 1 pillow chamber",
+      "Max Capacity": "130 kg"
+    },
+    "target_customers": ["Water Parks", "Hotels", "Dealers", "Distributors"],
+    "moq": "50 units",
+    "customization": "Custom resort logo printing, cup holder sizing, custom mesh colors."
+  }
+]

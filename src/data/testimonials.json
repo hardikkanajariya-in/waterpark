@@ -1,0 +1,42 @@
+[
+  {
+    "id": "testimonial-1",
+    "name": "Marcus Vance",
+    "role": "Director of Operations",
+    "company": "Oasis Waters & Adventure Parks",
+    "quote": "We transitioned all our slide tubes and rental life vests to their commercial line. The durability is outstanding—after two full seasons of constant exposure to chlorine, UV, and high guest usage, they look and perform like new. Zero seam failures.",
+    "avatar": "MV"
+  },
+  {
+    "id": "testimonial-2",
+    "name": "Elena Rostova",
+    "role": "Head Coach",
+    "company": "Metro Aquatics Academy",
+    "quote": "Our academies run training sessions 12 hours a day. The bulk kickboards and training fins we ordered are indestructible. Plus, having our logo screen-printed directly in the factory saved us massive local branding costs.",
+    "avatar": "ER"
+  },
+  {
+    "id": "testimonial-3",
+    "name": "Sarah Jenkins",
+    "role": "Procurement Manager",
+    "company": "Grand Horizon Resort Group",
+    "quote": "We supply multiple resort properties. Their IPX8 floating phone covers and RFID wristbands are popular retail items in our hotel gift shops. The quality is flawless, and customer service made Custom Pantone matching easy.",
+    "avatar": "SJ"
+  },
+  {
+    "id": "testimonial-4",
+    "name": "Dhiren Patel",
+    "role": "Managing Director",
+    "company": "Pacific Swim Supplies Ltd.",
+    "quote": "As a major distributor, we need reliable lead times and strict certification standards. Their FINA compliance and ISO 9001 factory audits make them our primary manufacturing partner for competitive swimming gear.",
+    "avatar": "DP"
+  },
+  {
+    "id": "testimonial-5",
+    "name": "Colonel Thomas Miller",
+    "role": "Facilities Lead",
+    "company": "State Recreation and Parks Division",
+    "quote": "We sourced starting blocks and stainless steel pool ladders for ten public recreation centers. The bids were clear, delivery was on schedule, and the product quality far exceeded safety standards. Highly recommended B2B partner.",
+    "avatar": "TM"
+  }
+]

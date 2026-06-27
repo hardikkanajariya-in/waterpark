@@ -1,0 +1,101 @@
+---
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/products", label: "Products" },
+  { href: "/categories", label: "Categories" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" }
+];
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-light-darker bg-white/95 backdrop-blur-md transition-all duration-300">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
+    <!-- Brand Logo -->
+    <a href="/" class="flex flex-col items-start leading-none group">
+      <span class="font-heading text-2xl font-extrabold tracking-wider text-dark group-hover:text-primary transition-colors duration-200">
+        AQUADURA
+      </span>
+      <span class="text-[9px] font-semibold tracking-[0.25em] text-primary uppercase mt-0.5">
+        Commercial Aquatics
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="font-sans text-sm font-medium text-dark-muted hover:text-primary transition-colors duration-200"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-soft hover:bg-primary-dark hover:shadow-soft-lg transition-all duration-200"
+      >
+        Request Quote
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-toggle"
+      type="button"
+      class="inline-flex items-center justify-center p-2 rounded-lg text-dark hover:bg-light hover:text-primary focus:outline-none md:hidden"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <!-- Menu Icon -->
+      <svg id="menu-icon-open" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <!-- Close Icon -->
+      <svg id="menu-icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Panel -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-light-darker bg-white px-6 py-4 shadow-soft">
+    <div class="space-y-3">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="block rounded-lg px-3 py-2 text-base font-semibold text-dark hover:bg-light hover:text-primary transition-colors duration-150"
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="pt-4 border-t border-light-darker">
+        <a
+          href="/contact"
+          class="flex w-full items-center justify-center rounded-full bg-primary py-3 text-center text-sm font-semibold text-white shadow-soft hover:bg-primary-dark transition-all duration-200"
+        >
+          Request Quote
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
+
+  if (toggleBtn && mobileMenu && openIcon && closeIcon) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      
+      toggleBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+      mobileMenu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+  }
+</script>
