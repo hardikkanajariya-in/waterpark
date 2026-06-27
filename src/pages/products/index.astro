@@ -529,14 +529,17 @@ const getCategoryName = (catSlug: string) => {
       }, 300);
     };
 
-    document.querySelectorAll('.quick-view-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const slug = btn.getAttribute('data-product-slug');
+    document.body.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const qvBtn = target.closest('.quick-view-btn');
+      if (qvBtn) {
+        e.preventDefault();
+        const slug = qvBtn.getAttribute('data-product-slug');
         const product = products.find(p => p.slug === slug);
         if (product) {
           openQuickView(product);
         }
-      });
+      }
     });
 
     qvCloseBtn?.addEventListener('click', closeQuickView);
