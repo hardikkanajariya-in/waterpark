@@ -169,7 +169,7 @@ const { preselectedCategory = "", preselectedProduct = "" } = Astro.props;
 </div>
 
 <script>
-  const form = document.getElementById('b2b-inquiry-form');
+  const form = document.querySelector('form#b2b-inquiry-form');
   const successBanner = document.getElementById('form-success-banner');
 
   if (form && successBanner) {
