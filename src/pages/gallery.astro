@@ -3,57 +3,59 @@ import Layout from '../layouts/Layout.astro';
 import gallery from '../data/gallery.json';
 import config from '../data/config.json';
 
-const seoTitle = `Operations & Installation Gallery | ${config.brandName}`;
-const seoDescription = `Take a visual tour of our precision injection molding facilities, pressure testing labs, and real-world commercial installations at water parks and public pools.`;
+const seoTitle = `Store Gallery & Use Cases | ${config.brandName}`;
+const seoDescription = `Take a visual tour of our retail store displays, custom squad cap prints, and real-world water park slides.`;
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
-  <!-- Page Header -->
-  <section class="bg-white py-16 border-b border-light-darker">
-    <div class="mx-auto max-w-4xl px-6 md:px-8 space-y-4">
-      <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
-        <a href="/" class="hover:text-primary font-sans">Home</a>
-        <span>/</span>
-        <span class="text-primary font-sans">Gallery</span>
-      </nav>
-      <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
-        Gallery & Case Photos
-      </h1>
-      <p class="text-sm text-dark-muted font-sans max-w-xl leading-relaxed">
-        Browse our catalog installations, production floor layouts, and testing environments. Select categories below to filter operations.
-      </p>
-    </div>
-  </section>
+  
+  <!-- Page Title and Breadcrumb (Clean & Standard Width) -->
+  <div class="mx-auto max-w-7xl px-6 md:px-8 pt-8 pb-4 font-sans bg-white border-b border-light-darker">
+    <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2 mb-2">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span>/</span>
+      <span class="text-primary font-sans">Gallery</span>
+    </nav>
+    <h1 class="text-2xl font-bold tracking-tight text-dark font-heading">
+      Gallery & Photos
+    </h1>
+  </div>
 
   <!-- Filterable Gallery Section -->
   <section class="py-12 bg-light">
     <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
       
       <!-- Filter Tabs -->
-      <div class="flex flex-wrap gap-2 justify-center border-b border-light-darker pb-6 font-sans text-xs">
+      <div class="flex flex-wrap gap-2 justify-center border-b border-light-darker pb-6 font-sans text-xs font-semibold">
         <button
           data-gallery-filter="all"
-          class="gallery-filter-btn px-5 py-2.5 font-bold rounded-full bg-primary text-white transition-all duration-200"
+          class="gallery-filter-btn px-5 py-2.5 rounded-full bg-primary text-white transition-all duration-200 focus:outline-none"
         >
           All Items ({gallery.length})
         </button>
         <button
-          data-gallery-filter="Facility"
-          class="gallery-filter-btn px-5 py-2.5 font-bold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
+          data-gallery-filter="Store"
+          class="gallery-filter-btn px-5 py-2.5 rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150 focus:outline-none"
         >
-          Factory Facilities
-        </button>
-        <button
-          data-gallery-filter="Installation"
-          class="gallery-filter-btn px-5 py-2.5 font-bold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
-        >
-          Client Installations
+          Store Outlets
         </button>
         <button
           data-gallery-filter="Product"
-          class="gallery-filter-btn px-5 py-2.5 font-bold rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150"
+          class="gallery-filter-btn px-5 py-2.5 rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150 focus:outline-none"
         >
-          Studio Catalog shots
+          Products
+        </button>
+        <button
+          data-gallery-filter="Recreation"
+          class="gallery-filter-btn px-5 py-2.5 rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150 focus:outline-none"
+        >
+          Recreation Slides
+        </button>
+        <button
+          data-gallery-filter="Custom"
+          class="gallery-filter-btn px-5 py-2.5 rounded-full text-dark-muted hover:bg-white hover:text-primary transition-all duration-150 focus:outline-none"
+        >
+          Custom Prints
         </button>
       </div>
 
@@ -83,7 +85,7 @@ const seoDescription = `Take a visual tour of our precision injection molding fa
                 <h3 class="text-sm font-bold text-dark group-hover:text-primary transition-colors font-heading leading-tight">
                   {item.title}
                 </h3>
-                <p class="text-[11px] text-dark-muted leading-relaxed line-clamp-2">
+                <p class="text-[11px] text-dark-muted leading-relaxed line-clamp-2 font-medium">
                   {item.description}
                 </p>
               </div>
@@ -104,7 +106,7 @@ const seoDescription = `Take a visual tour of our precision injection molding fa
 
     const applyFilter = (category: string) => {
       galleryItems.forEach((item) => {
-        const galItem = item;
+        const galItem = item as HTMLElement;
         const itemCategory = galItem.getAttribute('data-gallery-cat');
         
         if (category === 'all' || itemCategory === category) {
@@ -116,7 +118,7 @@ const seoDescription = `Take a visual tour of our precision injection molding fa
 
       // Update button styling states
       filterButtons.forEach((btn) => {
-        const button = btn;
+        const button = btn as HTMLElement;
         const btnFilter = button.getAttribute('data-gallery-filter');
         
         if (btnFilter === category) {

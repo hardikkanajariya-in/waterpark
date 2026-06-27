@@ -1,72 +1,44 @@
 [
   {
-    "id": "gallery-factory",
-    "title": "Precision Injection Molding Facility",
-    "category": "Facility",
-    "image": "/images/gallery_factory.png",
-    "description": "Our state-of-the-art facility featuring robotic-assisted molding of liquid silicone gaskets for goggles and accessories."
-  },
-  {
-    "id": "gallery-quality",
-    "title": "Automated IPX8 Water-Sealing Test Lab",
-    "category": "Facility",
-    "image": "/images/gallery_quality.png",
-    "description": "Rigorous pressure chamber testing where batch samples of waterproof phone cases and RFID bands undergo deep submersion tests."
-  },
-  {
-    "id": "gallery-installation-park",
-    "title": "Splash Kingdom Water Park Installation",
-    "category": "Installation",
-    "image": "/images/gallery_park.png",
-    "description": "Supplying custom-branded double rider tubes, life vests, and keyless locker RFID wristbands for a major resort franchise."
-  },
-  {
-    "id": "gallery-installation-pool",
-    "title": "Olympic-Size Aquatics Center Setup",
-    "category": "Installation",
-    "image": "/images/gallery_pool.png",
-    "description": "Complete supply and calibration of FINA-compliant starting blocks, anti-wave lanes, and commercial ladder systems."
-  },
-  {
-    "id": "gallery-goggles",
-    "title": "Apex Goggles Quality Inspection",
-    "category": "Product",
+    "id": "gallery-goggles-fit",
+    "title": "Leakproof Goggles Display",
+    "category": "Store",
     "image": "/images/cat_goggles.png",
-    "description": "A close-up of finished Apex Pro racing goggles undergoing final anti-fog coating inspections."
+    "description": "Our premium swim goggles showcasing the double anti-fog lenses and leakproof liquid silicone gaskets."
   },
   {
-    "id": "gallery-caps",
-    "title": "Institutional Silicone Cap Production",
-    "category": "Product",
-    "image": "/images/cat_caps.png",
-    "description": "Screen printing department creating custom-branded team caps for swimming academies."
-  },
-  {
-    "id": "gallery-covers",
-    "title": "Waterproof Cover Assembly Line",
-    "category": "Product",
-    "image": "/images/cat_covers.png",
-    "description": "Welding and sealing layers of our IPX8 floating covers to guarantee durability under stress."
-  },
-  {
-    "id": "gallery-accessories",
-    "title": "Commercial Life Vests Bulk Batch",
-    "category": "Product",
-    "image": "/images/cat_accessories.png",
-    "description": "Finished batch of USCG-style rental vests boxed and tagged for shipment to a coastal water park."
-  },
-  {
-    "id": "gallery-equipment",
-    "title": "Anti-Wave Lane Discs Molding",
+    "id": "gallery-training-gear",
+    "title": "Contour Kickboards & Contours",
     "category": "Product",
     "image": "/images/cat_equipment.png",
-    "description": "Our HDPE extrusion machinery producing wave-damping discs for competitive lane lines."
+    "description": "Ergonomic kickboards, Contours, and pull buoys laid out for a swim squad training session."
   },
   {
-    "id": "gallery-tubes",
-    "title": "Heavy-Duty Slide Tubes Warehouse",
-    "category": "Product",
-    "image": "/images/cat_tubes.png",
-    "description": "Inflation and pressure retention tests of commercial double-slide tubes before bulk packing."
+    "id": "gallery-lazy-river",
+    "title": "Lazy River Slide Fun",
+    "category": "Recreation",
+    "image": "/images/gallery_park.png",
+    "description": "Swimmers enjoying water slides and lazy rivers using our heavy-gauge WaveGrip float tubes."
+  },
+  {
+    "id": "gallery-pool-practice",
+    "title": "Academy Training Session",
+    "category": "Recreation",
+    "image": "/images/gallery_pool.png",
+    "description": "Young competitive swimmers wearing our anti-fog goggles and stretchable silicone dome caps."
+  },
+  {
+    "id": "gallery-store-display",
+    "title": "Bandra Store Showcase",
+    "category": "Store",
+    "image": "/images/gallery_quality.png",
+    "description": "A view of our premium retail display shelf showcasing floating pouches, nose clips, and earplugs."
+  },
+  {
+    "id": "gallery-custom-caps",
+    "title": "Custom Printed Squad Caps",
+    "category": "Custom",
+    "image": "/images/cat_caps.png",
+    "description": "Examples of custom squad and club logo stencils printed on our high-elasticity silicone swim caps."
   }
 ]

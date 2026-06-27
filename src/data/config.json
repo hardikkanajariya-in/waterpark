@@ -1,37 +1,37 @@
 {
   "brandName": "AQUADURA",
-  "brandTagline": "Premium Aquatic Equipment Store",
-  "heroTitle": "Professional Swimming Equipment",
-  "heroSubtitle": "Engineered for Water Parks, Swimming Academies, Schools & Retail Supply.",
-  "searchPlaceholder": "Search goggles, caps, tubes, pool accessories...",
+  "brandTagline": "Premium Swimwear & Water Park Gear Store",
+  "heroTitle": "Premium Swimming Equipment",
+  "heroSubtitle": "Shop premium swimming goggles, professional caps, water park floats, and pool accessories. Fast shipping across India.",
+  "searchPlaceholder": "Search goggles, caps, floats, training gear...",
   "b2bReassurances": [
     {
       "title": "Premium Quality",
-      "desc": "All materials undergo rigorous wear and chemical durability testing."
+      "desc": "All swimwear and gear undergo rigorous durability and chlorine resistance testing."
     },
     {
-      "title": "Industrial Standard Materials",
-      "desc": "High-density LSR silicone, shatterproof polycarbonate, and reinforced K80 PVC."
+      "title": "Water Park Standard",
+      "desc": "Heavy-duty, fade-resistant materials designed for maximum sun and pool exposure."
     },
     {
-      "title": "Direct Dispatch",
-      "desc": "Standard single-unit shipping or volume retail logistics ready."
+      "title": "Fast Shipping",
+      "desc": "Quick nationwide dispatch from our retail store hub within 24 hours."
     },
     {
-      "title": "Nationwide Delivery",
-      "desc": "Fast courier integrations for dispatch within 24-48 hours."
+      "title": "Easy Returns",
+      "desc": "Simple 14-day hassle-free returns on all unused store purchases."
     },
     {
-      "title": "Custom Colors Available",
-      "desc": "Personalized team colorways and custom prints available on demand."
+      "title": "Friendly Support",
+      "desc": "Get direct support for sizes, custom squad cap prints, or order tracking."
     }
   ],
   "contact": {
-    "phone": "+1 (800) 555-0199",
-    "phoneRaw": "+18005550199",
-    "whatsapp": "+18005550199",
-    "whatsappMsg": "Hi Aquadura, I would like to ask a question about your products.",
-    "email": "support@aquadura.com",
-    "address": "Rotterdam Logistics Park, Port Area 4A, Netherlands"
+    "phone": "+91 99999 88888",
+    "phoneRaw": "+919999988888",
+    "whatsapp": "+919999988888",
+    "whatsappMsg": "Hi Aquadura, I have a question about your products.",
+    "email": "care@aquadura.in",
+    "address": "Aquadura Retail Outlet, Hill Road, Bandra West, Mumbai, Maharashtra 400050, India"
   }
 }

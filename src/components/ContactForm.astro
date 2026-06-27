@@ -18,13 +18,13 @@ const { preselectedCategory = "", preselectedProduct = "" } = Astro.props;
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
       <div>
-        <h3 class="font-bold text-sm font-heading">Quote Inquiry Received</h3>
-        <p class="text-xs mt-1 font-sans text-emerald-700">Thank you for contacting {config.brandName}. A B2B procurement representative will review your specifications and email a preliminary quote within 1 business day.</p>
+        <h3 class="font-bold text-sm font-heading">Message Received</h3>
+        <p class="text-xs mt-1 font-sans text-emerald-700 font-medium">Thank you for contacting {config.brandName}. Our store support team will review your message and reply via email within 1 business day.</p>
       </div>
     </div>
   </div>
 
-  <form id="b2b-inquiry-form" class="space-y-6">
+  <form id="retail-inquiry-form" class="space-y-6">
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       <!-- First Name -->
       <div>
@@ -160,7 +160,7 @@ const { preselectedCategory = "", preselectedProduct = "" } = Astro.props;
         type="submit"
         class="w-full inline-flex items-center justify-center rounded-full bg-primary py-4 px-6 text-sm font-semibold text-white shadow-soft hover:bg-primary-dark hover:shadow-soft-lg transition-all duration-150"
       >
-        Submit Quote Inquiry
+        Submit Message
         <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
@@ -170,7 +170,7 @@ const { preselectedCategory = "", preselectedProduct = "" } = Astro.props;
 </div>
 
 <script>
-  const form = document.querySelector('form#b2b-inquiry-form');
+  const form = document.querySelector('form#retail-inquiry-form');
   const successBanner = document.getElementById('form-success-banner');
 
   if (form && successBanner) {

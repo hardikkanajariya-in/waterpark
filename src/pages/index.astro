@@ -88,56 +88,8 @@ const latestProducts = products.filter(p =>
 
 <Layout title={seoTitle} description={seoDescription}>
 
-  <!-- 1. HERO SECTION (ONLY CLICKABLE IMAGES WITH DOTTED INDICATORS BELOW) -->
-  <section class="mx-auto max-w-7xl px-6 md:px-8 pt-6">
-    <div id="hero-slider" class="relative overflow-hidden rounded-3xl h-[280px] sm:h-[380px] lg:h-[480px] bg-slate-100 shadow-soft">
-      
-      <!-- Slides Wrapper -->
-      <div id="hero-slides-wrapper" class="flex h-full transition-transform duration-500 ease-out" style="transform: translateX(0%);">
-        
-        <!-- Slide 1 -->
-        <a href="/products" class="w-full h-full shrink-0 relative block">
-          <img
-            src="/images/hero_catalog.png"
-            alt="Elite Swimming Equipment"
-            class="w-full h-full object-cover select-none object-center opacity-100"
-            loading="eager"
-          />
-        </a>
-
-        <!-- Slide 2 -->
-        <a href="/products?category=swimming-goggles" class="w-full h-full shrink-0 relative block">
-          <img
-            src="/images/gallery_pool.png"
-            alt="Premium Racing Goggles"
-            class="w-full h-full object-cover select-none object-center opacity-100"
-            loading="lazy"
-          />
-        </a>
-
-        <!-- Slide 3 -->
-        <a href="/products?category=water-park-tubes" class="w-full h-full shrink-0 relative block">
-          <img
-            src="/images/gallery_park.png"
-            alt="Water Park Slide Tubes"
-            class="w-full h-full object-cover select-none object-center opacity-100"
-            loading="lazy"
-          />
-        </a>
-
-      </div>
-    </div>
-
-    <!-- Dotted Indicators Below Banner -->
-    <div class="flex justify-center gap-2.5 mt-4">
-      <button class="hero-dot-btn h-2.5 w-2.5 rounded-full bg-slate-300 hover:bg-primary transition-all focus:outline-none" data-slide="0" aria-label="Go to slide 1"></button>
-      <button class="hero-dot-btn h-2.5 w-2.5 rounded-full bg-slate-200 hover:bg-primary transition-all focus:outline-none" data-slide="1" aria-label="Go to slide 2"></button>
-      <button class="hero-dot-btn h-2.5 w-2.5 rounded-full bg-slate-200 hover:bg-primary transition-all focus:outline-none" data-slide="2" aria-label="Go to slide 3"></button>
-    </div>
-  </section>
-
   <!-- 2. PROMINENT CENTRAL SEARCH BAR -->
-  <section class="relative z-20 -mt-8 max-w-4xl mx-auto px-6">
+  <section class="max-w-4xl mx-auto px-6 pt-12">
     <div class="bg-white rounded-2xl border border-light-darker p-5 shadow-xl space-y-3">
       <h2 class="text-xs font-bold text-dark uppercase tracking-wider text-center font-heading">
         Search Goggles, Caps, Accessories & More
@@ -151,7 +103,7 @@ const latestProducts = products.filter(p =>
             class="w-full rounded-xl border border-light-darker bg-light px-4 py-3 pl-10 text-xs text-dark placeholder:text-dark-muted/50 focus:bg-white focus:border-primary focus:outline-none transition-all font-medium"
             required
           />
-          <svg class="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-dark-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <svg class="absolute left-3.5 top-3.5 h-5 w-5 text-dark-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </div>
@@ -165,54 +117,36 @@ const latestProducts = products.filter(p =>
     </div>
   </section>
 
-  <!-- 3. PREMIUM CATEGORY GRID -->
-  <section id="categories" class="py-20 bg-light mt-12 border-t border-light-darker">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-10">
+  <!-- 3. PREMIUM CATEGORY SLIDER (NO DESCRIPTIONS, ROUNDED ICONS) -->
+  <section id="categories" class="py-16 bg-light mt-12 border-t border-light-darker">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-8">
       <div class="text-center max-w-2xl mx-auto space-y-2">
         <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Catalog Divisions</span>
         <h2 class="text-2xl font-bold tracking-tight text-dark font-heading">Shop by Category</h2>
-        <p class="text-xs text-dark-muted font-medium">Quick-route into specialized categories of premium aquatic accessories.</p>
+        <p class="text-xs text-dark-muted font-medium">Browse our specialized collections of premium swim and water park gear.</p>
       </div>
 
-      <!-- 8-Tile Editorial Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-5">
-        {categories.map((cat, idx) => {
-          let gridClass = "lg:col-span-3";
-          if (idx === 0) gridClass = "lg:col-span-6";
-          if (idx === 4) gridClass = "lg:col-span-6";
-          if (idx === 7) gridClass = "lg:col-span-6";
-
-          return (
-            <a
-              href={`/products?category=${cat.slug}`}
-              class={`group block relative overflow-hidden rounded-2xl bg-white border border-light-darker aspect-[4/3] sm:aspect-auto sm:h-64 lg:h-72 shadow-soft hover:shadow-soft-lg transition-all duration-300 ${gridClass}`}
-            >
-              <!-- Background Image -->
-              <div class="absolute inset-0 bg-light-darker">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
-                  loading="lazy"
-                />
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-dark/60 via-dark/10 to-transparent z-10"></div>
-              
-              <!-- Content -->
-              <div class="absolute bottom-5 left-5 right-5 z-20 space-y-1 text-white font-sans">
-                <h3 class="text-base font-bold font-heading leading-tight">{cat.name}</h3>
-                <p class="text-[11px] text-slate-200 leading-normal line-clamp-2 max-w-md">
-                  {cat.description}
-                </p>
-                <div class="pt-1.5">
-                  <span class="inline-flex items-center text-[9px] font-bold tracking-wider uppercase text-accent group-hover:underline">
-                    Shop Collection &rarr;
-                  </span>
-                </div>
-              </div>
-            </a>
-          );
-        })}
+      <!-- Horizontal scrollable category circles -->
+      <div class="flex gap-8 overflow-x-auto pb-6 scrollbar-none snap-x snap-mandatory justify-start md:justify-center">
+        {categories.map((cat) => (
+          <a
+            href={`/products?category=${cat.slug}`}
+            class="snap-start shrink-0 w-28 sm:w-32 flex flex-col items-center text-center group"
+          >
+            <!-- Highly rounded category image container -->
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-light-darker bg-white shadow-soft group-hover:scale-105 transition-transform duration-300">
+              <img
+                src={cat.image}
+                alt={cat.name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <span class="mt-3 text-xs font-bold text-dark group-hover:text-primary transition-colors line-clamp-1">
+              {cat.name}
+            </span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -534,29 +468,29 @@ const latestProducts = products.filter(p =>
       <div class="text-center max-w-2xl mx-auto space-y-2">
         <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Visual Showcase</span>
         <h2 class="text-2xl font-bold tracking-tight text-dark font-heading">Products in Action</h2>
-        <p class="text-xs text-dark-muted font-medium">Validation, testing, and real-world leisure deployment case photos.</p>
+        <p class="text-xs text-dark-muted font-medium">Real-world swimming pool and leisure deployment case photos.</p>
       </div>
 
       <!-- Grid Masonry -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-5">
         <div class="lg:col-span-8 overflow-hidden rounded-2xl border border-light-darker aspect-[16/9] bg-light relative group">
-          <img src="/images/gallery_factory.png" alt="Facility operations" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
-          <div class="absolute bottom-4 left-4 bg-dark/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Material Inventory Management</div>
+          <img src="/images/gallery_factory.png" alt="Splash-proof Gear Sets" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
+          <div class="absolute bottom-4 left-4 bg-dark/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Splash-proof Gear Sets</div>
         </div>
 
         <div class="lg:col-span-4 overflow-hidden rounded-2xl border border-light-darker aspect-[4/5] sm:aspect-auto lg:h-auto bg-light relative group">
-          <img src="/images/gallery_pool.png" alt="Squad training" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
-          <div class="absolute bottom-4 left-4 bg-dark/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Performance Pool Training</div>
+          <img src="/images/gallery_pool.png" alt="Competitive Swim Training" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
+          <div class="absolute bottom-4 left-4 bg-dark/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Competitive Swim Training</div>
         </div>
 
         <div class="lg:col-span-4 overflow-hidden rounded-2xl border border-light-darker aspect-[4/5] sm:aspect-auto lg:h-auto bg-light relative group">
-          <img src="/images/gallery_quality.png" alt="Material check" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
-          <div class="absolute bottom-4 left-4 bg-dark/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Strict Quality Assurance</div>
+          <img src="/images/gallery_quality.png" alt="Premium Finish Verification" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
+          <div class="absolute bottom-4 left-4 bg-dark/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Premium Finish Verification</div>
         </div>
 
         <div class="lg:col-span-8 overflow-hidden rounded-2xl border border-light-darker aspect-[16/9] bg-light relative group">
-          <img src="/images/gallery_park.png" alt="Water park slide" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
-          <div class="absolute bottom-4 left-4 bg-dark/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Theme Slides Rafts</div>
+          <img src="/images/gallery_park.png" alt="Fun Water Park Tubes" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
+          <div class="absolute bottom-4 left-4 bg-dark/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Fun Water Park Tubes</div>
         </div>
       </div>
     </div>
@@ -567,10 +501,10 @@ const latestProducts = products.filter(p =>
     <div class="mx-auto max-w-3xl px-6">
       <div class="bg-white rounded-2xl border border-light-darker p-8 sm:p-10 shadow-xl space-y-6 font-sans">
         <div class="text-center space-y-2">
-          <span class="text-[10px] font-bold text-primary tracking-widest uppercase block font-heading">Customer Desk</span>
-          <h2 class="text-2xl font-bold tracking-tight text-dark font-heading">Submit an Inquiry</h2>
+          <span class="text-[10px] font-bold text-primary tracking-widest uppercase block font-heading">Customer Support</span>
+          <h2 class="text-2xl font-bold tracking-tight text-dark font-heading">Contact Store Care Desk</h2>
           <p class="text-xs text-dark-muted max-w-md mx-auto">
-            Have a question about raw materials, sizing, custom orders, or delivery schedules? Send a message directly.
+            Got a question about size fittings, colors, shipping, or returns? Message our store support team directly.
           </p>
         </div>
 
@@ -580,8 +514,8 @@ const latestProducts = products.filter(p =>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <h3 class="font-bold text-sm font-heading font-bold">Inquiry Transmitted</h3>
-              <p class="text-xs mt-1">Thank you. A customer support representative will review your message and reply via email within 24 hours.</p>
+              <h3 class="font-bold text-sm font-heading font-bold">Message Transmitted</h3>
+              <p class="text-xs mt-1">Thank you. A store support representative will review your message and reply via email within 24 hours.</p>
             </div>
           </div>
         </div>
@@ -638,55 +572,6 @@ const latestProducts = products.filter(p =>
   // Carousel logic
   document.addEventListener('DOMContentLoaded', () => {
     
-    // ----------------------------------------------------
-    // HERO BANNER SLIDER LOGIC
-    // ----------------------------------------------------
-    const slidesWrapper = document.getElementById('hero-slides-wrapper');
-    const dotBtns = document.querySelectorAll('.hero-dot-btn');
-    
-    let currentSlide = 0;
-    const totalSlides = 3;
-    let autoPlayInterval;
-
-    const updateSlider = (index) => {
-      currentSlide = (index + totalSlides) % totalSlides;
-      
-      if (slidesWrapper) {
-        slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-      }
-      
-      dotBtns.forEach((dot, idx) => {
-        dot.classList.remove('bg-primary', 'bg-slate-300');
-        if (idx === currentSlide) {
-          dot.classList.add('bg-primary');
-        } else {
-          dot.classList.add('bg-slate-300');
-        }
-      });
-    };
-
-    const startAutoPlay = () => {
-      stopAutoPlay();
-      autoPlayInterval = setInterval(() => {
-        updateSlider(currentSlide + 1);
-      }, 5000);
-    };
-
-    const stopAutoPlay = () => {
-      if (autoPlayInterval) clearInterval(autoPlayInterval);
-    };
-
-    dotBtns.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        stopAutoPlay();
-        updateSlider(index);
-        startAutoPlay();
-      });
-    });
-
-    // Start auto-play
-    startAutoPlay();
-
     // ----------------------------------------------------
     // LATEST PRODUCTS CAROUSEL LOGIC
     // ----------------------------------------------------

@@ -1,34 +1,34 @@
 [
   {
-    "id": "catalog-2026",
-    "title": "Complete B2B Wholesale Catalogue (PDF)",
-    "description": "Full product specification listings, color options, customization templates, and logistics packaging matrices.",
-    "file_size": "14.2 MB",
+    "id": "store-catalog",
+    "title": "Aquadura Store Product Catalogue (PDF)",
+    "description": "Full retail catalog featuring our current collections of swimwear, goggles, caps, tubes, and training accessories.",
+    "file_size": "8.5 MB",
     "version": "2026.1",
-    "category": "Brochure"
+    "category": "Catalogue"
   },
   {
-    "id": "msds-sheet",
-    "title": "Material Safety Data Sheet (MSDS) - Swim Silicone & LSR Polymers",
-    "description": "Chemical composition testing reports, non-toxicity clearances, skin-safe evaluations, and chlorine reaction assessments.",
-    "file_size": "2.1 MB",
-    "version": "Rev 2026",
-    "category": "Compliance"
+    "id": "sizing-chart",
+    "title": "Sizing & Fitment Guide (PDF)",
+    "description": "Step-by-step sizing templates and measurements to help you find the perfect fit for goggles, caps, and safety vests.",
+    "file_size": "1.8 MB",
+    "version": "v2.0",
+    "category": "Guide"
   },
   {
-    "id": "logistics-guide",
-    "title": "Logistics & Shipping Container Sizing Guidelines",
-    "description": "Volumetric weight matrices, packaging crate dimensions, stack safety indicators, and sea-freight container packing layouts.",
-    "file_size": "3.5 MB",
-    "version": "v1.4",
-    "category": "Logistics"
-  },
-  {
-    "id": "customization-template",
-    "title": "OEM Custom Print Die-Lines & Vector Bleeds",
-    "description": "Adobe Illustrator templates for custom logo print boundaries, cap stencils, and packaging box layout configurations.",
-    "file_size": "5.6 MB",
+    "id": "care-instructions",
+    "title": "Gear Care & Anti-Fog Maintenance Guide (PDF)",
+    "description": "Useful tips on rinsing, storing, and maintaining your swim gear to protect goggle anti-fog coatings and silicone elasticity.",
+    "file_size": "1.2 MB",
     "version": "2026.a",
+    "category": "Manual"
+  },
+  {
+    "id": "squad-branding-stencil",
+    "title": "Custom Squad Printing Layout Sheet",
+    "description": "Print stencils and layouts for swimming academies, swim clubs, and teams to design custom silicone caps.",
+    "file_size": "3.1 MB",
+    "version": "2026.b",
     "category": "Template"
   }
 ]

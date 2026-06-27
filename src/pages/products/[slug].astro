@@ -36,20 +36,18 @@ const frequentlyBought = products
 
 <Layout title={seoTitle} description={seoDescription} image={product.image}>
   
-  <!-- Navigation Breadcrumbs -->
-  <section class="bg-white py-6 border-b border-light-darker">
-    <div class="mx-auto max-w-7xl px-6 md:px-8">
-      <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
-        <a href="/" class="hover:text-primary font-sans">Home</a>
-        <span>/</span>
-        <a href="/products" class="hover:text-primary font-sans">Catalogue</a>
-        <span>/</span>
-        <a href={`/products?category=${product.category}`} class="hover:text-primary font-sans">{categoryName}</a>
-        <span>/</span>
-        <span class="text-primary font-sans">{product.name}</span>
-      </nav>
-    </div>
-  </section>
+  <!-- Page Title and Breadcrumb (Clean & Standard Width) -->
+  <div class="mx-auto max-w-7xl px-6 md:px-8 pt-8 pb-4 font-sans bg-white border-b border-light-darker">
+    <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span>/</span>
+      <a href="/products" class="hover:text-primary">Catalogue</a>
+      <span>/</span>
+      <a href={`/products?category=${product.category}`} class="hover:text-primary">{categoryName}</a>
+      <span>/</span>
+      <span class="text-primary">{product.name}</span>
+    </nav>
+  </div>
 
   <!-- Product Details -->
   <section class="py-12 lg:py-16 bg-white">

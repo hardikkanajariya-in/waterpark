@@ -2,24 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 import config from '../data/config.json';
 
-const seoTitle = `Corporate Supply & Logistics | ${config.brandName}`;
-const seoDescription = `Learn about ${config.brandName}'s bulk procurement network, material quality testing, and worldwide logistics capabilities.`;
+const seoTitle = `About Our Store | ${config.brandName}`;
+const seoDescription = `Learn about ${config.brandName}, India's premier online store for leakproof swimming goggles, silicone caps, and water park floats.`;
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
   
-  <!-- Page Header -->
-  <section class="bg-white py-20 border-b border-light-darker">
-    <div class="mx-auto max-w-4xl px-6 md:px-8 space-y-6">
-      <span class="text-[10px] font-black tracking-widest text-primary uppercase block">Quality Policy</span>
-      <h1 class="text-4xl font-extrabold text-dark tracking-tight leading-[1.1] font-heading">
-        Reliable B2B Aquatic Supply
-      </h1>
-      <p class="text-sm sm:text-base text-dark-muted font-sans leading-relaxed pt-2">
-        {config.brandName} supplies commercial-grade aquatic equipment to swim schools, water parks, hotels, and retailers. We focus on structured logistics, standard materials compliance, and direct bulk supply efficiency.
-      </p>
-    </div>
-  </section>
+  <!-- Page Title and Breadcrumb (Clean & Standard Width) -->
+  <div class="mx-auto max-w-7xl px-6 md:px-8 pt-8 pb-4 font-sans bg-white border-b border-light-darker">
+    <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2 mb-2">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span>/</span>
+      <span class="text-primary">About Our Store</span>
+    </nav>
+    <h1 class="text-2xl font-bold tracking-tight text-dark font-heading">
+      About Us
+    </h1>
+  </div>
 
   <!-- Narrative Section -->
   <section class="py-16 bg-white">
@@ -27,21 +26,21 @@ const seoDescription = `Learn about ${config.brandName}'s bulk procurement netwo
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Text -->
         <div class="lg:col-span-6 space-y-6 font-sans">
-          <span class="text-[10px] font-black text-primary tracking-widest uppercase block">Supply Network</span>
-          <h2 class="text-2xl font-extrabold text-dark font-heading leading-tight">Scale Meets Specification</h2>
-          <p class="text-xs text-dark-muted leading-relaxed">
-            By partnering with certified manufacturing facilities, we coordinate high-volume procurement schedules. We supply standard silicone swim caps, optical goggles, and commercial river tubes using durable, pool-tested materials.
+          <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Our Values</span>
+          <h2 class="text-2xl font-extrabold text-dark font-heading leading-tight">Comfort Meets Performance</h2>
+          <p class="text-xs text-dark-muted leading-relaxed font-medium">
+            We believe that every swim should be comfortable and clear. That's why we curate only the best-performing equipment, from skin-safe silicone dome caps to optically corrective swim goggles and high-buoyancy training fins.
           </p>
-          <p class="text-xs text-dark-muted leading-relaxed">
-            Every product batch is evaluated for seal retention, material fatigue, and chlorine exposure. This ensures that the equipment supplied meets standard industrial expectations in saline and chlorinated environments.
+          <p class="text-xs text-dark-muted leading-relaxed font-medium">
+            Our water park float tubes are crafted with heavy-gauge, UV-stabilized PVC tarpaulin, built to provide hours of fun on slides and lazy rivers. We check every batch for seam strength and safety before sending them to your door.
           </p>
         </div>
         <!-- Photo -->
         <div class="lg:col-span-6">
           <div class="overflow-hidden rounded-2xl border border-light-darker aspect-[4/3] bg-light">
             <img
-              src="/images/gallery_factory.png"
-              alt="Inside precision molding laboratory"
+              src="/images/gallery_pool.png"
+              alt="Poolside swim gear display"
               class="w-full h-full object-cover"
               loading="lazy"
             />
@@ -55,49 +54,49 @@ const seoDescription = `Learn about ${config.brandName}'s bulk procurement netwo
   <section class="bg-dark text-white py-12">
     <div class="mx-auto max-w-7xl px-6 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
       <div class="space-y-1">
-        <span class="block text-3xl font-extrabold text-secondary font-heading">8 Divisions</span>
-        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Aquatic Catalogue</span>
+        <span class="block text-3xl font-extrabold text-primary font-heading">8 Divisions</span>
+        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Aquatic Gear</span>
       </div>
       <div class="space-y-1">
-        <span class="block text-3xl font-extrabold text-secondary font-heading">100% Bulk</span>
-        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">MOQ Optimised</span>
+        <span class="block text-3xl font-extrabold text-primary font-heading">100% Premium</span>
+        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Quality Checked</span>
       </div>
       <div class="space-y-1">
-        <span class="block text-3xl font-extrabold text-secondary font-heading">Nationwide</span>
-        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Logistic Network</span>
+        <span class="block text-3xl font-extrabold text-primary font-heading">Pan-India</span>
+        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Home Delivery</span>
       </div>
       <div class="space-y-1">
-        <span class="block text-3xl font-extrabold text-secondary font-heading">24 Hours</span>
-        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Response Guarantee</span>
+        <span class="block text-3xl font-extrabold text-primary font-heading">24/7 Care</span>
+        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Customer Support</span>
       </div>
     </div>
   </section>
 
-  <!-- B2B Operations Capabilities -->
+  <!-- Service Commitments -->
   <section class="py-16 bg-light border-b border-light-darker">
     <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
       <div class="max-w-2xl">
-        <span class="text-[10px] font-black text-primary tracking-widest uppercase block mb-2">Our Capabilities</span>
-        <h2 class="text-2xl font-extrabold tracking-tight text-dark font-heading">Service Commitments</h2>
+        <span class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-2">Our Guarantees</span>
+        <h2 class="text-2xl font-extrabold tracking-tight text-dark font-heading">Our Promises to Swimmers</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-sans">
         <div class="space-y-2">
-          <h3 class="text-sm font-bold text-dark font-heading">Consolidated Logistics</h3>
-          <p class="text-dark-muted leading-relaxed">
-            We handle packing lists, bulk crating, and marine/air dispatch, delivering directly to resorts, academies, and warehouses.
+          <h3 class="text-sm font-bold text-dark font-heading">Direct Home Delivery</h3>
+          <p class="text-dark-muted leading-relaxed font-medium">
+            We dispatch your orders within 24 hours of purchase, using premium courier networks to deliver right to your doorstep across India.
           </p>
         </div>
         <div class="space-y-2">
-          <h3 class="text-sm font-bold text-dark font-heading">Material Quality Standards</h3>
-          <p class="text-dark-muted leading-relaxed">
-            All polymers and silicone items leverage liquid injection molding and high-grade compound formulas to prevent tearing.
+          <h3 class="text-sm font-bold text-dark font-heading">Tested Pool Endurance</h3>
+          <p class="text-dark-muted leading-relaxed font-medium">
+            All our liquid silicone swim caps and gaskets feature highly stretchable formulas to prevent tearing, fading, or chlorine degradation.
           </p>
         </div>
         <div class="space-y-2">
-          <h3 class="text-sm font-bold text-dark font-heading">Custom Packaging</h3>
-          <p class="text-dark-muted leading-relaxed">
-            We assist with customized brand packaging, retail boxes, and printed instructions for institutional orders.
+          <h3 class="text-sm font-bold text-dark font-heading">Hassle-Free Exchanges</h3>
+          <p class="text-dark-muted leading-relaxed font-medium">
+            Bought the wrong goggle size or want to change your cap color? We provide easy exchanges within 14 days on all unused store purchases.
           </p>
         </div>
       </div>

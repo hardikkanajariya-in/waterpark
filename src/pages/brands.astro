@@ -4,8 +4,8 @@ import brands from '../data/brands.json';
 import categories from '../data/categories.json';
 import config from '../data/config.json';
 
-const seoTitle = `Represented Brands & Product Collections | ${config.brandName}`;
-const seoDescription = `Review our specialized sub-brands including competition gear, WaveGrip commercial inflatables, and HydroShield watertight covers.`;
+const seoTitle = `Product Collections & Brands | ${config.brandName}`;
+const seoDescription = `Explore our premium aquatic brands including elite competition swimwear, WaveGrip water park tubes, and HydroShield waterproof covers.`;
 
 const getCategoryNames = (slugList: string[]) => {
   return categories
@@ -15,54 +15,56 @@ const getCategoryNames = (slugList: string[]) => {
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
-  <!-- Header -->
-  <section class="bg-white py-16 border-b border-light-darker">
-    <div class="mx-auto max-w-4xl px-6 md:px-8 space-y-4">
-      <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
-        <a href="/" class="hover:text-primary font-sans">Home</a>
-        <span>/</span>
-        <span class="text-primary font-sans">Brands</span>
-      </nav>
-      <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
-        Product Collections
-      </h1>
-      <p class="text-sm text-dark-muted font-sans max-w-xl leading-relaxed">
-        Our products are grouped into three distinct sub-brands, each corresponding to specialized deployment standards and materials.
-      </p>
-    </div>
-  </section>
+  
+  <!-- Page Title and Breadcrumb (Clean & Standard Width) -->
+  <div class="mx-auto max-w-7xl px-6 md:px-8 pt-8 pb-4 font-sans bg-white border-b border-light-darker">
+    <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2 mb-2">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span>/</span>
+      <span class="text-primary">Brands</span>
+    </nav>
+    <h1 class="text-2xl font-bold tracking-tight text-dark font-heading">
+      Product Collections
+    </h1>
+  </div>
 
   <!-- Brands List -->
-  <section class="py-20 bg-light">
-    <div class="mx-auto max-w-5xl px-6 md:px-8 space-y-12">
+  <section class="py-12 bg-light">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
         {brands.map((brand) => {
           const categoryNames = getCategoryNames(brand.categories);
+
           return (
-            <div class="flex flex-col justify-between p-8 rounded-2xl border border-light-darker bg-white shadow-soft hover:shadow-soft-lg transition-all duration-300">
+            <div class="group bg-white rounded-2xl border border-light-darker p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between font-sans">
               <div class="space-y-4">
-                <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">{brand.tagline}</span>
-                <h2 class="text-xl font-bold text-dark font-heading">{brand.name}</h2>
-                <p class="text-xs text-dark-muted leading-relaxed font-sans">{brand.description}</p>
+                <div class="space-y-1">
+                  <span class="text-[9px] font-bold text-primary uppercase tracking-wider block">Featured Brand</span>
+                  <h2 class="text-lg font-bold text-dark font-heading group-hover:text-primary transition-colors">
+                    {brand.name}
+                  </h2>
+                </div>
                 
-                <div class="pt-4 border-t border-light-darker/60 space-y-2">
-                  <span class="text-[10px] font-bold text-dark-muted uppercase tracking-wider block">Scope divisions</span>
-                  <div class="flex flex-wrap gap-1.5">
-                    {categoryNames.map(cat => (
-                      <span class="px-2 py-0.5 bg-light border border-light-darker rounded text-[10px] text-dark font-medium font-sans">
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
+                <p class="text-xs text-dark-muted leading-relaxed font-medium">
+                  {brand.description}
+                </p>
+
+                <!-- Categories list -->
+                <div class="flex flex-wrap gap-1.5 pt-2">
+                  {categoryNames.map(name => (
+                    <span class="px-2.5 py-0.5 rounded bg-light border border-light-darker text-[9px] text-dark font-bold">
+                      {name}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              <div class="pt-8">
+              <div class="pt-6 mt-6 border-t border-light-darker/60 flex items-center justify-between">
                 <a
                   href={`/products?search=${brand.name.split(' ')[0].toLowerCase()}`}
-                  class="w-full text-center inline-flex justify-center items-center rounded-full bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-colors font-sans"
+                  class="inline-flex justify-center rounded-full bg-primary px-5 py-2.5 text-xs font-bold text-white hover:bg-primary-dark transition-all focus:outline-none"
                 >
-                  View Collection
+                  Shop Brand
                 </a>
               </div>
             </div>

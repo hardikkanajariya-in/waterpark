@@ -5,16 +5,16 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#0F5FA8',
-          dark: '#0B477D',
-          light: '#E6EFF6',
+          DEFAULT: '#00B4D8', // Splash Cyan
+          dark: '#0077B6',    // Pool Blue
+          light: '#E0F7FA',   // Light Splash
         },
         secondary: {
-          DEFAULT: '#0A88C2',
-          dark: '#086C9B',
+          DEFAULT: '#03045E', // Deep Water Blue
+          dark: '#02022E',
         },
         accent: {
-          DEFAULT: '#29B6F6',
+          DEFAULT: '#FF7F50', // Coral Slide Orange
         },
         dark: {
           DEFAULT: '#111827',

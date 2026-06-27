@@ -3,27 +3,22 @@ import Layout from '../layouts/Layout.astro';
 import downloads from '../data/downloads.json';
 import config from '../data/config.json';
 
-const seoTitle = `Technical Resources & Document Downloads | ${config.brandName}`;
-const seoDescription = `Download full B2B product catalogs, compliance certificates, warranty terms, and custom stencil layout templates in PDF formats.`;
+const seoTitle = `Product Guides & Store Downloads | ${config.brandName}`;
+const seoDescription = `Download product catalogs, sizing charts, gear care guides, and squad print templates in PDF formats.`;
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
-  <!-- Header -->
-  <section class="bg-white py-16 border-b border-light-darker">
-    <div class="mx-auto max-w-4xl px-6 md:px-8 space-y-4">
-      <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
-        <a href="/" class="hover:text-primary font-sans">Home</a>
-        <span>/</span>
-        <span class="text-primary font-sans">Downloads</span>
-      </nav>
-      <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
-        Resource Centre
-      </h1>
-      <p class="text-sm text-dark-muted font-sans max-w-xl leading-relaxed">
-        Access official PDF catalogues, quality audits, compliance declarations, and print templates. All resources support direct local downloads.
-      </p>
-    </div>
-  </section>
+  <!-- Page Title and Breadcrumb (Clean & Standard Width) -->
+  <div class="mx-auto max-w-7xl px-6 md:px-8 pt-8 pb-4 font-sans bg-white border-b border-light-darker">
+    <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2 mb-2">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span>/</span>
+      <span class="text-primary">Downloads</span>
+    </nav>
+    <h1 class="text-2xl font-bold tracking-tight text-dark font-heading">
+      Resource Centre
+    </h1>
+  </div>
 
   <!-- Downloads List -->
   <section class="py-20 bg-light">
@@ -31,78 +26,38 @@ const seoDescription = `Download full B2B product catalogs, compliance certifica
       
       <div class="grid grid-cols-1 gap-6">
         {downloads.map((doc) => (
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 rounded-2xl border border-light-darker bg-white shadow-soft hover:shadow-soft-lg transition-all duration-200 gap-6">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 rounded-2xl border border-light-darker bg-white shadow-soft hover:shadow-soft-lg transition-all duration-200 gap-6 animate-fade-in">
             <div class="space-y-2 font-sans flex-grow">
               <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded bg-primary-light text-primary text-[9px] font-bold uppercase">
+                <span class="px-2.5 py-0.5 rounded bg-primary-light text-primary text-[9px] font-bold uppercase tracking-wider">
                   {doc.category}
                 </span>
-                <span class="text-[10px] text-dark-muted">
-                  Version: {doc.version}
+                <span class="text-[10px] text-dark-muted font-semibold">
+                  Version {doc.version} &bull; {doc.file_size}
                 </span>
               </div>
               <h2 class="text-base font-bold text-dark font-heading">
                 {doc.title}
               </h2>
-              <p class="text-xs text-dark-muted leading-relaxed max-w-xl">
+              <p class="text-xs text-dark-muted leading-relaxed font-medium">
                 {doc.description}
               </p>
             </div>
             
-            <div class="flex sm:flex-col justify-between items-center sm:items-end w-full sm:w-auto shrink-0 border-t sm:border-t-0 border-light-darker pt-4 sm:pt-0 gap-4">
-              <span class="text-[10px] font-bold text-dark-muted font-sans uppercase">Size: {doc.file_size}</span>
-              <!-- Click triggers a vanilla JS download feedback banner -->
-              <button
-                class="download-trigger-btn inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-colors font-sans"
-                data-doc-title={doc.title}
-              >
-                Download PDF
-                <svg class="ml-1.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-              </button>
-            </div>
+            <button
+              type="button"
+              class="shrink-0 w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-xs font-bold text-white hover:bg-primary-dark transition-all focus:outline-none"
+              onclick="alert('Download started')"
+            >
+              <svg class="h-4.5 w-4.5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              Download PDF
+            </button>
           </div>
         ))}
-      </div>
-
-      <!-- Success notification toast -->
-      <div id="download-success-toast" class="fixed bottom-6 right-6 hidden z-50 rounded-xl bg-slate-900 border border-slate-800 p-4 text-white shadow-soft-lg max-w-sm animate-fade-in font-sans text-xs">
-        <div class="flex items-center gap-3">
-          <svg class="h-5 w-5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <div>
-            <span class="block font-bold">Download Started</span>
-            <span id="toast-doc-title" class="block text-[10px] text-slate-400 mt-0.5 truncate max-w-xs"></span>
-          </div>
-        </div>
       </div>
 
     </div>
   </section>
 </Layout>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const downloadBtns = document.querySelectorAll('.download-trigger-btn');
-    const toast = document.getElementById('download-success-toast');
-    const toastTitle = document.getElementById('toast-doc-title');
-
-    downloadBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const title = btn.getAttribute('data-doc-title') || 'document';
-        
-        // Show download success toast
-        if (toast && toastTitle) {
-          toastTitle.textContent = title;
-          toast.classList.remove('hidden');
-          
-          setTimeout(() => {
-            toast.classList.add('hidden');
-          }, 3500);
-        }
-      });
-    });
-  });
-</script>
