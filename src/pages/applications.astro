@@ -47,12 +47,18 @@ const getProductDetails = (slugList: string[]) => {
               <div class="space-y-3.5 border-t border-light-darker/60 pt-6">
                 <h4 class="text-[9px] font-bold text-dark uppercase tracking-wider">Features Utilized</h4>
                 <ul class="text-xs text-dark-muted space-y-2 font-medium">
-                  {app.recommendations.map(rec => (
-                    <li class="flex items-start">
-                      <span class="h-1.5 w-1.5 bg-primary rounded-full mr-2.5 mt-1.5 shrink-0"></span>
-                      <span>{rec}</span>
-                    </li>
-                  ))}
+                  <li class="flex items-start">
+                    <span class="h-1.5 w-1.5 bg-primary rounded-full mr-2.5 mt-1.5 shrink-0"></span>
+                    <span>{app.tagline}</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="h-1.5 w-1.5 bg-primary rounded-full mr-2.5 mt-1.5 shrink-0"></span>
+                    <span>Chlorine-resistant and UV-protected materials</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="h-1.5 w-1.5 bg-primary rounded-full mr-2.5 mt-1.5 shrink-0"></span>
+                    <span>Ergonomically tested for active use</span>
+                  </li>
                 </ul>
               </div>
             </div>
