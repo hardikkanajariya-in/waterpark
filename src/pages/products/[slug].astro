@@ -1,8 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContactForm from '../../components/ContactForm.astro';
 import products from '../../data/products.json';
 import categories from '../../data/categories.json';
+import config from '../../data/config.json';
 
 // Static route generation
 export async function getStaticPaths() {
@@ -14,30 +14,36 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-// Look up category name
+// Look up category
 const category = categories.find(c => c.slug === product.category);
 const categoryName = category ? category.name : "Aquatic Equipment";
 
-const seoTitle = `${product.name} | B2B Wholesale Specifications | Aquadura`;
-const seoDescription = `Procure ${product.name} in bulk. Review technical specifications, FINA/CE standards compliance, packaging configurations, and get a direct quote.`;
+const seoTitle = `${product.name} | B2B Wholesale Specifications | ${config.brandName}`;
+const seoDescription = `Procure ${product.name} in bulk. Review custom branding options, certifications, and request direct wholesale pricing lists.`;
 
-// SKU Generator
 const productSKU = `AQ-${product.slug.slice(0, 6).toUpperCase()}`;
+const numericMoq = parseInt(product.moq.replace(/[^0-9]/g, '')) || 100;
 
-// Mock related products in the same category
+// Mock related products
 const relatedProducts = products
   .filter(p => p.category === product.category && p.slug !== product.slug)
   .slice(0, 3);
+
+// Mock frequently bought together
+const frequentlyBought = products
+  .filter(p => p.category !== product.category)
+  .slice(0, 2);
 ---
 
 <Layout title={seoTitle} description={seoDescription} image={product.image}>
+  
   <!-- Navigation Breadcrumbs -->
   <section class="bg-white py-6 border-b border-light-darker">
     <div class="mx-auto max-w-7xl px-6 md:px-8">
       <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
         <a href="/" class="hover:text-primary font-sans">Home</a>
         <span>/</span>
-        <a href="/products" class="hover:text-primary font-sans">Catalog</a>
+        <a href="/products" class="hover:text-primary font-sans">Catalogue</a>
         <span>/</span>
         <a href={`/products?category=${product.category}`} class="hover:text-primary font-sans">{categoryName}</a>
         <span>/</span>
@@ -46,15 +52,15 @@ const relatedProducts = products
     </div>
   </section>
 
-  <!-- Main Details Page -->
+  <!-- Product Immersive Details -->
   <section class="py-12 lg:py-20 bg-white">
     <div class="mx-auto max-w-7xl px-6 md:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
-        <!-- Left: Product Gallery (Thumbnails list, click zoom) -->
+        <!-- Left: Product Photo & Multi-Angle Swap -->
         <div class="lg:col-span-7 space-y-6">
-          <!-- Main Display -->
-          <div class="relative overflow-hidden rounded-2xl bg-light border border-light-darker aspect-[4/3] w-full group">
+          <!-- Main Photo with Zoom hover -->
+          <div class="relative overflow-hidden rounded-3xl bg-light border border-light-darker aspect-[4/3] w-full group">
             <img
               id="main-product-gallery-image"
               src={product.image}
@@ -62,323 +68,419 @@ const relatedProducts = products
               class="w-full h-full object-cover transition-transform duration-500 origin-center select-none"
               loading="eager"
             />
-            <!-- Visual Indicator for Zoom -->
+            <!-- Visual Zoom Alert -->
             <div class="absolute bottom-4 right-4 bg-dark/75 text-white text-[10px] font-bold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
               Hover to Zoom
             </div>
           </div>
           
-          <!-- Thumbnails Strip (simulating multi-angle shots) -->
+          <!-- Thumbnail Angle Swappers -->
           <div class="flex gap-4">
-            <button class="gallery-thumb-btn w-20 h-16 rounded-lg border-2 border-primary overflow-hidden bg-light" data-image-url={product.image}>
-              <img src={product.image} class="w-full h-full object-cover" alt="Main view" />
+            <button class="gallery-thumb-btn w-20 h-16 rounded-xl border-2 border-primary overflow-hidden bg-light" data-image-url={product.image}>
+              <img src={product.image} class="w-full h-full object-cover" alt="Main View" />
             </button>
-            <button class="gallery-thumb-btn w-20 h-16 rounded-lg border border-light-darker overflow-hidden bg-light opacity-60 hover:opacity-100 transition-all" data-image-url={product.image}>
-              <!-- Simulating angle 2 using CSS filter hue-rotate/grayscale just to look like a separate premium listing colorway -->
-              <img src={product.image} class="w-full h-full object-cover hue-rotate-15" alt="Colorway option" />
+            <button class="gallery-thumb-btn w-20 h-16 rounded-xl border border-light-darker overflow-hidden bg-light opacity-60 hover:opacity-100 transition-all" data-image-url={product.image}>
+              <img src={product.image} class="w-full h-full object-cover hue-rotate-30" alt="Color Option" />
             </button>
-            <button class="gallery-thumb-btn w-20 h-16 rounded-lg border border-light-darker overflow-hidden bg-light opacity-60 hover:opacity-100 transition-all" data-image-url={product.image}>
-              <!-- Simulating angle 3 -->
-              <img src={product.image} class="w-full h-full object-cover brightness-95" alt="Alternate detail" />
+            <button class="gallery-thumb-btn w-20 h-16 rounded-xl border border-light-darker overflow-hidden bg-light opacity-60 hover:opacity-100 transition-all" data-image-url={product.image}>
+              <img src={product.image} class="w-full h-full object-cover brightness-90" alt="Detail Angle" />
             </button>
           </div>
         </div>
 
-        <!-- Right: Purchase/Inquiry Sidebar & Details -->
-        <div class="lg:col-span-5 space-y-8">
-          <!-- Meta Specs Block -->
-          <div class="space-y-4">
-            <div class="flex items-center justify-between text-xs text-dark-muted font-sans font-medium">
+        <!-- Right: B2B Quote configurator -->
+        <div class="lg:col-span-5 space-y-8 font-sans">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs text-dark-muted font-medium">
               <span>SKU: {productSKU}</span>
               <span class="inline-flex items-center text-emerald-600 font-bold">
                 <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>
-                In Stock & Customisable
+                Orderable Stock
               </span>
             </div>
             
-            <h1 class="text-3xl font-extrabold tracking-tight text-dark font-heading leading-tight">
+            <h1 class="text-3xl font-black tracking-tight text-dark font-heading leading-tight">
               {product.name}
             </h1>
-            <p class="text-xs font-semibold text-primary uppercase tracking-widest font-sans">{categoryName}</p>
-            <div class="h-1.5 w-16 bg-primary rounded-full mt-2"></div>
+            <span class="text-xs font-extrabold text-primary uppercase tracking-widest block">{categoryName}</span>
           </div>
 
-          <!-- Product description -->
-          <p class="text-sm text-dark-muted leading-relaxed font-sans">
+          <p class="text-xs sm:text-sm text-dark-muted leading-relaxed">
             {product.description}
           </p>
 
-          <!-- Sticky Sidebar Panel (Muji/Apple Style B2B Details) -->
-          <div class="rounded-2xl border border-light-darker bg-light p-6 space-y-6 shadow-soft font-sans">
+          <!-- B2B Wholesale configurator card -->
+          <div class="rounded-3xl border border-light-darker bg-light p-6 sm:p-8 space-y-6 shadow-soft">
             <div class="flex justify-between items-center pb-3 border-b border-light-darker/60 text-xs">
-              <span class="font-bold text-dark-muted uppercase tracking-wider">Minimum Order (MOQ)</span>
+              <span class="font-bold text-dark-muted uppercase tracking-wider">Wholesale MOQ</span>
               <span class="font-extrabold text-dark bg-white border border-light-darker rounded px-2.5 py-0.5">{product.moq}</span>
             </div>
-            
-            <div class="space-y-2">
-              <span class="block text-[10px] font-bold text-dark-muted uppercase tracking-wider">Custom Packaging & Branding</span>
-              <p class="text-xs text-dark leading-relaxed font-medium">
-                {product.customization}
-              </p>
+
+            <!-- Configuration Inputs -->
+            <div class="space-y-4">
+              <!-- Qty Input -->
+              <div class="space-y-1.5">
+                <label for="detail-qty-input" class="block text-[10px] font-bold text-dark uppercase tracking-wider">Estimated Order Quantity</label>
+                <input
+                  type="number"
+                  id="detail-qty-input"
+                  min={numericMoq}
+                  value={numericMoq}
+                  class="qty-input-field w-full rounded-xl border border-light-darker bg-white px-4 py-3 font-bold text-dark text-xs focus:outline-none"
+                />
+                <span class="text-[9px] text-dark-muted block">Adjust quantity (must be higher than wholesale MOQ of {numericMoq} units)</span>
+              </div>
+
+              <!-- Custom Logo check -->
+              <div class="space-y-2 pt-2">
+                <span class="block text-[10px] font-bold text-dark uppercase tracking-wider">OEM Printing Spec</span>
+                <label class="flex items-center gap-2 text-xs text-dark font-medium cursor-pointer select-none">
+                  <input type="checkbox" id="detail-print-checkbox" class="print-checkbox-field rounded border-light-darker text-primary focus:ring-primary h-4.5 w-4.5" />
+                  Request Customized Team Logo Print
+                </label>
+              </div>
+
+              <!-- Packaging Select -->
+              <div class="space-y-1.5 pt-2">
+                <label for="detail-pkg-select" class="block text-[10px] font-bold text-dark uppercase tracking-wider">Packaging Style</label>
+                <select
+                  id="detail-pkg-select"
+                  class="packaging-select-field w-full rounded-xl border border-light-darker bg-white px-3 py-3 text-xs text-dark font-semibold focus:outline-none"
+                >
+                  <option value="standard">Standard Bulk (Industrial Polybags)</option>
+                  <option value="custom">OEM Branded Insert Card</option>
+                  <option value="retail">Retail Cardboard Boxes</option>
+                </select>
+              </div>
             </div>
 
-            <!-- B2B Actions (WhatsApp, Form Scroll, Phone Call) -->
-            <div class="flex flex-col gap-3 pt-2">
-              <a
-                href={`https://wa.me/18005550199?text=Hi, I am looking to procure the ${product.name} (SKU: ${productSKU}) for my business. Please provide quote terms.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex w-full items-center justify-center rounded-full bg-emerald-500 py-3 text-center text-xs font-bold text-white shadow-soft hover:bg-emerald-600 transition-colors"
-              >
-                Inquire via WhatsApp
-              </a>
-              <a
-                href="#quote"
-                class="flex w-full items-center justify-center rounded-full bg-primary py-3 text-center text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-colors"
-              >
-                Request formal PDF Quote
-              </a>
-              <a
-                href="tel:+18005550199"
-                class="flex w-full items-center justify-center rounded-full border border-light-darker bg-white py-3 text-center text-xs font-bold text-dark hover:bg-light transition-all"
-              >
-                Speak to Sales Agent
-              </a>
-            </div>
+            <!-- Main Direct Add Quote Sheet Action -->
+            <button
+              type="button"
+              id="detail-add-to-quote-btn"
+              data-slug={product.slug}
+              data-name={product.name}
+              data-image={product.image}
+              data-moq={product.moq}
+              data-numeric-moq={numericMoq.toString()}
+              class="w-full inline-flex items-center justify-center rounded-xl bg-primary py-3.5 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-all focus:outline-none"
+            >
+              Add to Quote Sheet
+            </button>
           </div>
         </div>
 
       </div>
 
-      <!-- Tabbed Specifications & Packaging Details (12-column grid layout, no boxes) -->
+      <!-- Tabbed Specifications & Technical Details -->
       <div class="mt-20 border-t border-light-darker pt-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         
-        <!-- Left: Technical Parameters -->
-        <div class="lg:col-span-7 space-y-6">
-          <h3 class="text-base font-bold uppercase tracking-wider text-dark font-heading">Technical parameters</h3>
-          <div class="overflow-hidden rounded-xl border border-light-darker shadow-soft bg-white">
-            <table class="min-w-full divide-y divide-light-darker font-sans text-xs">
-              <tbody class="divide-y divide-light-darker">
-                {Object.entries(product.specifications).map(([key, val]) => (
-                  <tr class="even:bg-light/20">
-                    <td class="px-5 py-3.5 font-bold text-dark-muted w-1/3 border-r border-light-darker bg-light/5">{key}</td>
-                    <td class="px-5 py-3.5 text-dark font-medium">{val}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Right: B2B Packaging & Document Downloads -->
-        <div class="lg:col-span-5 space-y-8 font-sans">
+        <!-- Left: Tabs & Tables -->
+        <div class="lg:col-span-8 space-y-6">
           
-          <!-- Packaging Details -->
-          <div class="space-y-4">
-            <h3 class="text-base font-bold uppercase tracking-wider text-dark font-heading">Logistics & Packaging</h3>
-            <div class="rounded-xl border border-light-darker p-5 bg-white space-y-3.5 text-xs text-dark-muted">
-              <div class="flex justify-between">
-                <span>Standard Carton Capacity:</span>
-                <strong class="text-dark">100 units / carton</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Carton Dimensions:</span>
-                <strong class="text-dark">60cm x 40cm x 35cm</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Gross Weight per Carton:</span>
-                <strong class="text-dark">12.5 kg</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Container Load (20GP):</span>
-                <strong class="text-dark">Approx. 320 Cartons</strong>
-              </div>
+          <!-- Tab Navigation Headers -->
+          <div class="flex border-b border-light-darker text-xs font-bold uppercase tracking-wider text-dark-muted font-heading">
+            <button class="spec-tab-btn pb-4 border-b-2 border-primary text-primary px-4 focus:outline-none" data-tab="specs">
+              Specifications
+            </button>
+            <button class="spec-tab-btn pb-4 border-b-2 border-transparent px-4 hover:text-dark focus:outline-none" data-tab="logistics">
+              Logistics & Packaging
+            </button>
+            <button class="spec-tab-btn pb-4 border-b-2 border-transparent px-4 hover:text-dark focus:outline-none" data-tab="visual">
+              360° / Video Mockup
+            </button>
+          </div>
+
+          <!-- Specs Tab Panel -->
+          <div id="panel-specs" class="spec-tab-panel space-y-6">
+            <div class="overflow-hidden rounded-2xl border border-light-darker bg-white shadow-soft">
+              <table class="min-w-full divide-y divide-light-darker text-xs text-dark font-sans">
+                <tbody class="divide-y divide-light-darker">
+                  {Object.entries(product.specifications).map(([k, v]) => (
+                    <tr class="even:bg-light/10">
+                      <td class="px-5 py-4 font-bold text-dark-muted w-1/3 border-r border-light-darker bg-light/5">{k}</td>
+                      <td class="px-5 py-4 text-dark font-semibold">{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
 
-          <!-- Technical downloads -->
-          <div class="space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-dark">Available Downloads</h3>
-            <div class="space-y-2">
-              <a
-                href="/downloads"
-                class="flex items-center justify-between p-3 rounded-lg border border-light-darker hover:bg-light hover:text-primary transition-all text-xs font-semibold text-dark-muted"
-              >
-                <span>Product Technical Drawing (PDF)</span>
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-              </a>
-              <a
-                href="/downloads"
-                class="flex items-center justify-between p-3 rounded-lg border border-light-darker hover:bg-light hover:text-primary transition-all text-xs font-semibold text-dark-muted"
-              >
-                <span>Compliance Certifications (PDF)</span>
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Feature Bullets (Alternating Section) -->
-      <div class="mt-20 border-t border-light-darker pt-16 space-y-6">
-        <h3 class="text-base font-bold uppercase tracking-wider text-dark font-heading text-center">Material Highlights & Design Features</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {product.features.map((feat, idx) => (
-            <div class="rounded-xl border border-light-darker p-5 bg-white space-y-3 shadow-soft">
-              <span class="text-primary font-bold font-heading text-lg">0{idx + 1}</span>
-              <p class="text-xs text-dark-muted font-sans font-medium leading-relaxed">{feat}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Related Products Section -->
-      {relatedProducts.length > 0 && (
-        <div class="mt-24 border-t border-light-darker pt-16 space-y-8">
-          <div class="flex justify-between items-end">
-            <h3 class="text-xl font-bold text-dark font-heading">Related Collections</h3>
-            <a href="/products" class="text-xs font-bold text-primary hover:underline font-sans">Browse Division &rarr;</a>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {relatedProducts.map((p) => (
-              <a href={`/products/${p.slug}`} class="group space-y-4">
-                <div class="overflow-hidden rounded-xl border border-light-darker bg-light aspect-[4/3]">
-                  <img src={p.image} class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500" alt={p.name} />
+          <!-- Logistics Tab Panel -->
+          <div id="panel-logistics" class="spec-tab-panel space-y-6 hidden">
+            <div class="overflow-hidden rounded-2xl border border-light-darker bg-white p-6 shadow-soft space-y-4 font-sans text-xs">
+              <div class="grid grid-cols-2 gap-6">
+                <div>
+                  <span class="block font-bold text-dark-muted mb-1 uppercase tracking-wider text-[10px]">Estimated Carton Volume</span>
+                  <span class="font-bold text-dark">0.12 CBM per 100 units</span>
                 </div>
-                <div class="space-y-1 font-sans">
-                  <h4 class="text-sm font-bold text-dark group-hover:text-primary transition-colors">{p.name}</h4>
-                  <span class="text-[10px] font-bold text-dark-muted uppercase">MOQ: {p.moq}</span>
+                <div>
+                  <span class="block font-bold text-dark-muted mb-1 uppercase tracking-wider text-[10px]">Estimated Carton Weight</span>
+                  <span class="font-bold text-dark">8.5 kg gross per box</span>
                 </div>
-              </a>
-            ))}
+                <div>
+                  <span class="block font-bold text-dark-muted mb-1 uppercase tracking-wider text-[10px]">Shipping Terms</span>
+                  <span class="font-bold text-dark">FOB Shanghai / Rotterdam Dispatch</span>
+                </div>
+                <div>
+                  <span class="block font-bold text-dark-muted mb-1 uppercase tracking-wider text-[10px]">Lead Time</span>
+                  <span class="font-bold text-dark">15 - 20 Business Days (Depending on customization)</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
 
-      <!-- Recently Viewed Section (Generated dynamically via LocalStorage script) -->
-      <div id="recently-viewed-container" class="mt-24 border-t border-light-darker pt-16 space-y-8 hidden">
-        <h3 class="text-xl font-bold text-dark font-heading">Recently Viewed Products</h3>
-        <div id="recently-viewed-list" class="grid grid-cols-1 md:grid-cols-4 gap-6"></div>
+          <!-- Visual Tab Panel -->
+          <div id="panel-visual" class="spec-tab-panel space-y-6 hidden">
+            <div class="rounded-2xl border border-light-darker bg-light p-12 text-center shadow-soft flex flex-col items-center justify-center space-y-4 min-h-[300px]">
+              <div class="h-14 w-14 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center text-primary">
+                <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h4 class="text-sm font-bold text-dark font-heading">Interactive Video Showcase</h4>
+              <p class="text-xs text-dark-muted max-w-sm leading-relaxed font-sans">
+                A visual representation showing material elasticity, anti-leak tests, and custom logo printing processes direct from the facility floor.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Frequently Bought Together & Related Categories -->
+        <div class="lg:col-span-4 space-y-8">
+          
+          <!-- Frequently Bought together -->
+          <div class="bg-light rounded-3xl border border-light-darker p-6 shadow-soft space-y-4">
+            <h3 class="text-xs font-black text-dark uppercase tracking-wider font-heading border-b border-light-darker pb-2">Frequently Bought Together</h3>
+            
+            <div class="space-y-4">
+              {frequentlyBought.map(p => (
+                <a href={`/products/${p.slug}`} class="flex items-center gap-3 p-2 bg-white border border-light-darker rounded-xl hover:border-slate-300 transition-colors group">
+                  <div class="h-12 w-14 rounded-lg overflow-hidden border border-light-darker shrink-0 bg-light">
+                    <img src={p.image} alt={p.name} class="h-full w-full object-cover" />
+                  </div>
+                  <div class="space-y-0.5">
+                    <span class="block text-[10px] font-bold text-dark font-heading leading-tight group-hover:text-primary transition-colors line-clamp-1">{p.name}</span>
+                    <span class="text-[9px] text-dark-muted uppercase font-sans font-medium">MOQ: {p.moq}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Related Divisions -->
+          <div class="bg-white rounded-3xl border border-light-darker p-6 shadow-soft space-y-4">
+            <h3 class="text-xs font-black text-dark uppercase tracking-wider font-heading border-b border-light-darker pb-2">Related Divisions</h3>
+            <div class="flex flex-wrap gap-2 text-xs font-sans">
+              {categories.slice(0, 4).map(c => (
+                <a href={`/products?category=${c.slug}`} class="px-3 py-1.5 rounded-full border border-light-darker bg-light hover:bg-white hover:border-slate-300 font-semibold text-dark-muted hover:text-primary transition-all">
+                  {c.name}
+                </a>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
-      <!-- Formal Quote Request Form -->
-      <div class="mt-24 border-t border-light-darker pt-16 max-w-3xl mx-auto space-y-8" id="quote">
-        <div class="text-center space-y-2">
-          <span class="text-[11px] font-bold tracking-[0.2em] text-primary uppercase block">Quote Request</span>
-          <h3 class="text-3xl font-extrabold text-dark font-heading">Corporate Bid Specifications</h3>
-          <p class="text-xs text-dark-muted font-sans max-w-sm mx-auto">
-            Provide details of your custom branding, volume parameters, and shipping timelines. B2B accounts are assigned a dedicated sales manager.
-          </p>
+      <!-- Recently Viewed Block -->
+      <div id="recently-viewed-section" class="mt-20 border-t border-light-darker pt-16 space-y-6 hidden">
+        <h3 class="text-xs font-black text-dark uppercase tracking-wider font-heading">Recently Viewed Products</h3>
+        <div id="recently-viewed-list" class="grid grid-cols-2 sm:grid-cols-4 gap-6 font-sans">
+          <!-- Injected dynamically -->
         </div>
-        <ContactForm preselectedCategory={product.category} preselectedProduct={product.name} />
       </div>
 
     </div>
   </section>
+
+  <!-- MOBILE STICKY BOTTOM QUICK QUOTE BAR -->
+  <div class="fixed bottom-0 inset-x-0 bg-white border-t border-light-darker z-30 py-3.5 px-6 shadow-2xl flex md:hidden items-center justify-between gap-4 font-sans">
+    <div class="flex flex-col gap-0.5 leading-none">
+      <span class="text-[10px] font-bold text-dark truncate max-w-[150px]">{product.name}</span>
+      <span class="text-[9px] font-extrabold text-primary uppercase">Min MOQ: {product.moq}</span>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <input
+        type="number"
+        id="mobile-qty-input"
+        min={numericMoq}
+        value={numericMoq}
+        class="w-16 rounded-lg border border-light-darker bg-light px-2 py-1.5 font-bold text-dark text-xs focus:outline-none"
+      />
+      <button
+        type="button"
+        id="mobile-sticky-add-btn"
+        class="bg-primary text-white text-[10px] font-black rounded-lg px-4 py-2.5 hover:bg-primary-dark transition-all focus:outline-none"
+      >
+        Add Quote
+      </button>
+    </div>
+  </div>
+
 </Layout>
 
-<script define:vars={{ productSKU, product }}>
+<script define:vars={{ products, product }}>
   document.addEventListener('DOMContentLoaded', () => {
-    // Dynamic Gallery Image Switching
+
+    // ----------------------------------------------------
+    // GALLERY SWAPPER CODE
+    // ----------------------------------------------------
     const mainImg = document.getElementById('main-product-gallery-image');
-    const thumbBtns = document.querySelectorAll('.gallery-thumb-btn');
+    
+    document.querySelectorAll('.gallery-thumb-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.target.closest('.gallery-thumb-btn');
+        if (!target || !mainImg) return;
 
-    thumbBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const targetUrl = btn.getAttribute('data-image-url');
-        
-        // Remove active class from all, add to clicked
-        thumbBtns.forEach((b) => {
+        const url = target.getAttribute('data-image-url');
+        mainImg.src = url;
+
+        // Styling active border
+        document.querySelectorAll('.gallery-thumb-btn').forEach(b => {
           b.classList.remove('border-primary', 'border-2');
-          b.classList.add('border-light-darker', 'opacity-60');
+          b.classList.add('border-light-darker', 'border');
         });
-        btn.classList.add('border-primary', 'border-2');
-        btn.classList.remove('border-light-darker', 'opacity-60');
-
-        if (mainImg && targetUrl) {
-          mainImg.setAttribute('src', targetUrl);
-        }
+        target.classList.remove('border-light-darker', 'border');
+        target.classList.add('border-primary', 'border-2');
       });
     });
 
-    // Main Image Hover Zoom Effect (Apple Style)
-    const galleryContainer = mainImg?.parentElement;
-    if (galleryContainer && mainImg) {
-      galleryContainer.addEventListener('mousemove', (e) => {
-        const rect = galleryContainer.getBoundingClientRect();
+    // Main Image Zoom Effect
+    const wrapper = mainImg?.parentElement;
+    if (wrapper && mainImg) {
+      wrapper.addEventListener('mousemove', (e) => {
+        const rect = wrapper.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
-        
         mainImg.style.transformOrigin = `${x}% ${y}%`;
         mainImg.style.transform = 'scale(1.5)';
       });
 
-      galleryContainer.addEventListener('mouseleave', () => {
+      wrapper.addEventListener('mouseleave', () => {
         mainImg.style.transform = 'scale(1)';
-        mainImg.style.transformOrigin = 'center';
       });
     }
 
-    // Recently Viewed Logic
-    const MAX_RECENT = 4;
-    const key = 'aquadura_recent_products';
+    // ----------------------------------------------------
+    // TABS SYSTEM CODE
+    // ----------------------------------------------------
+    document.querySelectorAll('.spec-tab-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.target;
+        const tabId = target.getAttribute('data-tab');
 
-    const getRecent = () => {
-      try {
-        return JSON.parse(localStorage.getItem(key) || '[]');
-      } catch (e) {
-        return [];
-      }
-    };
+        // Headers Toggle
+        document.querySelectorAll('.spec-tab-btn').forEach(b => {
+          b.classList.remove('border-primary', 'text-primary');
+          b.classList.add('border-transparent', 'text-dark-muted');
+        });
+        target.classList.remove('border-transparent', 'text-dark-muted');
+        target.classList.add('border-primary', 'text-primary');
 
-    const addRecent = (prod) => {
-      const items = getRecent();
-      const filtered = items.filter(item => item.slug !== prod.slug);
-      filtered.unshift({
-        slug: prod.slug,
-        name: prod.name,
-        image: prod.image,
-        moq: prod.moq
+        // Panels Toggle
+        document.querySelectorAll('.spec-tab-panel').forEach(panel => {
+          panel.classList.add('hidden');
+        });
+        document.getElementById(`panel-${tabId}`)?.classList.remove('hidden');
       });
-      localStorage.setItem(key, JSON.stringify(filtered.slice(0, MAX_RECENT)));
-    };
+    });
 
-    // Add current product to recently viewed, but exclude from list output
-    const currentProdInfo = {
-      slug: product.slug,
-      name: product.name,
-      image: product.image,
-      moq: product.moq
-    };
+    // ----------------------------------------------------
+    // PERSISTED RECENTLY VIEWED PRODUCTS CODE
+    // ----------------------------------------------------
+    const RV_KEY = 'b2b_recently_viewed';
+    let rv = [];
+    try {
+      const data = localStorage.getItem(RV_KEY);
+      rv = data ? JSON.parse(data) : [];
+    } catch (e) {
+      rv = [];
+    }
 
-    // Render recently viewed list (excluding current product)
-    const renderRecentList = () => {
-      const list = getRecent().filter(item => item.slug !== product.slug);
-      const container = document.getElementById('recently-viewed-container');
-      const listEl = document.getElementById('recently-viewed-list');
+    // Filter out current and push to top
+    rv = rv.filter(slug => slug !== product.slug);
+    rv.unshift(product.slug);
+    // Limit to 5
+    rv = rv.slice(0, 5);
 
-      if (list.length > 0 && container && listEl) {
-        container.classList.remove('hidden');
-        listEl.innerHTML = list.map(item => `
-          <a href="/products/${item.slug}" class="group space-y-3 font-sans">
-            <div class="overflow-hidden rounded-xl border border-light-darker bg-light aspect-[4/3]">
-              <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500" alt="${item.name}" />
+    try {
+      localStorage.setItem(RV_KEY, JSON.stringify(rv));
+    } catch (e) {}
+
+    // Render recently viewed (skipping current viewed)
+    const listContainer = document.getElementById('recently-viewed-list');
+    const sectionContainer = document.getElementById('recently-viewed-section');
+
+    const toShow = rv.filter(slug => slug !== product.slug).slice(0, 4);
+    if (toShow.length > 0 && listContainer && sectionContainer) {
+      sectionContainer.classList.remove('hidden');
+      listContainer.innerHTML = toShow.map(slug => {
+        const item = products.find(p => p.slug === slug);
+        if (!item) return '';
+        return `
+          <a href="/products/${item.slug}" class="group block space-y-3 bg-light border border-light-darker p-4 rounded-2xl hover:border-slate-300 transition-colors">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden bg-white border border-light-darker">
+              <img src="${item.image}" alt="${item.name}" class="h-full w-full object-cover group-hover:scale-102 transition-transform duration-500" />
             </div>
             <div class="space-y-1">
-              <h4 class="text-xs font-bold text-dark group-hover:text-primary transition-colors">${item.name}</h4>
-              <span class="block text-[9px] font-bold text-dark-muted uppercase">MOQ: ${item.moq}</span>
+              <span class="block text-[10px] font-black text-dark font-heading leading-tight group-hover:text-primary transition-colors line-clamp-1">${item.name}</span>
+              <span class="block text-[8px] text-dark-muted font-bold uppercase">MOQ: ${item.moq}</span>
             </div>
           </a>
-        `).join('');
+        `;
+      }).join('');
+    }
+
+    // ----------------------------------------------------
+    // SYNC SIDEBAR & BOTTOM MOBILE QUANTITY & ADD TO QUOTE
+    // ----------------------------------------------------
+    const desktopQtyInput = document.getElementById('detail-qty-input');
+    const mobileQtyInput = document.getElementById('mobile-qty-input');
+    const desktopAddBtn = document.getElementById('detail-add-to-quote-btn');
+    const mobileAddBtn = document.getElementById('mobile-sticky-add-btn');
+
+    const syncQty = (src, dest) => {
+      if (src && dest) {
+        dest.value = src.value;
       }
     };
 
-    addRecent(currentProdInfo);
-    renderRecentList();
+    desktopQtyInput?.addEventListener('input', () => syncQty(desktopQtyInput, mobileQtyInput));
+    mobileQtyInput?.addEventListener('input', () => syncQty(mobileQtyInput, desktopQtyInput));
+
+    const triggerAdd = () => {
+      const qty = parseInt(desktopQtyInput?.value || mobileQtyInput?.value || '100') || 100;
+      
+      const printCheckbox = document.getElementById('detail-print-checkbox');
+      const printing = printCheckbox ? printCheckbox.checked : false;
+
+      const pkgSelect = document.getElementById('detail-pkg-select');
+      const packaging = pkgSelect ? pkgSelect.value : 'standard';
+
+      const numericMoq = parseInt(product.moq.replace(/[^0-9]/g, '')) || 100;
+
+      if ((window).QuoteCart) {
+        (window).QuoteCart.addItem({
+          slug: product.slug,
+          name: product.name,
+          image: product.image,
+          moq: product.moq,
+          numericMoq: numericMoq,
+          qty: qty,
+          printing: printing,
+          packaging: packaging
+        });
+      }
+    };
+
+    desktopAddBtn?.addEventListener('click', triggerAdd);
+    mobileAddBtn?.addEventListener('click', triggerAdd);
+
   });
 </script>

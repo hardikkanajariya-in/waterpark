@@ -1,32 +1,32 @@
 [
   {
     "id": "catalog-2026",
-    "title": "Aquadura B2B Wholesale Catalogue (PDF)",
-    "description": "Full product specification listings, colors, custom branding templates, and logistics sizing matrices.",
+    "title": "Complete B2B Wholesale Catalogue (PDF)",
+    "description": "Full product specification listings, color options, customization templates, and logistics packaging matrices.",
     "file_size": "14.2 MB",
     "version": "2026.1",
     "category": "Brochure"
   },
   {
-    "id": "iso-9001-cert",
-    "title": "ISO 9001:2015 Manufacturing Quality Certificate",
-    "description": "Certified plant operations, quality management protocols, and batch tracing guidelines documentation.",
-    "file_size": "1.8 MB",
-    "version": "Valid thru 2028",
+    "id": "msds-sheet",
+    "title": "Material Safety Data Sheet (MSDS) - Swim Silicone & LSR Polymers",
+    "description": "Chemical composition testing reports, non-toxicity clearances, skin-safe evaluations, and chlorine reaction assessments.",
+    "file_size": "2.1 MB",
+    "version": "Rev 2026",
     "category": "Compliance"
   },
   {
-    "id": "fina-guidelines",
-    "title": "FINA Equipment Compliance Report",
-    "description": "Technical compliance report verifying dimensional rules for starting blocks and anti-wave racing lanes.",
-    "file_size": "2.4 MB",
-    "version": "v3.2",
-    "category": "Compliance"
+    "id": "logistics-guide",
+    "title": "Logistics & Shipping Container Sizing Guidelines",
+    "description": "Volumetric weight matrices, packaging crate dimensions, stack safety indicators, and sea-freight container packing layouts.",
+    "file_size": "3.5 MB",
+    "version": "v1.4",
+    "category": "Logistics"
   },
   {
     "id": "customization-template",
-    "title": "OEM Custom Print Die-Lines & Bleeds",
-    "description": "Adobe Illustrator templates for custom stencils, logo print zones, and packaging specifications.",
+    "title": "OEM Custom Print Die-Lines & Vector Bleeds",
+    "description": "Adobe Illustrator templates for custom logo print boundaries, cap stencils, and packaging box layout configurations.",
     "file_size": "5.6 MB",
     "version": "2026.a",
     "category": "Template"

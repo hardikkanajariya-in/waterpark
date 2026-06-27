@@ -1,44 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import applications from '../data/applications.json';
+import config from '../data/config.json';
 
-const seoTitle = "Corporate Ethos & Quality Infrastructure | Aquadura";
-const seoDescription = "Learn about Aquadura's operational footprint, raw material safety regulations, ethical social audits, and international compliance frameworks including CE, BSCI, and ISO.";
+const seoTitle = `Corporate Supply & Logistics | ${config.brandName}`;
+const seoDescription = `Learn about ${config.brandName}'s bulk procurement network, material quality testing, and worldwide logistics capabilities.`;
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
-  <!-- Section 1: Editorial Header -->
-  <section class="bg-white py-24 border-b border-light-darker">
+  
+  <!-- Page Header -->
+  <section class="bg-white py-20 border-b border-light-darker">
     <div class="mx-auto max-w-4xl px-6 md:px-8 space-y-6">
-      <span class="text-[11px] font-bold tracking-[0.25em] text-primary uppercase block">Quality Policy</span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-dark tracking-tight leading-[1.1] font-heading">
-        Aquatic supply <br/>
-        <span class="text-primary font-medium italic">without compromise.</span>
+      <span class="text-[10px] font-black tracking-widest text-primary uppercase block">Quality Policy</span>
+      <h1 class="text-4xl font-extrabold text-dark tracking-tight leading-[1.1] font-heading">
+        Reliable B2B Aquatic Supply
       </h1>
-      <p class="text-lg text-dark-muted font-sans leading-relaxed pt-2">
-        Aquadura supplies commercial-grade aquatic equipment to swim schools, theme parks, hotels, and sports clubs. By integrating design, material sourcing, and testing directly in our network, we guarantee structural-grade product durability.
+      <p class="text-sm sm:text-base text-dark-muted font-sans leading-relaxed pt-2">
+        {config.brandName} supplies commercial-grade aquatic equipment to swim schools, water parks, hotels, and retailers. We focus on structured logistics, standard materials compliance, and direct bulk supply efficiency.
       </p>
     </div>
   </section>
 
-  <!-- Section 2: Narrative & Large Image (Apple/Muji Style) -->
-  <section class="py-20 lg:py-28 bg-white">
+  <!-- Narrative Section -->
+  <section class="py-16 bg-white">
     <div class="mx-auto max-w-7xl px-6 md:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Text -->
-        <div class="lg:col-span-6 space-y-6">
-          <span class="text-xs font-bold text-primary tracking-widest uppercase">Factory Operations</span>
-          <h2 class="text-3xl font-extrabold text-dark font-heading leading-tight">Scale Meets Specification</h2>
-          <p class="text-sm text-dark-muted font-sans leading-relaxed">
-            Operating a 15,000 square meter partner facility, we coordinate high-volume production schedules. Our processes utilize high-frequency welding for PVC slide tubes and precision liquid injection molding for hypoallergenic silicone seals.
+        <div class="lg:col-span-6 space-y-6 font-sans">
+          <span class="text-[10px] font-black text-primary tracking-widest uppercase block">Supply Network</span>
+          <h2 class="text-2xl font-extrabold text-dark font-heading leading-tight">Scale Meets Specification</h2>
+          <p class="text-xs text-dark-muted leading-relaxed">
+            By partnering with certified manufacturing facilities, we coordinate high-volume procurement schedules. We supply standard silicone swim caps, optical goggles, and commercial river tubes using durable, pool-tested materials.
           </p>
-          <p class="text-sm text-dark-muted font-sans leading-relaxed">
-            We avoid generic shortcuts. Every batch undergoes seal retention checks, chlorine aging exposure, and ultraviolet stress testing to confirm raw materials maintain elasticity and structural integrity in saline and chlorinated installations.
+          <p class="text-xs text-dark-muted leading-relaxed">
+            Every product batch is evaluated for seal retention, material fatigue, and chlorine exposure. This ensures that the equipment supplied meets standard industrial expectations in saline and chlorinated environments.
           </p>
         </div>
         <!-- Photo -->
         <div class="lg:col-span-6">
-          <div class="overflow-hidden rounded-2xl bg-light border border-light-darker aspect-[4/3]">
+          <div class="overflow-hidden rounded-2xl border border-light-darker aspect-[4/3] bg-light">
             <img
               src="/images/gallery_factory.png"
               alt="Inside precision molding laboratory"
@@ -51,87 +51,55 @@ const seoDescription = "Learn about Aquadura's operational footprint, raw materi
     </div>
   </section>
 
-  <!-- Section 3: Stat Strip (Minimal typography) -->
-  <section class="bg-dark text-white py-16">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+  <!-- Statistics Panel -->
+  <section class="bg-dark text-white py-12">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
       <div class="space-y-1">
-        <span class="block text-4xl font-extrabold text-secondary tracking-tight font-heading">1.2M+</span>
-        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Units Annual Output</span>
+        <span class="block text-3xl font-extrabold text-secondary font-heading">8 Divisions</span>
+        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Aquatic Catalogue</span>
       </div>
       <div class="space-y-1">
-        <span class="block text-4xl font-extrabold text-secondary tracking-tight font-heading">99.8%</span>
-        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">QA Pass Rate</span>
+        <span class="block text-3xl font-extrabold text-secondary font-heading">100% Bulk</span>
+        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">MOQ Optimised</span>
       </div>
       <div class="space-y-1">
-        <span class="block text-4xl font-extrabold text-secondary tracking-tight font-heading">15,000m²</span>
-        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Facility Footprint</span>
+        <span class="block text-3xl font-extrabold text-secondary font-heading">Nationwide</span>
+        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Logistic Network</span>
       </div>
       <div class="space-y-1">
-        <span class="block text-4xl font-extrabold text-secondary tracking-tight font-heading">24 Hours</span>
-        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Response Guarantee</span>
+        <span class="block text-3xl font-extrabold text-secondary font-heading">24 Hours</span>
+        <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">Response Guarantee</span>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Compliance Matrix -->
-  <section class="py-20 lg:py-28 bg-light border-b border-light-darker">
+  <!-- B2B Operations Capabilities -->
+  <section class="py-16 bg-light border-b border-light-darker">
     <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
       <div class="max-w-2xl">
-        <span class="text-xs font-bold text-primary tracking-widest uppercase block mb-2">Quality Standards</span>
-        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Certified Operations</h2>
+        <span class="text-[10px] font-black text-primary tracking-widest uppercase block mb-2">Our Capabilities</span>
+        <h2 class="text-2xl font-extrabold tracking-tight text-dark font-heading">Service Commitments</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="space-y-3 font-sans">
-          <span class="text-xs font-bold text-primary uppercase">Management Standard</span>
-          <h3 class="text-base font-bold text-dark font-heading">ISO 9001:2015</h3>
-          <p class="text-xs text-dark-muted leading-relaxed">
-            Our Quality Management System oversees each logistics milestone—from inspection of raw polymers to the shipping manifests of finished goods.
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-sans">
+        <div class="space-y-2">
+          <h3 class="text-sm font-bold text-dark font-heading">Consolidated Logistics</h3>
+          <p class="text-dark-muted leading-relaxed">
+            We handle packing lists, bulk crating, and marine/air dispatch, delivering directly to resorts, academies, and warehouses.
           </p>
         </div>
-        <div class="space-y-3 font-sans">
-          <span class="text-xs font-bold text-primary uppercase">Compliance Audit</span>
-          <h3 class="text-base font-bold text-dark font-heading">BSCI Social Audits</h3>
-          <p class="text-xs text-dark-muted leading-relaxed">
-            We require all primary factories to undergo annual Business Social Compliance Initiative (BSCI) audits to ensure safe workspace ethics and fair labor rates.
+        <div class="space-y-2">
+          <h3 class="text-sm font-bold text-dark font-heading">Material Quality Standards</h3>
+          <p class="text-dark-muted leading-relaxed">
+            All polymers and silicone items leverage liquid injection molding and high-grade compound formulas to prevent tearing.
           </p>
         </div>
-        <div class="space-y-3 font-sans">
-          <span class="text-xs font-bold text-primary uppercase">Safety Standard</span>
-          <h3 class="text-base font-bold text-dark font-heading">CE Declaration</h3>
-          <p class="text-xs text-dark-muted leading-relaxed">
-            All waterproof covers and commercial safety flotation vests conform with European Economic Area (CE) safety directives.
+        <div class="space-y-2">
+          <h3 class="text-sm font-bold text-dark font-heading">Custom Packaging</h3>
+          <p class="text-dark-muted leading-relaxed">
+            We assist with customized brand packaging, retail boxes, and printed instructions for institutional orders.
           </p>
         </div>
-        <div class="space-y-3 font-sans">
-          <span class="text-xs font-bold text-primary uppercase">Athletic Standard</span>
-          <h3 class="text-base font-bold text-dark font-heading">FINA Design Rules</h3>
-          <p class="text-xs text-dark-muted leading-relaxed">
-            Our competition lane lines, starting blocks, and racing caps align with World Aquatics FINA regulations for water displacement.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5: Applications Overview -->
-  <section class="py-20 lg:py-28 bg-white">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
-      <div class="max-w-2xl">
-        <span class="text-xs font-bold text-primary tracking-widest uppercase block mb-2">B2B Sectors</span>
-        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Tailored Solutions for Commercial Operations</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {applications.map((app) => (
-          <div class="space-y-4 font-sans">
-            <h3 class="text-lg font-bold text-dark font-heading">{app.name}</h3>
-            <p class="text-xs text-dark-muted leading-relaxed">{app.description}</p>
-            <a href={`/applications#${app.slug}`} class="inline-block text-xs font-bold text-primary hover:underline">
-              Browse deployment cases &rarr;
-            </a>
-          </div>
-        ))}
       </div>
     </div>
   </section>

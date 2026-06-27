@@ -1,18 +1,20 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import QuoteCartDrawer from '../components/QuoteCartDrawer.astro';
+import config from '../data/config.json';
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   image?: string;
   type?: string;
 }
 
 const { 
-  title = "AQUADURA | Commercial Aquatics & Swimming Equipment Manufacturer", 
-  description = "Aquadura is a premium global manufacturer and B2B supplier of swimming goggles, caps, waterproof covers, pool equipment, and water park accessories.",
-  image = "/images/hero.png",
+  title = `${config.brandName} | ${config.brandTagline}`, 
+  description = `Wholesale procurement and supply catalog of professional swimming equipment. Built for water parks, academies, and hotels.`,
+  image = "/images/hero_catalog.png",
   type = "website"
 } = Astro.props;
 
@@ -50,7 +52,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://aquadura
     <!-- Google Fonts Connection -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
   <body class="bg-light font-sans text-dark antialiased min-h-screen flex flex-col selection:bg-primary-light selection:text-primary-dark">
     
@@ -61,6 +63,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://aquadura
     <main class="flex-grow">
       <slot />
     </main>
+
+    <!-- Global Persistent Quote Cart Drawer -->
+    <QuoteCartDrawer />
 
     <!-- Professional B2B Footer -->
     <Footer />

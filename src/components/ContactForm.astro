@@ -1,5 +1,6 @@
 ---
 import categories from '../data/categories.json';
+import config from '../data/config.json';
 
 interface Props {
   preselectedCategory?: string;
@@ -18,7 +19,7 @@ const { preselectedCategory = "", preselectedProduct = "" } = Astro.props;
       </svg>
       <div>
         <h3 class="font-bold text-sm font-heading">Quote Inquiry Received</h3>
-        <p class="text-xs mt-1 font-sans text-emerald-700">Thank you for contacting Aquadura. A B2B procurement representative will review your specifications and email a preliminary quote within 1 business day.</p>
+        <p class="text-xs mt-1 font-sans text-emerald-700">Thank you for contacting {config.brandName}. A B2B procurement representative will review your specifications and email a preliminary quote within 1 business day.</p>
       </div>
     </div>
   </div>

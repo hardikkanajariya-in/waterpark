@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import gallery from '../data/gallery.json';
+import config from '../data/config.json';
 
-const seoTitle = "Operations & Installation Gallery | Aquadura";
-const seoDescription = "Take a visual tour of Aquadura's precision injection molding facilities, pressure testing labs, and real-world commercial installations at water parks and public pools.";
+const seoTitle = `Operations & Installation Gallery | ${config.brandName}`;
+const seoDescription = `Take a visual tour of our precision injection molding facilities, pressure testing labs, and real-world commercial installations at water parks and public pools.`;
 ---
 
 <Layout title={seoTitle} description={seoDescription}>

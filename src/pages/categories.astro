@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import categories from '../data/categories.json';
 import products from '../data/products.json';
+import config from '../data/config.json';
 
-const seoTitle = "Product Divisions | Aquadura Commercial Aquatics";
-const seoDescription = "Browse through Aquadura's 8 manufacturing categories, spanning commercial swimming goggles, custom silicone caps, waterproof phone cases, pool hardware, and water park structures.";
+const seoTitle = `Product Divisions | ${config.brandName} Commercial Aquatics`;
+const seoDescription = `Browse through our 8 manufacturing categories, spanning commercial swimming goggles, custom silicone caps, waterproof phone cases, pool hardware, and water park structures.`;
 
 // Count products in each category for the category listing metadata
 const getProductCount = (catSlug: string) => {

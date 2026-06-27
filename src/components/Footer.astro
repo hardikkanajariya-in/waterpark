@@ -1,6 +1,7 @@
 ---
 import categories from "../data/categories.json";
 import applications from "../data/applications.json";
+import config from "../data/config.json";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -14,23 +15,22 @@ const currentYear = new Date().getFullYear();
       <div class="space-y-6 lg:col-span-1">
         <a href="/" class="flex flex-col items-start leading-none group">
           <span class="font-heading text-2xl font-extrabold tracking-wider text-white">
-            AQUADURA
+            {config.brandName}
           </span>
           <span class="text-[9px] font-bold tracking-[0.25em] text-secondary uppercase mt-0.5">
-            Aquatic Catalogue
+            {config.brandTagline.split(' & ')[0]}
           </span>
         </a>
         <p class="text-xs text-slate-400 leading-relaxed">
           Premium B2B supplier and wholesale distributor of commercial-grade swimming accessories, water park tubes, and competitive pool equipment.
         </p>
         
-        <!-- Certificates -->
+        <!-- B2B values indicator -->
         <div class="pt-2 space-y-2">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">Audited & Certified</span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">Quality Assured</span>
           <div class="flex flex-wrap gap-1.5">
-            <span class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[9px] font-bold text-slate-300">ISO 9001:2015</span>
-            <span class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[9px] font-bold text-slate-300">CE COMPLIANT</span>
-            <span class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[9px] font-bold text-slate-300">FINA STANDARD</span>
+            <span class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[9px] font-bold text-slate-300">Bulk Supply</span>
+            <span class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[9px] font-bold text-slate-300">Custom Branding</span>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ const currentYear = new Date().getFullYear();
       <!-- Categories Links -->
       <div>
         <h3 class="font-heading text-xs font-bold uppercase tracking-widest text-white mb-6">
-          Product Divisions
+          Divisions
         </h3>
         <ul class="space-y-3 text-xs">
           {categories.map((cat) => (
@@ -108,29 +108,23 @@ const currentYear = new Date().getFullYear();
               <svg class="h-4 w-4 text-secondary shrink-0 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
-              <span>Plot 89-B, Industrial Center-4, TX 75001</span>
+              <span>{config.contact.address}</span>
             </li>
             <li class="flex items-center">
               <svg class="h-4 w-4 text-secondary shrink-0 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <a href="tel:+18005550199" class="hover:text-white transition-colors">
-                +1 (800) 555-0199
+              <a href={`tel:${config.contact.phoneRaw}`} class="hover:text-white transition-colors">
+                {config.contact.phone}
               </a>
             </li>
             <li class="flex items-center">
               <svg class="h-4 w-4 text-secondary shrink-0 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <a href="mailto:supply@aquadura.com" class="hover:text-white transition-colors">
-                supply@aquadura.com
+              <a href={`mailto:${config.contact.email}`} class="hover:text-white transition-colors font-medium">
+                {config.contact.email}
               </a>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-4 w-4 text-secondary shrink-0 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Mon - Fri / 8:00 AM - 6:00 PM EST</span>
             </li>
           </ul>
         </div>
@@ -143,10 +137,10 @@ const currentYear = new Date().getFullYear();
   <div class="border-t border-slate-900 bg-slate-950 px-6 py-6 md:px-8">
     <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
       <div>
-        &copy; {currentYear} Aquadura Catalog Solutions. All rights reserved.
+        &copy; {currentYear} {config.brandName} Catalog Solutions. All rights reserved.
       </div>
       <div class="flex space-x-6">
-        <a href="/downloads" class="hover:text-white transition-colors">Certificates</a>
+        <a href="/downloads" class="hover:text-white transition-colors">Resources</a>
         <a href="/faq" class="hover:text-white transition-colors">Wholesale Policy</a>
         <a href="/contact" class="hover:text-white transition-colors">Terms of Quote</a>
       </div>

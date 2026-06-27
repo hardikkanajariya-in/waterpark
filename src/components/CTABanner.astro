@@ -1,18 +1,19 @@
 ---
+import config from '../data/config.json';
 ---
 
 <section class="bg-dark text-white overflow-hidden relative py-16 sm:py-24">
-  <!-- Accent shapes (No gradient, premium B2B solids) -->
+  <!-- Accent shapes -->
   <div class="absolute top-0 right-0 h-64 w-64 bg-slate-800 rounded-full blur-3xl opacity-20 -mr-20 -mt-20"></div>
   <div class="absolute bottom-0 left-0 h-64 w-64 bg-primary/10 rounded-full blur-3xl opacity-10 -ml-20 -mb-20"></div>
 
   <div class="mx-auto max-w-5xl px-6 text-center space-y-8 relative z-10 md:px-8">
     <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl font-heading leading-tight max-w-3xl mx-auto">
       Ready to Equip Your Facility? <br class="hidden sm:inline" />
-      Partner with Aquadura Today.
+      Partner with {config.brandName} Today.
     </h2>
     <p class="text-base text-slate-300 font-sans leading-relaxed max-w-xl mx-auto">
-      Speak with our B2B procurement division to discuss custom logo integrations, volume pricing structures, and shipping schedules.
+      Speak with our wholesale procurement division to discuss custom logo configurations, volume pricing lists, and shipping schedules.
     </p>
     <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
       <a
@@ -22,7 +23,7 @@
         Request Custom Quote
       </a>
       <a
-        href="/products"
+        href="/downloads"
         class="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-sm font-semibold text-slate-200 hover:bg-slate-700 hover:text-white transition-all duration-200"
       >
         Download B2B Catalog (PDF)

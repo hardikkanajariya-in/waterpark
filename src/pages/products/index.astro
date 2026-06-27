@@ -2,9 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import products from '../../data/products.json';
 import categories from '../../data/categories.json';
+import config from '../../data/config.json';
 
-const seoTitle = "Product Catalogue & Specifications | Aquadura";
-const seoDescription = "Review Aquadura's wholesale catalog of swimming goggles, caps, waterproof cases, pool ladders, and slide tubes. Filter by category, view detailed specs, and request bulk quotes.";
+const seoTitle = `Product Catalogue & Specifications | ${config.brandName}`;
+const seoDescription = `Filter and search through our B2B wholesale catalogue of professional swimming goggles, caps, water park slide rafts, and pool equipment.`;
 
 const getCategoryName = (catSlug: string) => {
   return categories.find(c => c.slug === catSlug)?.name || "Aquatic Equipment";
@@ -12,6 +13,7 @@ const getCategoryName = (catSlug: string) => {
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
+  
   <!-- Page Header -->
   <section class="bg-white py-16 border-b border-light-darker">
     <div class="mx-auto max-w-7xl px-6 md:px-8">
@@ -19,13 +21,13 @@ const getCategoryName = (catSlug: string) => {
         <nav class="flex text-xs font-semibold uppercase tracking-wider text-dark-muted space-x-2">
           <a href="/" class="hover:text-primary font-sans">Home</a>
           <span>/</span>
-          <span class="text-primary font-sans">Products</span>
+          <span class="text-primary font-sans">Catalogue</span>
         </nav>
         <h1 class="text-4xl font-extrabold tracking-tight text-dark font-heading">
           Product Catalogue
         </h1>
         <p class="text-sm text-dark-muted font-sans mt-2 max-w-xl leading-relaxed">
-          Filter and sort our wholesale catalog of certified commercial aquatic products. View exact dimensions, minimum order quantities (MOQ), and request direct B2B quote sheets.
+          Filter and sort our B2B inventory of certified commercial aquatic equipment. View exact dimensions, minimum order quantities (MOQ), and add items directly to your consolidated quote sheet.
         </p>
       </div>
     </div>
@@ -33,11 +35,11 @@ const getCategoryName = (catSlug: string) => {
 
   <!-- Catalogue Section -->
   <section class="py-12 bg-light">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 lg:flex lg:gap-12">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 lg:flex lg:gap-8">
       
       <!-- Sticky Sidebar Filters -->
       <aside class="w-full lg:w-72 shrink-0 mb-10 lg:mb-0">
-        <div class="sticky top-28 bg-white border border-light-darker rounded-2xl p-6 shadow-soft space-y-8 font-sans">
+        <div class="sticky top-28 bg-white border border-light-darker rounded-2xl p-6 shadow-soft space-y-6 font-sans">
           
           <!-- Search input -->
           <div class="space-y-2">
@@ -46,7 +48,7 @@ const getCategoryName = (catSlug: string) => {
               <input
                 type="text"
                 id="catalog-search"
-                placeholder="Search name, features..."
+                placeholder="Search goggles, caps, rafts..."
                 class="w-full rounded-lg border border-light-darker bg-light px-3 py-2 text-xs text-dark placeholder:text-dark-muted/50 focus:bg-white focus:border-primary focus:outline-none transition-all"
               />
               <svg class="absolute right-3 top-2.5 h-3.5 w-3.5 text-dark-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -62,7 +64,7 @@ const getCategoryName = (catSlug: string) => {
               id="catalog-sort"
               class="w-full rounded-lg border border-light-darker bg-light px-3 py-2 text-xs text-dark focus:bg-white focus:border-primary focus:outline-none transition-all"
             >
-              <option value="default">Default Catalogue Order</option>
+              <option value="default">Default Order</option>
               <option value="name-asc">Product Name (A-Z)</option>
               <option value="name-desc">Product Name (Z-A)</option>
               <option value="moq-asc">MOQ (Low to High)</option>
@@ -94,37 +96,70 @@ const getCategoryName = (catSlug: string) => {
             </nav>
           </div>
 
+          <!-- Specifications quick filters -->
+          <div class="space-y-3 pt-2 border-t border-light-darker">
+            <span class="block text-[10px] font-bold text-dark uppercase tracking-wider">Product Features</span>
+            <div class="space-y-2 text-xs text-dark font-medium">
+              <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" id="filter-antifog" class="spec-filter-checkbox rounded border-light-darker text-primary focus:ring-primary h-4.5 w-4.5" />
+                Anti-Fog Eyewear
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" id="filter-uv" class="spec-filter-checkbox rounded border-light-darker text-primary focus:ring-primary h-4.5 w-4.5" />
+                UV Protection
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" id="filter-heavyduty" class="spec-filter-checkbox rounded border-light-darker text-primary focus:ring-primary h-4.5 w-4.5" />
+                Heavy-Duty / Commercial
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" id="filter-kids" class="spec-filter-checkbox rounded border-light-darker text-primary focus:ring-primary h-4.5 w-4.5" />
+                Junior / Kid Safe
+              </label>
+            </div>
+          </div>
+
         </div>
       </aside>
 
       <!-- Catalogue Listings -->
       <div class="flex-grow space-y-6">
         
-        <!-- Category description banner (updated dynamically via JS) -->
+        <!-- Category description banner -->
         <div id="category-description-banner" class="bg-white border border-light-darker rounded-2xl p-6 shadow-soft hidden">
           <h2 id="category-banner-title" class="text-xl font-bold text-dark font-heading"></h2>
           <p id="category-banner-desc" class="text-xs text-dark-muted mt-2 leading-relaxed font-sans"></p>
         </div>
 
-        <!-- Products List (Editorial rows, not generic retail boxes) -->
-        <div id="products-catalog-list" class="space-y-6">
+        <!-- Products List (Editorial rows) -->
+        <div id="products-catalog-list" class="space-y-6 animate-fade-in">
           {products.map((product) => {
-            // Helper to get raw numeric MOQ for sorting
             const numericMOQ = parseInt(product.moq.replace(/[^0-9]/g, '')) || 0;
+            
+            // Build custom feature flags for Javascript searching
+            const hasAntiFog = product.description.toLowerCase().includes("anti-fog") || product.features.some(f => f.toLowerCase().includes("anti-fog"));
+            const hasUV = product.description.toLowerCase().includes("uv") || product.features.some(f => f.toLowerCase().includes("uv"));
+            const isHeavyDuty = product.description.toLowerCase().includes("heavy-duty") || product.description.toLowerCase().includes("commercial") || product.description.toLowerCase().includes("reinforced") || product.category.includes("tube");
+            const isKids = product.description.toLowerCase().includes("kids") || product.description.toLowerCase().includes("junior") || product.slug.includes("junior") || product.slug.includes("kid");
+
             return (
               <div
                 data-prod-category={product.category}
                 data-prod-name={product.name}
                 data-prod-moq={numericMOQ}
+                data-prod-antifog={hasAntiFog ? "true" : "false"}
+                data-prod-uv={hasUV ? "true" : "false"}
+                data-prod-heavyduty={isHeavyDuty ? "true" : "false"}
+                data-prod-kids={isKids ? "true" : "false"}
                 class="product-row bg-white border border-light-darker rounded-2xl p-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-6 items-center"
               >
                 <!-- Photo Container -->
                 <div class="md:col-span-3">
-                  <div class="overflow-hidden rounded-xl bg-light border border-light-darker aspect-[4/3] w-full">
+                  <div class="overflow-hidden rounded-xl bg-light border border-light-darker aspect-[4/3] w-full relative group">
                     <img
                       src={product.image}
                       alt={product.name}
-                      class="w-full h-full object-cover"
+                      class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                       loading="lazy"
                     />
                   </div>
@@ -140,14 +175,14 @@ const getCategoryName = (catSlug: string) => {
                       SKU: AQ-{product.slug.slice(0,6).toUpperCase()}
                     </span>
                   </div>
-                  <h3 class="text-lg font-bold text-dark font-heading">
+                  <h3 class="text-lg font-bold text-dark font-heading leading-snug">
                     {product.name}
                   </h3>
                   <p class="text-xs text-dark-muted leading-relaxed line-clamp-2">
                     {product.description}
                   </p>
-                  <!-- Technical specifications previews -->
-                  <div class="flex flex-wrap gap-x-4 gap-y-1 pt-1.5 text-[10px] text-dark-muted">
+                  <!-- Specs previews -->
+                  <div class="flex flex-wrap gap-x-4 gap-y-1.5 pt-1 text-[10px] text-dark-muted font-medium">
                     {Object.entries(product.specifications).slice(0, 2).map(([k, v]) => (
                       <span class="flex items-center">
                         <strong class="text-dark mr-1">{k}:</strong> {v}
@@ -156,27 +191,32 @@ const getCategoryName = (catSlug: string) => {
                   </div>
                 </div>
 
-                <!-- B2B Actions -->
-                <div class="md:col-span-3 border-t md:border-t-0 md:border-l border-light-darker pt-4 md:pt-0 md:pl-6 flex flex-col justify-center h-full space-y-4">
+                <!-- B2B Actions (Add to Quote) -->
+                <div class="md:col-span-3 border-t md:border-t-0 md:border-l border-light-darker pt-4 md:pt-0 md:pl-6 flex flex-col justify-center space-y-3 h-full">
                   <div>
-                    <span class="block text-[9px] font-bold text-dark-muted uppercase tracking-wider font-sans">Minimum Order</span>
-                    <span class="text-xs font-extrabold text-dark font-sans">{product.moq}</span>
+                    <span class="block text-[9px] font-bold text-dark-muted uppercase tracking-wider">Minimum Order</span>
+                    <span class="text-xs font-extrabold text-dark">{product.moq}</span>
                   </div>
                   <div class="flex flex-col gap-2">
-                    <a
-                      href={`/products/${product.slug}`}
-                      class="w-full inline-flex items-center justify-center rounded-full bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-all duration-150"
+                    <button
+                      type="button"
+                      class="quick-view-btn w-full inline-flex items-center justify-center rounded-lg bg-light border border-light-darker px-4 py-2.5 text-xs font-bold text-dark hover:bg-white hover:border-slate-300 transition-all focus:outline-none"
+                      data-product-slug={product.slug}
                     >
-                      Specifications & Quote
-                    </a>
-                    <a
-                      href={`https://wa.me/18005550199?text=Hi, I am interested in procuring the ${product.name}. Please share a bulk quotation.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="w-full inline-flex items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-xs font-bold text-emerald-800 hover:bg-emerald-100 transition-all duration-150"
+                      Quick View & Specs
+                    </button>
+                    <button
+                      type="button"
+                      data-add-to-quote
+                      data-slug={product.slug}
+                      data-name={product.name}
+                      data-image={product.image}
+                      data-moq={product.moq}
+                      data-numeric-moq={numericMOQ.toString()}
+                      class="w-full inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-xs font-bold text-white hover:bg-primary-dark transition-all focus:outline-none"
                     >
-                      WhatsApp inquiry
-                    </a>
+                      + Add to Quote
+                    </button>
                   </div>
                 </div>
 
@@ -198,50 +238,185 @@ const getCategoryName = (catSlug: string) => {
 
     </div>
   </section>
+
+  <!-- QUICK VIEW MODAL OVERLAY -->
+  <div id="quick-view-modal-backdrop" class="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+  
+  <div id="quick-view-modal" class="fixed inset-6 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[680px] sm:h-auto bg-white border border-light-darker rounded-3xl shadow-2xl z-50 p-6 sm:p-8 flex flex-col font-sans hidden opacity-0 transform scale-95 transition-all duration-300">
+    <!-- Close icon -->
+    <button id="close-quick-view-btn" class="absolute top-4 right-4 text-dark-muted hover:text-dark p-1 rounded-full hover:bg-light transition-all focus:outline-none">
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start overflow-y-auto max-h-[70vh] sm:max-h-none pr-2">
+      <!-- Left side: Image -->
+      <div class="space-y-4">
+        <div class="overflow-hidden rounded-2xl border border-light-darker aspect-[4/3] bg-light">
+          <img id="qv-image" src="" alt="" class="h-full w-full object-cover" />
+        </div>
+        <div>
+          <span class="block text-[8px] font-bold text-dark-muted uppercase tracking-wider">Wholesale MOQ requirement</span>
+          <span id="qv-moq-badge" class="inline-block text-xs font-black text-primary-dark bg-primary-light px-2.5 py-0.5 rounded border border-primary/25 mt-1 font-sans"></span>
+        </div>
+      </div>
+
+      <!-- Right side: Description & Specs -->
+      <div class="space-y-4">
+        <div class="space-y-1">
+          <span id="qv-category" class="text-[9px] font-bold text-primary uppercase tracking-widest block font-sans"></span>
+          <h3 id="qv-name" class="text-xl font-bold text-dark font-heading leading-snug"></h3>
+        </div>
+
+        <p id="qv-description" class="text-xs text-dark-muted leading-relaxed font-sans"></p>
+
+        <!-- Technical specifications list -->
+        <div class="space-y-2 border-t border-light-darker pt-3">
+          <h4 class="text-[9px] font-bold text-dark uppercase tracking-wider font-heading">Specifications</h4>
+          <div id="qv-specs" class="space-y-1 text-[11px] text-dark-muted font-sans">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <!-- Add to Quote sheet inside Modal -->
+        <div class="border-t border-light-darker pt-4 flex items-end gap-3">
+          <div class="flex flex-col gap-1 text-[9px]">
+            <label class="font-bold uppercase tracking-wider text-dark-muted">Quantity</label>
+            <input
+              type="number"
+              id="qv-qty-input"
+              min="100"
+              value="100"
+              class="w-20 rounded-lg border border-light-darker bg-light px-2 py-1.5 font-bold text-dark text-xs focus:bg-white focus:outline-none"
+            />
+          </div>
+          <button
+            type="button"
+            id="qv-add-quote-btn"
+            class="flex-grow inline-flex items-center justify-center rounded-lg bg-primary py-2.5 text-xs font-bold text-white shadow hover:bg-primary-dark transition-all focus:outline-none font-sans"
+          >
+            Add to Quote Sheet
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </Layout>
 
-<script define:vars={{ categories }}>
-  // Dynamic Client-side Catalog Filtering & Sorting
+<script define:vars={{ categories, products }}>
+  // B2B Catalog filtering, sorting, search, and Quick View integrations
   document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.cat-filter-btn');
-    const productRows = document.querySelectorAll('.product-row');
+    
+    // DOM Elements
     const searchInput = document.getElementById('catalog-search');
     const sortSelect = document.getElementById('catalog-sort');
+    const filterButtons = document.querySelectorAll('.cat-filter-btn');
+    const specCheckboxes = document.querySelectorAll('.spec-filter-checkbox');
+    const productRows = document.querySelectorAll('.product-row');
     const noProductsMsg = document.getElementById('no-products-message');
-    const catalogGrid = document.getElementById('products-catalog-list');
-    
-    // Category Banner Elements
-    const banner = document.getElementById('category-description-banner');
+    const categoryBanner = document.getElementById('category-description-banner');
     const bannerTitle = document.getElementById('category-banner-title');
     const bannerDesc = document.getElementById('category-banner-desc');
+    const catalogList = document.getElementById('products-catalog-list');
 
     let currentFilter = 'all';
     let searchQuery = '';
     let currentSort = 'default';
+    
+    // Feature Checkbox states
+    let filterAntiFog = false;
+    let filterUV = false;
+    let filterHeavyDuty = false;
+    let filterKids = false;
 
-    // Function to apply filters, search, and sorting
+    // Apply URL search parameters if any
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlCategory = urlParams.get('category');
+    const urlSearch = urlParams.get('search');
+
+    if (urlCategory) {
+      currentFilter = urlCategory;
+      filterButtons.forEach(btn => {
+        const filterVal = btn.getAttribute('data-filter');
+        btn.classList.remove('bg-primary', 'text-white', 'text-dark-muted');
+        if (filterVal === currentFilter) {
+          btn.classList.add('bg-primary', 'text-white');
+        } else {
+          btn.classList.add('text-dark-muted');
+        }
+      });
+    }
+
+    if (urlSearch) {
+      searchQuery = urlSearch.toLowerCase();
+      if (searchInput) {
+        searchInput.value = urlSearch;
+      }
+    }
+
+    // Refresh Category Banner Description
+    const updateCategoryBanner = () => {
+      if (currentFilter === 'all') {
+        categoryBanner?.classList.add('hidden');
+        return;
+      }
+      
+      const cat = categories.find(c => c.slug === currentFilter);
+      if (cat && bannerTitle && bannerDesc && categoryBanner) {
+        bannerTitle.textContent = cat.name;
+        bannerDesc.textContent = cat.description;
+        categoryBanner.classList.remove('hidden');
+      } else {
+        categoryBanner?.classList.add('hidden');
+      }
+    };
+
+    // Master Catalog Render Function
     const updateCatalogue = () => {
       let matchCount = 0;
       const visibleProducts = [];
 
       productRows.forEach((row) => {
-        const prodRow = row;
-        const category = prodRow.getAttribute('data-prod-category');
-        const name = prodRow.getAttribute('data-prod-name')?.toLowerCase() || '';
+        const category = row.getAttribute('data-prod-category');
+        const name = row.getAttribute('data-prod-name')?.toLowerCase() || '';
+        
+        // Feature flags
+        const hasAntiFog = row.getAttribute('data-prod-antifog') === 'true';
+        const hasUV = row.getAttribute('data-prod-uv') === 'true';
+        const isHeavyDuty = row.getAttribute('data-prod-heavyduty') === 'true';
+        const isKids = row.getAttribute('data-prod-kids') === 'true';
 
         const matchesCategory = currentFilter === 'all' || category === currentFilter;
         const matchesSearch = name.includes(searchQuery);
 
-        if (matchesCategory && matchesSearch) {
-          prodRow.style.display = 'grid';
-          visibleProducts.push(prodRow);
+        // Check specs
+        const matchesAntiFog = !filterAntiFog || hasAntiFog;
+        const matchesUV = !filterUV || hasUV;
+        const matchesHeavyDuty = !filterHeavyDuty || isHeavyDuty;
+        const matchesKids = !filterKids || isKids;
+
+        if (matchesCategory && matchesSearch && matchesAntiFog && matchesUV && matchesHeavyDuty && matchesKids) {
+          row.style.display = 'grid';
+          visibleProducts.push(row);
           matchCount++;
         } else {
-          prodRow.style.display = 'none';
+          row.style.display = 'none';
         }
       });
 
-      // Apply sorting to visible products
+      // Update banner info
+      updateCategoryBanner();
+
+      // Show/Hide Empty State
+      if (matchCount === 0) {
+        noProductsMsg?.classList.remove('hidden');
+      } else {
+        noProductsMsg?.classList.add('hidden');
+      }
+
+      // Apply sorting on visible nodes
       if (currentSort !== 'default') {
         const sorted = [...visibleProducts].sort((a, b) => {
           if (currentSort === 'name-asc') {
@@ -249,116 +424,175 @@ const getCategoryName = (catSlug: string) => {
           } else if (currentSort === 'name-desc') {
             return (b.getAttribute('data-prod-name') || '').localeCompare(a.getAttribute('data-prod-name') || '');
           } else if (currentSort === 'moq-asc') {
-            const moqA = parseInt(a.getAttribute('data-prod-moq') || '0');
-            const moqB = parseInt(b.getAttribute('data-prod-moq') || '0');
+            const moqA = parseInt(a.getAttribute('data-prod-moq') || '0') || 0;
+            const moqB = parseInt(b.getAttribute('data-prod-moq') || '0') || 0;
             return moqA - moqB;
           }
           return 0;
         });
 
-        // Re-append items in sorted order
-        if (catalogGrid) {
-          sorted.forEach(el => catalogGrid.appendChild(el));
-        }
-      }
-
-      // Toggle no products warning
-      if (noProductsMsg) {
-        if (matchCount === 0) {
-          noProductsMsg.classList.remove('hidden');
-        } else {
-          noProductsMsg.classList.add('hidden');
-        }
-      }
-
-      // Update category banner
-      if (banner && bannerTitle && bannerDesc) {
-        if (currentFilter === 'all') {
-          banner.classList.add('hidden');
-        } else {
-          const catInfo = categories.find(c => c.slug === currentFilter);
-          if (catInfo) {
-            bannerTitle.textContent = catInfo.name;
-            bannerDesc.textContent = catInfo.description;
-            banner.classList.remove('hidden');
-          } else {
-            banner.classList.add('hidden');
-          }
-        }
+        // Re-append sorted nodes in list
+        sorted.forEach(node => catalogList?.appendChild(node));
       }
     };
 
-    // Attach click listeners to filter buttons
-    filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
+    // Category Button clicks
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
         currentFilter = btn.getAttribute('data-filter') || 'all';
-        
-        // Update button states
-        filterButtons.forEach((b) => {
-          const button = b;
-          if (button.getAttribute('data-filter') === currentFilter) {
-            button.classList.add('bg-primary', 'text-white');
-            button.classList.remove('text-dark-muted', 'hover:bg-light', 'hover:text-primary');
-          } else {
-            button.classList.remove('bg-primary', 'text-white');
-            button.classList.add('text-dark-muted', 'hover:bg-light', 'hover:text-primary');
-          }
-        });
 
-        // Update URL query parameters silently
-        const url = new URL(window.location.href);
-        if (currentFilter === 'all') {
-          url.searchParams.delete('category');
-        } else {
-          url.searchParams.set('category', currentFilter);
-        }
-        window.history.pushState({}, '', url.toString());
+        // Styling toggle
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-white');
+          b.classList.add('text-dark-muted');
+        });
+        btn.classList.remove('text-dark-muted');
+        btn.classList.add('bg-primary', 'text-white');
 
         updateCatalogue();
       });
     });
 
-    // Search input listener
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value.toLowerCase().trim();
-        updateCatalogue();
-      });
-    }
+    // Search Keyup
+    searchInput?.addEventListener('input', (e) => {
+      searchQuery = (e.target).value.toLowerCase();
+      updateCatalogue();
+    });
 
-    // Sort listener
-    if (sortSelect) {
-      sortSelect.addEventListener('change', (e) => {
-        currentSort = e.target.value;
-        updateCatalogue();
-      });
-    }
+    // Sort Selection change
+    sortSelect?.addEventListener('change', (e) => {
+      currentSort = (e.target).value;
+      updateCatalogue();
+    });
 
-    // Parse URL parameter on load
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlCat = urlParams.get('category') || 'all';
-    const searchVal = urlParams.get('search') || '';
+    // Spec Checkbox listeners
+    document.getElementById('filter-antifog')?.addEventListener('change', (e) => {
+      filterAntiFog = (e.target).checked;
+      updateCatalogue();
+    });
+    document.getElementById('filter-uv')?.addEventListener('change', (e) => {
+      filterUV = (e.target).checked;
+      updateCatalogue();
+    });
+    document.getElementById('filter-heavyduty')?.addEventListener('change', (e) => {
+      filterHeavyDuty = (e.target).checked;
+      updateCatalogue();
+    });
+    document.getElementById('filter-kids')?.addEventListener('change', (e) => {
+      filterKids = (e.target).checked;
+      updateCatalogue();
+    });
 
-    if (searchVal && searchInput) {
-      searchInput.value = searchVal;
-      searchQuery = searchVal.toLowerCase().trim();
-    }
+    // Initialize list filter rendering
+    updateCatalogue();
 
-    const matchedBtn = Array.from(filterButtons).find(btn => btn.getAttribute('data-filter') === urlCat);
-    if (matchedBtn) {
-      currentFilter = urlCat;
-      filterButtons.forEach(b => {
-        const button = b;
-        if (button.getAttribute('data-filter') === currentFilter) {
-          button.classList.add('bg-primary', 'text-white');
-          button.classList.remove('text-dark-muted', 'hover:bg-light', 'hover:text-primary');
-        } else {
-          button.classList.remove('bg-primary', 'text-white');
-          button.classList.add('text-dark-muted', 'hover:bg-light', 'hover:text-primary');
+
+    // ----------------------------------------------------
+    // QUICK VIEW MODAL CODE
+    // ----------------------------------------------------
+    const qvModal = document.getElementById('quick-view-modal');
+    const qvBackdrop = document.getElementById('quick-view-modal-backdrop');
+    const qvCloseBtn = document.getElementById('close-quick-view-btn');
+    
+    const qvImage = document.getElementById('qv-image') as HTMLImageElement;
+    const qvName = document.getElementById('qv-name');
+    const qvCategory = document.getElementById('qv-category');
+    const qvDescription = document.getElementById('qv-description');
+    const qvMoqBadge = document.getElementById('qv-moq-badge');
+    const qvSpecsContainer = document.getElementById('qv-specs');
+    const qvQtyInput = document.getElementById('qv-qty-input');
+    const qvAddBtn = document.getElementById('qv-add-quote-btn');
+
+    let activeQvProduct = null;
+
+    const openQuickView = (product) => {
+      activeQvProduct = product;
+      
+      // Populate fields
+      if (qvImage) qvImage.src = product.image;
+      if (qvName) qvName.textContent = product.name;
+      
+      const cat = categories.find(c => c.slug === product.category);
+      if (qvCategory) qvCategory.textContent = cat ? cat.name : "Aquatic Gear";
+      if (qvDescription) qvDescription.textContent = product.description;
+      if (qvMoqBadge) qvMoqBadge.textContent = `MOQ Requirement: ${product.moq}`;
+      
+      const numericMoq = parseInt(product.moq.replace(/[^0-9]/g, '')) || 100;
+      if (qvQtyInput) {
+        qvQtyInput.setAttribute('min', numericMoq.toString());
+        qvQtyInput.value = numericMoq.toString();
+      }
+
+      // Render specs table rows
+      if (qvSpecsContainer) {
+        qvSpecsContainer.innerHTML = Object.entries(product.specifications).map(([k, v]) => `
+          <div class="flex justify-between py-1 border-b border-light-darker">
+            <span class="font-bold text-dark">${k}</span>
+            <span class="text-dark-muted">${v}</span>
+          </div>
+        `).join('');
+      }
+
+      // Open UI
+      qvModal?.classList.remove('hidden');
+      qvBackdrop?.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      
+      setTimeout(() => {
+        qvModal?.classList.remove('opacity-0', 'scale-95');
+        qvBackdrop?.classList.remove('opacity-0');
+      }, 50);
+    };
+
+    const closeQuickView = () => {
+      qvModal?.classList.add('opacity-0', 'scale-95');
+      qvBackdrop?.classList.add('opacity-0');
+      document.body.classList.remove('overflow-hidden');
+      
+      setTimeout(() => {
+        qvModal?.classList.add('hidden');
+        qvBackdrop?.classList.add('hidden');
+        activeQvProduct = null;
+      }, 300);
+    };
+
+    // Attach quick view click listeners
+    document.querySelectorAll('.quick-view-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const slug = btn.getAttribute('data-product-slug');
+        const product = products.find(p => p.slug === slug);
+        if (product) {
+          openQuickView(product);
         }
       });
-    }
+    });
 
-    updateCatalogue();
+    qvCloseBtn?.addEventListener('click', closeQuickView);
+    qvBackdrop?.addEventListener('click', closeQuickView);
+
+    // Quick View Add to Quote Action
+    qvAddBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!activeQvProduct) return;
+
+      const qty = parseInt(qvQtyInput.value) || 100;
+      const numericMoq = parseInt(activeQvProduct.moq.replace(/[^0-9]/g, '')) || 100;
+
+      if ((window).QuoteCart) {
+        (window).QuoteCart.addItem({
+          slug: activeQvProduct.slug,
+          name: activeQvProduct.name,
+          image: activeQvProduct.image,
+          moq: activeQvProduct.moq,
+          numericMoq: numericMoq,
+          qty: qty,
+          printing: false,
+          packaging: 'standard'
+        });
+      }
+
+      closeQuickView();
+    });
+
   });
 </script>

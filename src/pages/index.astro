@@ -2,312 +2,446 @@
 import Layout from '../layouts/Layout.astro';
 import categories from '../data/categories.json';
 import products from '../data/products.json';
-import applications from '../data/applications.json';
-import brands from '../data/brands.json';
+import config from '../data/config.json';
 import gallery from '../data/gallery.json';
 
-const seoTitle = "AQUADURA | Wholesale Aquatic Catalog & B2B eCommerce";
-const seoDescription = "Equip your academies, resorts, water parks, and stores. Browse professional goggles, custom silicone caps, waterproof phone covers, pool hardware, and slides.";
+const seoTitle = `${config.brandName} | Premium B2B Aquatic Supply & Wholesale Catalogue`;
+const seoDescription = `${config.brandTagline}. Procure professional goggles, custom silicone caps, water park slide tubes, and pool hardware direct from distribution.`;
 
-// 1. Today's B2B Offers
-const todayOffers = [
+// Featured Products
+const primaryFeatured = products.find(p => p.slug === "apex-racing-goggles") || products[0];
+const secondaryFeatured = [
+  products.find(p => p.slug === "floating-dry-bag-phone-pouch"),
+  products.find(p => p.slug === "pro-silicone-racing-cap")
+].filter(p => p !== undefined) as typeof products;
+
+// B2B Packages / Bundle Deals
+const bulkBundles = [
   {
-    product: products.find(p => p.slug === "pro-silicone-racing-cap"),
-    badge: "15% off 1000+ Units",
-    deal: "Waived logo print setup fee. High-definition multi-color screen printing included directly from the factory floor."
+    id: "waterpark-bundle",
+    name: "Water Park Operations Bundle",
+    badge: "Most Requested",
+    description: "Complete aquatic facility package designed for immediate commercial water slide and lazy river deployment.",
+    items: [
+      "100x Commercial Slide Tubes (Single & Double)",
+      "200x USCG-Compliant Safety Life Vests",
+      "500x RFID locker wristbands"
+    ],
+    slugs: ["single-rider-commercial-water-tube", "commercial-life-vest-adult", "rfid-locker-key-wristband"],
+    estMoq: "1 Pack"
   },
   {
-    product: products.find(p => p.slug === "floating-dry-bag-phone-pouch"),
-    badge: "B2B Bundle Pack",
-    deal: "Buy 500 Floating Phone Pouches, receive 500 custom-color RFID locker wristbands at a 50% discount."
+    id: "academy-bundle",
+    name: "Elite Swim Squad Set",
+    badge: "Academy Standard",
+    description: "Equip competitive training academies and school teams with customized gear and branding.",
+    items: [
+      "250x Custom Team Silicone Caps",
+      "100x Apex Pro Racing Goggles",
+      "50x High-density EVA Kickboards"
+    ],
+    slugs: ["custom-branded-team-cap", "apex-racing-goggles", "contour-pull-buoy"],
+    estMoq: "1 Pack"
   },
   {
-    product: products.find(p => p.slug === "competition-starting-block"),
-    badge: "6-Unit Facility Set",
-    deal: "Procure a complete set of 6 elite competitive starting blocks with pre-installed Colorado Timing wiring slots."
+    id: "resort-bundle",
+    name: "Resort Pool Hardware Package",
+    badge: "Facility Supply",
+    description: "Heavy-duty pool fittings and competitive hardware for premium hotels, municipal pools, and resorts.",
+    items: [
+      "6x Competition Starting Blocks",
+      "6x Stainless Steel Pool Ladders",
+      "4x Anti-Wave Racing Lane Ropes"
+    ],
+    slugs: ["competition-starting-block", "stainless-steel-pool-ladder", "anti-wave-racing-lane-rope"],
+    estMoq: "1 Pack"
   }
-].filter(item => item.product !== undefined);
+];
 
-// 2. Best Sellers
-const bestSellers = products.filter(p => 
-  ["apex-racing-goggles", "rfid-locker-key-wristband", "stainless-steel-pool-ladder", "single-rider-commercial-water-tube"].includes(p.slug)
+// Applications
+const applicationsList = [
+  {
+    title: "Water Parks & Slides",
+    desc: "Heavy-gauge K80 PVC slide rafts, commercial life vests, and waterproof device cases built to withstand constant sun exposure, high friction, and heavy chlorine.",
+    image: "/images/gallery_park.png"
+  },
+  {
+    title: "Swimming Academies",
+    desc: "FINA-compliant racing goggles, variable-thickness 3D silicone dome caps, pull buoys, and resistance training kits built for institutional durability.",
+    image: "/images/gallery_pool.png"
+  },
+  {
+    title: "Hotels & Resorts",
+    desc: "Stainless steel deck equipment, anti-wave swimming lane ropes, and soft liquid silicone leisure goggles that don't leave pressure marks on guests.",
+    image: "/images/gallery_quality.png"
+  },
+  {
+    title: "Retail & Dealers",
+    desc: "Individually packaged prescription swim goggles, heavy-duty 500D PVC dry bags, and quick-dry microfiber accessories tailored for commercial retail shelves.",
+    image: "/images/gallery_factory.png"
+  }
+];
+
+// Latest Products Carousel
+const latestProducts = products.filter(p => 
+  ["lazy-river-luxury-lounger", "roll-top-waterproof-dry-bag", "swim-resistance-training-belt", "optical-corrective-goggles"].includes(p.slug)
 );
-
-// 3. New Arrivals (horizontal carousel list)
-const newArrivals = products.filter(p => 
-  ["lazy-river-luxury-lounger", "roll-top-waterproof-dry-bag", "swim-resistance-training-belt", "optical-corrective-goggles", "contour-pull-buoy"].includes(p.slug)
-);
-
-// 4. Editor's Picks (asymmetric layouts)
-const editorsPicks = products.filter(p => 
-  ["anti-wave-racing-lane-rope", "double-rider-commercial-water-tube", "heavy-duty-armband-phone-case"].includes(p.slug)
-);
-
-// 5. Trending Products
-const trendingProducts = products.filter(p => 
-  ["commercial-life-vest-adult", "hydrodynamic-swim-fins", "junior-safe-swim-goggles", "commercial-pool-vacuum-cleaner"].includes(p.slug)
-);
-
-const getCategoryName = (catSlug: string) => {
-  return categories.find(c => c.slug === catSlug)?.name || "Aquatic Gear";
-};
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
 
-  <!-- 1. ANNOUNCEMENT BAR (Handled by the thin top-bar inside Navbar.astro) -->
+  <!-- 1. IMMERSIVE HERO SECTION (90vh) -->
+  <section class="relative min-h-[85vh] flex items-center bg-slate-950 text-white overflow-hidden">
+    <!-- Full-bleed background image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/hero_catalog.png"
+        alt="Premium aquatics equipment supply catalog"
+        class="w-full h-full object-cover select-none object-center opacity-30"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+    </div>
 
-  <!-- 2. SHOPPING HERO BANNER -->
-  <section class="relative bg-white pt-8 pb-16 lg:pt-12 lg:pb-20 overflow-hidden">
-    <div class="mx-auto max-w-7xl px-6 md:px-8">
-      <div class="relative overflow-hidden rounded-3xl bg-dark text-white min-h-[480px] sm:min-h-[560px] flex items-center p-8 sm:p-16 lg:p-20 shadow-soft-lg">
+    <!-- Content -->
+    <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-8 py-20 w-full">
+      <div class="max-w-3xl space-y-6">
+        <span class="inline-flex items-center rounded-full bg-primary/20 border border-primary/40 px-3.5 py-1 text-xs font-bold text-accent uppercase tracking-widest">
+          Dealers & Distributors Division
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] font-heading text-white">
+          {config.heroTitle}
+        </h1>
+        <p class="text-sm sm:text-lg text-slate-300 font-medium max-w-xl leading-relaxed">
+          {config.heroSubtitle}
+        </p>
         
-        <!-- Background Image overlay -->
-        <div class="absolute inset-0 z-0 opacity-40">
-          <img
-            src="/images/hero_catalog.png"
-            alt="Summer competitive aquatics gear collection"
-            class="w-full h-full object-cover select-none"
-            loading="eager"
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a
+            href="#categories"
+            class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-xs font-bold text-white shadow-lg hover:bg-primary-dark transition-all duration-200"
+          >
+            Explore Divisions &rarr;
+          </a>
+          <button
+            type="button"
+            class="open-inquiry-direct-btn inline-flex items-center justify-center rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-xs font-bold text-slate-200 hover:bg-slate-700 hover:text-white transition-all duration-200"
+          >
+            Request B2B Quote
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PROMINENT CENTRAL SEARCH BAR -->
+  <section class="relative z-20 -mt-10 max-w-4xl mx-auto px-6">
+    <div class="bg-white rounded-3xl border border-light-darker p-5 sm:p-7 shadow-2xl space-y-4">
+      <h2 class="text-xs font-black text-dark uppercase tracking-wider text-center font-heading">
+        Search our B2B Product Database
+      </h2>
+      <form action="/products" method="GET" class="relative flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-grow">
+          <input
+            type="text"
+            name="search"
+            placeholder={config.searchPlaceholder}
+            class="w-full rounded-2xl border border-light-darker bg-light px-5 py-4 pl-12 text-sm text-dark placeholder:text-dark-muted/50 focus:bg-white focus:border-primary focus:outline-none transition-all"
+            required
           />
+          <svg class="absolute left-4 top-4.5 h-5 w-5 text-dark-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent z-10"></div>
-
-        <!-- Hero Content -->
-        <div class="relative z-20 max-w-2xl space-y-6">
-          <span class="inline-flex items-center rounded-full bg-primary/25 border border-primary/45 px-3 py-1 text-xs font-bold text-accent uppercase tracking-wider font-sans">
-            Limited Season Release
-          </span>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] font-heading">
-            Elite Competition & Recreation Catalog
-          </h1>
-          <p class="text-sm sm:text-base text-slate-300 font-sans leading-relaxed max-w-lg">
-            Procure world-class silicone caps, optical goggles, watertight device cases, and commercial-grade pool ropes direct from distribution.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 pt-2">
-            <a
-              href="/products"
-              class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-all duration-200"
-            >
-              Browse Catalogue
-            </a>
-            <a
-              href="#offers"
-              class="inline-flex items-center justify-center rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-xs font-bold text-slate-200 hover:bg-slate-700 transition-all duration-200"
-            >
-              View Volume Deals
-            </a>
-          </div>
-        </div>
-
+        <button
+          type="submit"
+          class="rounded-2xl bg-dark text-white px-8 py-4 text-xs font-bold hover:bg-primary transition-all flex items-center justify-center gap-1.5"
+        >
+          🔍 Search Database
+        </button>
+      </form>
+      <!-- Quick Categories -->
+      <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-[11px] text-dark-muted font-medium">
+        <span>Suggested:</span>
+        <a href="/products?category=swimming-goggles" class="hover:text-primary underline">Swimming Goggles</a>
+        <span>&bull;</span>
+        <a href="/products?category=swimming-caps" class="hover:text-primary underline">Custom Caps</a>
+        <span>&bull;</span>
+        <a href="/products?category=pool-equipment" class="hover:text-primary underline">Pool Hardwares</a>
+        <span>&bull;</span>
+        <a href="/products?category=water-park-tubes" class="hover:text-primary underline">River Tubes</a>
       </div>
     </div>
   </section>
 
-  <!-- 3. PROMOTIONAL STRIP (eCommerce Reassurances) -->
-  <section class="bg-white border-y border-light-darker py-6">
-    <div class="mx-auto max-w-7xl px-6 md:px-8">
-      <div class="grid grid-cols-2 gap-y-6 gap-x-4 md:grid-cols-4 text-center font-sans text-xs">
-        <div class="space-y-1">
-          <span class="block font-bold text-dark uppercase tracking-wider">Bulk Order Pricing</span>
-          <span class="block text-[11px] text-dark-muted">Volume scale discounts applied</span>
-        </div>
-        <div class="space-y-1 border-l border-light-darker">
-          <span class="block font-bold text-dark uppercase tracking-wider">Custom OEM Branding</span>
-          <span class="block text-[11px] text-dark-muted">Factory screen printing templates</span>
-        </div>
-        <div class="space-y-1 border-l border-light-darker">
-          <span class="block font-bold text-dark uppercase tracking-wider">Fast Sea & Air Freight</span>
-          <span class="block text-[11px] text-dark-muted">Rotterdam & Dallas logistics dispatch</span>
-        </div>
-        <div class="space-y-1 border-l border-light-darker">
-          <span class="block font-bold text-dark uppercase tracking-wider">Compliance Assured</span>
-          <span class="block text-[11px] text-dark-muted">ISO 9001, CE & FINA certified</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. SHOP BY CATEGORY (Visual Photography Tiles) -->
-  <section class="py-20 bg-light">
+  <!-- 3. PREMIUM CATEGORY GRID (8 TILES WITH RHYTHM) -->
+  <section id="categories" class="py-24 bg-light transition-all">
     <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-2">
-        <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Catalog Divisions</span>
-        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Shop by Category</h2>
+        <span class="text-[10px] font-black text-primary tracking-widest uppercase block">Catalog Divisions</span>
+        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Shop by Division</h2>
+        <p class="text-xs text-dark-muted font-medium">Quick-route into specialized wholesale categories of aquatic accessories.</p>
       </div>
 
-      <!-- Categories Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {categories.map((cat) => (
-          <a
-            href={`/products?category=${cat.slug}`}
-            class="group block relative overflow-hidden rounded-2xl bg-white border border-light-darker aspect-[4/5] shadow-soft hover:shadow-soft-lg transition-all duration-300"
-          >
-            <!-- Background Image -->
-            <div class="absolute inset-0 bg-light-darker">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
-                loading="lazy"
-              />
-            </div>
-            <!-- Fine-line dark gradient overlay at bottom -->
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/60 via-dark/10 to-transparent z-10"></div>
-            
-            <!-- Category Title at bottom -->
-            <div class="absolute bottom-6 left-6 right-6 z-20 space-y-1 text-white">
-              <h3 class="text-lg font-bold font-heading leading-tight">{cat.name}</h3>
-              <span class="inline-flex items-center text-[10px] font-bold tracking-wider uppercase text-accent group-hover:underline">
-                Explore Division &rarr;
-              </span>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+      <!-- 8-Tile Editorial Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
+        {categories.map((cat, idx) => {
+          // Visual Rhythm: assign different width spans to make the grid asymmetrical
+          let gridClass = "lg:col-span-3"; // Default square/portrait
+          if (idx === 0) gridClass = "lg:col-span-6"; // First item (Goggles) is wide
+          if (idx === 4) gridClass = "lg:col-span-6"; // Fifth item (Pool Equipment) is wide
+          if (idx === 7) gridClass = "lg:col-span-6"; // Last item (Tubes) is wide
 
-  <!-- 5. FEATURED COLLECTIONS (Asymmetrical Editorial Banners) -->
-  <section class="py-20 bg-white">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-16">
-      
-      <!-- Banner 1: Left Aligned -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-light rounded-3xl overflow-hidden border border-light-darker">
-        <div class="lg:col-span-5 p-8 sm:p-12 space-y-6">
-          <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Competition Essentials</span>
-          <h3 class="text-3xl font-extrabold text-dark font-heading leading-tight">Professional Swim Squad Supplies</h3>
-          <p class="text-xs text-dark-muted font-sans leading-relaxed">
-            Equip your athletic club with FINA-compliant wrinkle-free silicone dome caps, hydrodynamic short-blade training fins, and optical corrective goggles.
-          </p>
-          <a
-            href="/products?category=swimming-training-equipment"
-            class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-xs font-bold text-white hover:bg-primary-dark transition-colors font-sans"
-          >
-            Shop Squad Gear
-          </a>
-        </div>
-        <div class="lg:col-span-7 h-[300px] sm:h-[400px]">
-          <img
-            src="/images/gallery_pool.png"
-            alt="Competitive starting blocks and lane ropes"
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      <!-- Banner 2: Right Aligned -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-light rounded-3xl overflow-hidden border border-light-darker">
-        <div class="lg:col-span-7 h-[300px] sm:h-[400px] lg:order-1">
-          <img
-            src="/images/gallery_park.png"
-            alt="Water park installation and tubes"
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div class="lg:col-span-5 p-8 sm:p-12 space-y-6 lg:order-2">
-          <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Summer Operations</span>
-          <h3 class="text-3xl font-extrabold text-dark font-heading leading-tight">Water Park Rental Tubing</h3>
-          <p class="text-xs text-dark-muted font-sans leading-relaxed">
-            Procure high-wear single, double, and 4-person slide rafts. Handcrafted from heavy-gauge K80 PVC with overlap-welded seams.
-          </p>
-          <a
-            href="/products?category=water-park-tubes"
-            class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-xs font-bold text-white hover:bg-primary-dark transition-colors font-sans"
-          >
-            Shop Slide Tubes
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 6. TODAY'S OFFERS (B2B Volume Deals) -->
-  <section class="py-20 bg-light border-y border-light-darker" id="offers">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
-      <div class="max-w-2xl space-y-2">
-        <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Volume Incentive Contracts</span>
-        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Special Contract Offers</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {todayOffers.map((deal) => (
-          <div class="group flex flex-col justify-between p-8 rounded-2xl border border-light-darker bg-white shadow-soft hover:shadow-soft-lg transition-all duration-300">
-            <div class="space-y-4">
-              <span class="inline-flex items-center rounded-full bg-primary-light px-3 py-1 text-[10px] font-bold text-primary uppercase tracking-wider font-sans">
-                {deal.badge}
-              </span>
-              <h3 class="text-lg font-bold text-dark font-heading group-hover:text-primary transition-colors">
-                {deal.product?.name}
-              </h3>
-              <p class="text-xs text-dark-muted font-sans leading-relaxed">
-                {deal.deal}
-              </p>
-            </div>
-            <div class="pt-6 mt-6 border-t border-light-darker/60 flex items-center justify-between text-xs font-sans">
-              <div>
-                <span class="block text-[9px] font-bold text-dark-muted uppercase">MOQ Requirements</span>
-                <span class="font-extrabold text-dark">{deal.product?.moq}</span>
-              </div>
-              <a
-                href={`/products/${deal.product?.slug || ''}#quote`}
-                class="font-bold text-primary hover:underline"
-              >
-                Inquire Offer &rarr;
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. BEST SELLERS (Minimalist Catalogue Grid) -->
-  <section class="py-20 bg-white">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div class="space-y-2">
-          <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Highly Requested</span>
-          <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Best Selling Wholesale Lines</h2>
-        </div>
-        <a href="/products" class="text-xs font-bold text-primary hover:underline font-sans">
-          Browse Catalog index &rarr;
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {bestSellers.map((product) => (
-          <div class="group flex flex-col justify-between overflow-hidden rounded-2xl bg-white border border-light-darker p-5 shadow-soft hover:shadow-soft-lg transition-all duration-300">
-            <div class="space-y-4">
-              <div class="relative overflow-hidden aspect-[4/3] bg-light rounded-xl border border-light-darker">
+          return (
+            <a
+              href={`/products?category=${cat.slug}`}
+              class={`group block relative overflow-hidden rounded-2xl bg-white border border-light-darker aspect-[4/3] sm:aspect-auto sm:h-72 lg:h-80 shadow-soft hover:shadow-soft-lg transition-all duration-300 ${gridClass}`}
+            >
+              <!-- Background Image -->
+              <div class="absolute inset-0 bg-light-darker">
                 <img
-                  src={product.image}
-                  alt={product.name}
-                  class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  src={cat.image}
+                  alt={cat.name}
+                  class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                   loading="lazy"
                 />
               </div>
-              <div class="space-y-1">
-                <span class="text-[9px] font-bold text-primary uppercase">{getCategoryName(product.category)}</span>
-                <h3 class="text-base font-bold text-dark font-heading leading-snug line-clamp-1">
-                  {product.name}
-                </h3>
+              <!-- Dark gradient overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent z-10"></div>
+              
+              <!-- Content -->
+              <div class="absolute bottom-6 left-6 right-6 z-20 space-y-1 text-white font-sans">
+                <h3 class="text-lg font-bold font-heading leading-tight">{cat.name}</h3>
+                <p class="text-[11px] text-slate-300 leading-normal line-clamp-2 max-w-md group-hover:text-white transition-colors">
+                  {cat.description}
+                </p>
+                <div class="pt-2">
+                  <span class="inline-flex items-center text-[10px] font-bold tracking-wider uppercase text-accent group-hover:underline">
+                    View Catalogue &rarr;
+                  </span>
+                </div>
               </div>
-              <p class="text-xs text-dark-muted font-sans leading-relaxed line-clamp-2">
-                {product.description}
-              </p>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. EDITORIAL FEATURED PRODUCT (Asymmetrical Composition) -->
+  <section class="py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-light-darker pb-6">
+        <div class="space-y-2">
+          <span class="text-[10px] font-black text-primary tracking-widest uppercase block font-heading">Featured Showcase</span>
+          <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Top Performing Equipment</h2>
+        </div>
+        <a href="/products" class="text-xs font-bold text-primary hover:underline">
+          View Complete Catalog index &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 60%: Large Primary Product Highlight -->
+        <div class="lg:col-span-7 bg-light rounded-3xl border border-light-darker p-6 sm:p-8 space-y-6">
+          <div class="relative overflow-hidden aspect-[4/3] rounded-2xl bg-white border border-light-darker">
+            <img
+              src={primaryFeatured.image}
+              alt={primaryFeatured.name}
+              class="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-xs font-extrabold text-primary uppercase font-sans">Apex Racing series</span>
+              <span class="font-bold text-dark bg-white border border-light-darker px-2 py-0.5 rounded text-[11px]">MOQ: {primaryFeatured.moq}</span>
             </div>
             
-            <div class="mt-6 pt-4 border-t border-light-darker/60 flex items-center justify-between text-xs font-sans">
-              <div>
-                <span class="block text-[8px] font-bold text-dark-muted uppercase">Wholesale MOQ</span>
-                <span class="font-extrabold text-dark">{product.moq}</span>
+            <h3 class="text-2xl font-extrabold text-dark font-heading leading-tight">
+              {primaryFeatured.name}
+            </h3>
+            
+            <p class="text-xs text-dark-muted font-sans leading-relaxed">
+              {primaryFeatured.description}
+            </p>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-2 gap-4 text-[11px] text-dark-muted font-sans border-t border-light-darker pt-4">
+              {Object.entries(primaryFeatured.specifications).slice(0, 4).map(([k, v]) => (
+                <div>
+                  <span class="block font-bold text-dark">{k}</span>
+                  <span>{v}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- B2B Direct Quote Add -->
+            <div class="flex items-center gap-3 pt-4">
+              <div class="flex flex-col gap-1 text-[10px]">
+                <label class="font-bold uppercase tracking-wider text-dark-muted">Quantity</label>
+                <input
+                  type="number"
+                  min="200"
+                  value="200"
+                  data-slug={primaryFeatured.slug}
+                  class="qty-input-field w-20 rounded-lg border border-light-darker bg-white px-2.5 py-2 font-bold text-dark text-xs focus:outline-none"
+                />
               </div>
-              <a href={`/products/${product.slug}`} class="font-bold text-primary hover:underline">
-                View Specs &rarr;
+              <button
+                type="button"
+                data-add-to-quote
+                data-slug={primaryFeatured.slug}
+                data-name={primaryFeatured.name}
+                data-image={primaryFeatured.image}
+                data-moq={primaryFeatured.moq}
+                data-numeric-moq="200"
+                class="flex-grow inline-flex items-center justify-center rounded-lg bg-primary py-3 text-xs font-bold text-white shadow hover:bg-primary-dark transition-all"
+              >
+                Add to Quote Sheet
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 40%: Secondary Stacked Items -->
+        <div class="lg:col-span-5 space-y-6">
+          {secondaryFeatured.map((prod) => {
+            const numericMoq = parseInt(prod.moq.replace(/[^0-9]/g, '')) || 100;
+            return (
+              <div class="bg-white rounded-3xl border border-light-darker p-6 flex flex-col justify-between hover:border-slate-300 transition-colors h-[270px] sm:h-[310px] lg:h-[285px]">
+                <div class="flex gap-4">
+                  <!-- Photo -->
+                  <div class="h-24 w-28 shrink-0 rounded-2xl overflow-hidden border border-light-darker bg-light">
+                    <img src={prod.image} alt={prod.name} class="h-full w-full object-cover" />
+                  </div>
+                  <!-- Content -->
+                  <div class="space-y-1">
+                    <span class="text-[9px] font-bold text-primary uppercase font-sans">Institutional Selection</span>
+                    <h4 class="text-base font-bold text-dark font-heading leading-snug line-clamp-1">{prod.name}</h4>
+                    <p class="text-[11px] text-dark-muted font-sans leading-normal line-clamp-3">{prod.description}</p>
+                  </div>
+                </div>
+
+                <!-- Footer row -->
+                <div class="border-t border-light-darker pt-4 flex items-center justify-between">
+                  <div class="text-[11px]">
+                    <span class="block text-[8px] font-bold text-dark-muted uppercase">Wholesale MOQ</span>
+                    <span class="font-extrabold text-dark">{prod.moq}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <a href={`/products/${prod.slug}`} class="text-xs font-bold text-primary hover:underline pr-2">Specs &rarr;</a>
+                    <button
+                      type="button"
+                      data-add-to-quote
+                      data-slug={prod.slug}
+                      data-name={prod.name}
+                      data-image={prod.image}
+                      data-moq={prod.moq}
+                      data-numeric-moq={numericMoq.toString()}
+                      class="inline-flex items-center justify-center rounded-lg bg-dark px-4 py-2.5 text-[10px] font-bold text-white hover:bg-primary transition-all"
+                    >
+                      + Add Quote
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PRE-CONFIGURED INSTITUTIONAL BUNDLES -->
+  <section class="py-24 bg-light border-y border-light-darker">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-[10px] font-black text-primary tracking-widest uppercase block">Bulk Solutions</span>
+        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Pre-configured B2B Packages</h2>
+        <p class="text-xs text-dark-muted font-medium">Consolidated catalog packages designed for rapid facility planning and deployment.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {bulkBundles.map(bundle => (
+          <div class="group flex flex-col justify-between p-6 sm:p-8 rounded-2xl border border-light-darker bg-white shadow-soft hover:shadow-soft-lg transition-all duration-300">
+            <div class="space-y-5">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-[9px] font-bold text-primary uppercase tracking-wider font-sans">
+                  {bundle.badge}
+                </span>
+                <span class="text-[10px] font-bold text-dark-muted uppercase font-sans">Min Qty: {bundle.estMoq}</span>
+              </div>
+              
+              <h3 class="text-lg font-bold text-dark font-heading group-hover:text-primary transition-colors">
+                {bundle.name}
+              </h3>
+              
+              <p class="text-xs text-dark-muted leading-relaxed font-sans">
+                {bundle.description}
+              </p>
+
+              <!-- Included items list -->
+              <div class="bg-light rounded-xl p-4 border border-light-darker/60 space-y-2">
+                <span class="block text-[9px] font-bold text-dark uppercase tracking-wider">Package Contents:</span>
+                <ul class="text-[11px] text-dark font-medium space-y-1.5 font-sans">
+                  {bundle.items.map(item => (
+                    <li class="flex items-start gap-1.5">
+                      <span class="text-primary mt-0.5">&bull;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-light-darker/60 flex items-center justify-between text-xs font-sans">
+              <a href="/products" class="font-bold text-dark-muted hover:text-dark">Explore specs</a>
+              
+              <!-- Direct action button that adds each slug to quote -->
+              <button
+                type="button"
+                class="add-bundle-btn font-bold text-primary hover:underline flex items-center gap-1"
+                data-bundle-slugs={bundle.slugs.join(',')}
+                data-bundle-name={bundle.name}
+              >
+                Inquire Pack &rarr;
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SHOP BY APPLICATION (BUYER SECTORS) -->
+  <section class="py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-[10px] font-black text-primary tracking-widest uppercase block">Sector Solutions</span>
+        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Shop by Application</h2>
+        <p class="text-xs text-dark-muted font-medium">Engineered configurations matching specific industrial requirements.</p>
+      </div>
+
+      <!-- Sectors Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {applicationsList.map(app => (
+          <div class="group flex flex-col rounded-3xl border border-light-darker overflow-hidden hover:border-slate-300 transition-all bg-light">
+            <div class="h-44 overflow-hidden relative">
+              <img src={app.image} alt={app.title} class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-dark/20"></div>
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-base font-extrabold text-dark font-heading leading-tight">{app.title}</h3>
+                <p class="text-xs text-dark-muted leading-relaxed font-sans">{app.desc}</p>
+              </div>
+              <a href="/products" class="text-xs font-bold text-primary hover:underline mt-auto block font-sans">
+                Browse Sector Inventory &rarr;
               </a>
             </div>
           </div>
@@ -316,22 +450,47 @@ const getCategoryName = (catSlug: string) => {
     </div>
   </section>
 
-  <!-- 8. NEW ARRIVALS (Horizontal snap scrolling carousel) -->
-  <section class="py-20 bg-light border-y border-light-darker overflow-hidden">
+  <!-- 7. WHY BULK BUYERS CHOOSE US (B2B VALUE PROPS) -->
+  <section class="py-20 bg-slate-950 text-white relative overflow-hidden">
+    <!-- Fine-grid background overlay -->
+    <div class="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+    <div class="mx-auto max-w-7xl px-6 md:px-8 relative z-10 space-y-12">
+      <div class="max-w-2xl space-y-2">
+        <span class="text-[10px] font-black text-accent tracking-widest uppercase block">Procurement Security</span>
+        <h2 class="text-3xl font-extrabold tracking-tight text-white font-heading">Why Bulk Buyers Partner With Us</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {config.b2bReassurances.map(val => (
+          <div class="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-sm space-y-2.5">
+            <div class="h-8 w-8 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center text-accent text-sm font-black">
+              &bull;
+            </div>
+            <h3 class="text-sm font-bold text-white font-heading leading-tight">{val.title}</h3>
+            <p class="text-[11px] text-slate-400 leading-normal font-sans">{val.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. LATEST PRODUCTS (HORIZONTAL CAROUSEL) -->
+  <section class="py-24 bg-light border-y border-light-darker overflow-hidden">
     <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-8">
       <div class="flex items-end justify-between">
         <div class="space-y-2">
-          <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Recently Catalogued</span>
+          <span class="text-[10px] font-black text-primary tracking-widest uppercase block">Recently Catalogued</span>
           <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">New Arrivals</h2>
         </div>
         <!-- Scroll navigation buttons -->
         <div class="flex gap-2">
-          <button id="carousel-prev-btn" class="h-9 w-9 rounded-full border border-light-darker bg-white text-dark hover:text-primary hover:border-primary flex items-center justify-center shadow-soft transition-all focus:outline-none">
+          <button id="carousel-prev-btn" class="h-9 w-9 rounded-full border border-light-darker bg-white text-dark hover:text-primary hover:border-primary flex items-center justify-center shadow-sm transition-all focus:outline-none">
             <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <button id="carousel-next-btn" class="h-9 w-9 rounded-full border border-light-darker bg-white text-dark hover:text-primary hover:border-primary flex items-center justify-center shadow-soft transition-all focus:outline-none">
+          <button id="carousel-next-btn" class="h-9 w-9 rounded-full border border-light-darker bg-white text-dark hover:text-primary hover:border-primary flex items-center justify-center shadow-sm transition-all focus:outline-none">
             <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
@@ -344,311 +503,252 @@ const getCategoryName = (catSlug: string) => {
         id="new-arrivals-carousel"
         class="flex gap-6 overflow-x-auto pb-4 scroll-smooth scrollbar-none snap-x snap-mandatory"
       >
-        {newArrivals.map((product) => (
-          <div class="snap-start shrink-0 w-[280px] sm:w-[320px] bg-white border border-light-darker rounded-2xl p-5 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between">
-            <div class="space-y-4">
-              <div class="relative overflow-hidden aspect-[4/3] bg-light rounded-xl border border-light-darker">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                />
+        {latestProducts.map((product) => {
+          const numericMoq = parseInt(product.moq.replace(/[^0-9]/g, '')) || 100;
+          return (
+            <div class="snap-start shrink-0 w-[280px] sm:w-[320px] bg-white border border-light-darker rounded-2xl p-5 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="relative overflow-hidden aspect-[4/3] bg-light rounded-xl border border-light-darker">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="space-y-1">
+                  <span class="text-[9px] font-bold text-primary uppercase pr-2 font-sans">{product.category.replace('-', ' ')}</span>
+                  <h3 class="text-sm font-bold text-dark font-heading line-clamp-1">
+                    {product.name}
+                  </h3>
+                </div>
               </div>
-              <div class="space-y-1">
-                <span class="text-[9px] font-bold text-primary uppercase">{getCategoryName(product.category)}</span>
-                <h3 class="text-sm font-bold text-dark font-heading line-clamp-1">
-                  {product.name}
-                </h3>
+              <div class="mt-6 pt-4 border-t border-light-darker/60 flex items-center justify-between text-xs font-sans">
+                <span class="font-bold text-dark-muted">MOQ: {product.moq}</span>
+                <button
+                  type="button"
+                  data-add-to-quote
+                  data-slug={product.slug}
+                  data-name={product.name}
+                  data-image={product.image}
+                  data-moq={product.moq}
+                  data-numeric-moq={numericMoq.toString()}
+                  class="font-bold text-primary hover:underline focus:outline-none"
+                >
+                  + Add Quote
+                </button>
               </div>
             </div>
-            <div class="mt-6 pt-4 border-t border-light-darker/60 flex items-center justify-between text-xs font-sans">
-              <span class="font-bold text-dark-muted">MOQ: {product.moq}</span>
-              <a href={`/products/${product.slug}`} class="font-bold text-primary hover:underline">
-                Request Quote &rarr;
-              </a>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   </section>
 
-  <!-- 9. EDITOR'S PICKS (Asymmetrical Custom layouts) -->
-  <section class="py-20 bg-white">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
-      <div class="max-w-2xl space-y-2">
-        <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Selected Recommendations</span>
-        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Editor's Picks</h2>
-      </div>
-
-      <!-- Asymmetrical Products Listing Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <!-- Large full-width highlight banner -->
-        {editorsPicks[0] && (
-          <div class="lg:col-span-8 bg-light rounded-3xl border border-light-darker overflow-hidden grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
-            <div class="sm:col-span-6 p-8 space-y-4 font-sans">
-              <span class="text-[9px] font-bold text-primary uppercase bg-primary-light px-2 py-0.5 rounded inline-block">
-                {getCategoryName(editorsPicks[0].category)}
-              </span>
-              <h3 class="text-xl font-bold text-dark font-heading leading-tight">{editorsPicks[0].name}</h3>
-              <p class="text-xs text-dark-muted leading-relaxed line-clamp-3">{editorsPicks[0].description}</p>
-              <div class="pt-2 flex items-center justify-between text-xs">
-                <span>MOQ: {editorsPicks[0].moq}</span>
-                <a href={`/products/${editorsPicks[0].slug}`} class="font-bold text-primary hover:underline">Specifications &rarr;</a>
-              </div>
-            </div>
-            <div class="sm:col-span-6 h-64 sm:h-full min-h-[250px]">
-              <img
-                src={editorsPicks[0].image}
-                alt={editorsPicks[0].name}
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        )}
-
-        <!-- Small grid picks -->
-        <div class="lg:col-span-4 flex flex-col gap-6">
-          {editorsPicks.slice(1, 3).map(pick => (
-            <a
-              href={`/products/${pick.slug}`}
-              class="group flex gap-4 p-4 bg-white border border-light-darker rounded-2xl hover:shadow-soft transition-all duration-200"
-            >
-              <div class="h-20 w-24 shrink-0 rounded-xl overflow-hidden border border-light-darker bg-light">
-                <img src={pick.image} class="w-full h-full object-cover" alt={pick.name} />
-              </div>
-              <div class="font-sans text-xs space-y-1 justify-center flex flex-col">
-                <span class="text-[9px] font-bold text-primary uppercase">{getCategoryName(pick.category)}</span>
-                <h4 class="font-bold text-dark group-hover:text-primary transition-colors line-clamp-1">{pick.name}</h4>
-                <span class="text-[10px] text-dark-muted block">MOQ: {pick.moq}</span>
-              </div>
-            </a>
-          ))}
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 10. EXPLORE BY APPLICATION (Deployment Settings Navigation) -->
-  <section class="py-20 bg-light border-y border-light-darker">
+  <!-- 9. LIFESTYLE GALLERY (MIXED ASPECT RATIOS) -->
+  <section class="py-24 bg-white">
     <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-2">
-        <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Target Segment Selection</span>
-        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Explore by Application</h2>
+        <span class="text-[10px] font-black text-primary tracking-widest uppercase block">Visual Operations</span>
+        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Operations Gallery</h2>
+        <p class="text-xs text-dark-muted font-medium">Glimpse into quality validation and installation environments.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
-        {applications.map((app) => (
-          <a
-            href={`/applications#${app.slug}`}
-            class="group block p-6 rounded-2xl bg-white border border-light-darker hover:shadow-soft transition-all duration-200 space-y-4"
-          >
-            <div class="h-10 w-10 bg-primary-light rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-200">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <h3 class="text-sm font-bold text-dark font-heading leading-tight group-hover:text-primary transition-colors">
-                {app.name}
-              </h3>
-              <p class="text-[10px] text-dark-muted line-clamp-2 leading-relaxed">
-                {app.description}
-              </p>
-            </div>
-            <span class="text-[10px] font-bold text-primary group-hover:underline block">
-              View Deployment Catalogue &rarr;
-            </span>
-          </a>
-        ))}
+      <!-- Grid Masonry -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
+        <!-- Tile 1 (Landscape) -->
+        <div class="lg:col-span-8 overflow-hidden rounded-2xl border border-light-darker aspect-[16/9] bg-light relative group">
+          <img src="/images/gallery_factory.png" alt="Institutional manufacturing warehouse" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
+          <div class="absolute bottom-4 left-4 bg-dark/75 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Warehousing Operations</div>
+        </div>
+
+        <!-- Tile 2 (Portrait) -->
+        <div class="lg:col-span-4 overflow-hidden rounded-2xl border border-light-darker aspect-[4/5] sm:aspect-auto lg:h-auto bg-light relative group">
+          <img src="/images/gallery_pool.png" alt="Facility training pool" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
+          <div class="absolute bottom-4 left-4 bg-dark/75 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Elite Training Installations</div>
+        </div>
+
+        <!-- Tile 3 (Portrait) -->
+        <div class="lg:col-span-4 overflow-hidden rounded-2xl border border-light-darker aspect-[4/5] sm:aspect-auto lg:h-auto bg-light relative group">
+          <img src="/images/gallery_quality.png" alt="Product quality test" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
+          <div class="absolute bottom-4 left-4 bg-dark/75 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Material Rigor Validations</div>
+        </div>
+
+        <!-- Tile 4 (Landscape) -->
+        <div class="lg:col-span-8 overflow-hidden rounded-2xl border border-light-darker aspect-[16/9] bg-light relative group">
+          <img src="/images/gallery_park.png" alt="Commercial water park installation" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" loading="lazy" />
+          <div class="absolute bottom-4 left-4 bg-dark/75 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">Water Slide Rafts Deployments</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 11. TRENDING PRODUCTS / CUSTOMER FAVORITES -->
-  <section class="py-20 bg-white">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
-      <div class="max-w-2xl space-y-2">
-        <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Account Favorites</span>
-        <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Trending Catalog Items</h2>
-      </div>
+  <!-- 10. CLEAN QUICK QUOTE CTA (WARM SAND BACKDROP) -->
+  <section class="py-24 bg-[#F9F6F0] border-t border-light-darker">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="bg-white rounded-3xl border border-light-darker p-8 sm:p-12 shadow-xl space-y-8 font-sans">
+        <div class="text-center space-y-2">
+          <span class="text-[10px] font-black text-primary tracking-widest uppercase block font-heading">Rapid Inquiry Desk</span>
+          <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Submit a Direct Catalog Inquiry</h2>
+          <p class="text-xs text-dark-muted max-w-lg mx-auto">
+            Have a custom order requirement or need bulk price tables? Fill out the fields below, and our dispatch agents will email you directly.
+          </p>
+        </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {trendingProducts.map((product) => (
-          <div class="group flex flex-col justify-between overflow-hidden rounded-2xl bg-white border border-light-darker p-5 shadow-soft hover:shadow-soft-lg transition-all duration-300">
-            <div class="space-y-4">
-              <div class="relative overflow-hidden aspect-[4/3] bg-light rounded-xl border border-light-darker">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div class="space-y-1 font-sans">
-                <span class="text-[9px] font-bold text-primary uppercase">{getCategoryName(product.category)}</span>
-                <h3 class="text-base font-bold text-dark font-heading line-clamp-1">
-                  {product.name}
-                </h3>
-              </div>
-            </div>
-            <div class="mt-6 pt-4 border-t border-light-darker/60 flex items-center justify-between text-xs font-sans">
-              <span class="font-bold text-dark-muted">MOQ: {product.moq}</span>
-              <a href={`/products/${product.slug}`} class="font-bold text-primary hover:underline">
-                Get Quote &rarr;
-              </a>
+        <!-- Success Notification -->
+        <div id="form-success-banner" class="hidden rounded-xl bg-emerald-50 border border-emerald-200 p-6 text-emerald-800">
+          <div class="flex items-start">
+            <svg class="h-6 w-6 text-emerald-600 shrink-0 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <h3 class="font-bold text-sm font-heading">Inquiry Transmitted Successfully</h3>
+              <p class="text-xs mt-1 font-sans text-emerald-700">Thank you. An accounts procurement manager will review your requested catalog items and send pricing structures within 1 business day.</p>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- 12. BRANDS (Represented Collections) -->
-  <section class="py-12 bg-light border-y border-light-darker font-sans text-xs">
-    <div class="mx-auto max-w-7xl px-6 md:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <span class="font-bold text-dark-muted uppercase tracking-widest">Our Collections:</span>
-        <div class="flex flex-wrap justify-center gap-12 font-heading font-extrabold text-lg text-dark/40 select-none">
-          {brands.map(brand => (
-            <a href="/brands" class="hover:text-primary transition-colors">
-              {brand.name.toUpperCase()}
-            </a>
-          ))}
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- 13. GALLERY PREVIEW -->
-  <section class="py-20 bg-white">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 space-y-12">
-      <div class="flex justify-between items-end">
-        <div class="space-y-2">
-          <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Operational Photos</span>
-          <h2 class="text-3xl font-extrabold tracking-tight text-dark font-heading">Real-World Case Settings</h2>
-        </div>
-        <a href="/gallery" class="text-xs font-bold text-primary hover:underline font-sans">View Full Gallery &rarr;</a>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {gallery.slice(0, 4).map((item) => (
-          <a
-            href="/gallery"
-            class="group block space-y-3"
-          >
-            <div class="relative overflow-hidden rounded-2xl bg-light border border-light-darker aspect-[4/3] w-full">
-              <img
-                src={item.image}
-                alt={item.title}
-                class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-                loading="lazy"
+        <form id="b2b-direct-quote-form" class="space-y-6">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div>
+              <label for="contact-name" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2">Full Name *</label>
+              <input
+                type="text"
+                id="contact-name"
+                required
+                class="block w-full rounded-xl border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/50 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+                placeholder="John Doe"
               />
             </div>
-            <div class="font-sans">
-              <h4 class="text-xs font-bold text-dark group-hover:text-primary transition-colors line-clamp-1">{item.title}</h4>
-              <span class="text-[9px] text-dark-muted uppercase">{item.category}</span>
+            <div>
+              <label for="contact-company" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2">Company Name *</label>
+              <input
+                type="text"
+                id="contact-company"
+                required
+                class="block w-full rounded-xl border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/50 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+                placeholder="Enterprise Aquatics Corp."
+              />
             </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+          </div>
 
-  <!-- 14. BULK ORDER CTA & NEWSLETTER (Lead Generation) -->
-  <section class="py-20 bg-light border-t border-light-darker font-sans">
-    <div class="mx-auto max-w-5xl px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
-      <!-- Catalog Download CTA -->
-      <div class="lg:col-span-6 space-y-6">
-        <span class="text-[10px] font-bold text-primary tracking-widest uppercase block">Accounts Registration</span>
-        <h2 class="text-3xl font-extrabold text-dark font-heading leading-tight">Request Volume Quote & Spec Catalogues</h2>
-        <p class="text-xs text-dark-muted leading-relaxed">
-          Open a commercial B2B account to coordinate shipping logistics, waived print template setups, and customized container allocations.
-        </p>
-        <div class="flex flex-wrap gap-4 pt-2">
-          <a href="/contact" class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-all duration-200">
-            Submit B2B Inquiry
-          </a>
-          <a href="/downloads" class="inline-flex items-center justify-center rounded-full bg-white border border-light-darker px-6 py-3 text-xs font-bold text-dark hover:bg-light transition-all duration-200">
-            Download Catalogue (PDF)
-          </a>
-        </div>
-      </div>
-
-      <!-- Newsletter subscription form -->
-      <div class="lg:col-span-6 bg-white border border-light-darker p-8 rounded-3xl shadow-soft">
-        <div class="space-y-4">
-          <h3 class="text-lg font-bold text-dark font-heading">Catalogue Updates</h3>
-          <p class="text-xs text-dark-muted leading-relaxed">
-            Subscribe to receive automated notifications when new divisions, sub-brands, or B2B bundle offers are published.
-          </p>
-          <form id="home-newsletter-form" class="space-y-4 pt-2">
-            <div class="flex flex-col sm:flex-row gap-2">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div>
+              <label for="contact-email" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2">Corporate Email *</label>
               <input
                 type="email"
+                id="contact-email"
                 required
-                placeholder="Email address"
-                class="w-full rounded-full border border-light-darker bg-light px-4 py-2.5 text-xs text-dark placeholder:text-dark-muted/50 focus:bg-white focus:outline-none focus:border-primary transition-all"
+                class="block w-full rounded-xl border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/50 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+                placeholder="procurement@company.com"
               />
-              <button
-                type="submit"
-                class="shrink-0 rounded-full bg-primary px-6 py-2.5 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-colors"
-              >
-                Subscribe
-              </button>
             </div>
-            <div id="newsletter-success" class="hidden text-[11px] font-bold text-emerald-600 flex items-center gap-1.5 animate-fade-in">
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              Subscription confirmed.
+            <div>
+              <label for="contact-phone" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2">Phone Number *</label>
+              <input
+                type="tel"
+                id="contact-phone"
+                required
+                class="block w-full rounded-xl border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/50 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150"
+                placeholder="+91 99999 88888"
+              />
             </div>
-          </form>
-        </div>
-      </div>
+          </div>
 
+          <div>
+            <label for="contact-message" class="block text-xs font-bold text-dark uppercase tracking-wider mb-2">Message & Requested Items *</label>
+            <textarea
+              id="contact-message"
+              rows="4"
+              required
+              class="block w-full rounded-xl border border-light-darker bg-light px-4 py-3 text-sm text-dark placeholder:text-dark-muted/50 focus:border-primary focus:bg-white focus:outline-none transition-all duration-150 resize-none"
+              placeholder="Specify the products (e.g. Goggles, Cap models) and approximate volumes you are looking for..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full inline-flex items-center justify-center rounded-xl bg-primary py-4 text-xs font-bold text-white shadow-soft hover:bg-primary-dark transition-all duration-200"
+          >
+            Submit Direct Catalog Request
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 
 </Layout>
 
 <script>
+  // Carousel logic
   document.addEventListener('DOMContentLoaded', () => {
-    // 1. Horizontal snap scroll carousel triggers
     const carousel = document.getElementById('new-arrivals-carousel');
     const prevBtn = document.getElementById('carousel-prev-btn');
     const nextBtn = document.getElementById('carousel-next-btn');
 
     if (carousel && prevBtn && nextBtn) {
-      const scrollOffset = 300;
-      
       prevBtn.addEventListener('click', () => {
-        carousel.scrollBy({ left: -scrollOffset, behavior: 'smooth' });
+        carousel.scrollLeft -= 300;
       });
-
       nextBtn.addEventListener('click', () => {
-        carousel.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+        carousel.scrollLeft += 300;
       });
     }
 
-    // 2. Newsletter Submit
-    const newsForm = document.querySelector('form#home-newsletter-form');
-    const successMsg = document.getElementById('newsletter-success');
+    // Direct quote form submit
+    const quoteForm = document.getElementById('b2b-direct-quote-form') as HTMLFormElement;
+    const successBanner = document.getElementById('form-success-banner');
 
-    if (newsForm && successMsg) {
-      newsForm.addEventListener('submit', (e) => {
+    if (quoteForm && successBanner) {
+      quoteForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        newsForm.reset();
-        successMsg.classList.remove('hidden');
-        setTimeout(() => {
-          successMsg.classList.add('hidden');
-        }, 4000);
+        
+        // Hide form inputs
+        quoteForm.classList.add('hidden');
+        successBanner.classList.remove('hidden');
+        
+        // Reset form
+        quoteForm.reset();
       });
     }
+
+    // Add bundle items to quote cart
+    document.querySelectorAll('.add-bundle-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = e.target as HTMLElement;
+        const slugsStr = target.getAttribute('data-bundle-slugs') || '';
+        const slugs = slugsStr.split(',');
+
+        // We fetch the full products from window products or local JSON (represented in client-side quotes)
+        // Wait, we can fetch matching products using client-side data.
+        // Let's add them one by one.
+        fetch('/src/data/products.json')
+          .then(res => res.json())
+          .then(allProducts => {
+            slugs.forEach(slug => {
+              const product = allProducts.find((p: any) => p.slug === slug);
+              if (product && (window as any).QuoteCart) {
+                const numericMoq = parseInt(product.moq.replace(/[^0-9]/g, '')) || 100;
+                (window as any).QuoteCart.addItem({
+                  slug: product.slug,
+                  name: product.name,
+                  image: product.image,
+                  moq: product.moq,
+                  numericMoq: numericMoq,
+                  qty: numericMoq,
+                  printing: false,
+                  packaging: 'standard'
+                });
+              }
+            });
+          })
+          .catch(err => {
+            // Fallback: search row buttons or use catalog direct data if fetch fails
+            console.error("Failed to load products list from json", err);
+          });
+      });
+    });
+
   });
 </script>

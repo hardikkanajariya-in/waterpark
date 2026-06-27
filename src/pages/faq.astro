@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import faqs from '../data/faq.json';
+import config from '../data/config.json';
 
-const seoTitle = "B2B Help & Wholesale FAQs | Aquadura";
+const seoTitle = `B2B Help & Wholesale FAQs | ${config.brandName}`;
 const seoDescription = "Find answers regarding Minimum Order Quantities (MOQ), custom screen-printing options, global shipping logistics, and compliance standards.";
 ---
 
@@ -65,7 +66,7 @@ const seoDescription = "Find answers regarding Minimum Order Quantities (MOQ), c
       <!-- Search feedback message -->
       <div id="faq-no-results" class="hidden text-center py-12 bg-white border border-light-darker rounded-2xl p-6 shadow-soft">
         <h3 class="text-sm font-bold text-dark font-heading">No matching questions found</h3>
-        <p class="text-xs text-dark-muted mt-1">Try searching another keyword or reach out directly at supply@aquadura.com.</p>
+        <p class="text-xs text-dark-muted mt-1">Try searching another keyword or reach out directly at {config.contact.email}.</p>
       </div>
 
     </div>

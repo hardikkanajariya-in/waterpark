@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import brands from '../data/brands.json';
 import categories from '../data/categories.json';
+import config from '../data/config.json';
 
-const seoTitle = "Represented Brands & Product Collections | Aquadura";
-const seoDescription = "Review Aquadura's specialized sub-brands including Aquadura Pro competition gear, WaveGrip commercial inflatables, and HydroShield watertight covers.";
+const seoTitle = `Represented Brands & Product Collections | ${config.brandName}`;
+const seoDescription = `Review our specialized sub-brands including competition gear, WaveGrip commercial inflatables, and HydroShield watertight covers.`;
 
 const getCategoryNames = (slugList: string[]) => {
   return categories

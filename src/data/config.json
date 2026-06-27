@@ -1,0 +1,37 @@
+{
+  "brandName": "AQUADURA",
+  "brandTagline": "Professional Aquatic Catalogue & B2B Commerce",
+  "heroTitle": "Professional Swimming Equipment",
+  "heroSubtitle": "Built for Water Parks, Swimming Academies, Schools & Retail Supply.",
+  "searchPlaceholder": "Search goggles, caps, training gear, pool hardware...",
+  "b2bReassurances": [
+    {
+      "title": "Quality Assurance",
+      "desc": "All materials undergo rigorous institutional wear testing."
+    },
+    {
+      "title": "Industry Standard Materials",
+      "desc": "High-density LSR silicone, shatterproof polycarbonate, and K80 PVC."
+    },
+    {
+      "title": "Bulk Supply",
+      "desc": "Optimized MOQ limits for academies, water parks, and wholesale dealers."
+    },
+    {
+      "title": "Nationwide Delivery",
+      "desc": "Integrated logistics partners for fast freight dispatch."
+    },
+    {
+      "title": "Custom Branding Available",
+      "desc": "High-definition custom team print options direct from factory."
+    }
+  ],
+  "contact": {
+    "phone": "+1 (800) 555-0199",
+    "phoneRaw": "+18005550199",
+    "whatsapp": "+18005550199",
+    "whatsappMsg": "Hi Aquadura, I would like to inquire about bulk supply pricing.",
+    "email": "procurement@aquadura.com",
+    "address": "Rotterdam Logistics Park, Port Area 4A, Netherlands"
+  }
+}

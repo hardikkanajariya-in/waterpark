@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import downloads from '../data/downloads.json';
+import config from '../data/config.json';
 
-const seoTitle = "Technical Resources & Document Downloads | Aquadura";
-const seoDescription = "Download full B2B product catalogs, compliance certificates, warranty terms, and custom stencil layout templates in PDF formats.";
+const seoTitle = `Technical Resources & Document Downloads | ${config.brandName}`;
+const seoDescription = `Download full B2B product catalogs, compliance certificates, warranty terms, and custom stencil layout templates in PDF formats.`;
 ---
 
 <Layout title={seoTitle} description={seoDescription}>

@@ -2,8 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import applications from '../data/applications.json';
 import products from '../data/products.json';
+import config from '../data/config.json';
 
-const seoTitle = "Aquatic Product Applications & Deployments | Aquadura";
+const seoTitle = `Aquatic Product Applications & Deployments | ${config.brandName}`;
 const seoDescription = "Review commercial application contexts for our products. See recommendations for swim academies, theme parks, resorts, and distributor catalogs.";
 
 // Resolve product details for each application focus list
